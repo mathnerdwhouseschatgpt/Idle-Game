@@ -638,16 +638,21 @@ def cost_tags_for(tags):
     return cost_tags
 
 
-extra_cost_cycle = ["W", "S", "F", "E"]
+extra_cost_cycle = ["W", "S", "F", "E", "P"]
 
 
 def select_extra_resource(existing, avoid_energy=False):
+    existing_set = set(existing)
     for resource in extra_cost_cycle:
         if avoid_energy and resource == "E":
             continue
-        if resource not in existing:
+        if resource not in existing_set:
             return resource
-    return existing[0]
+    for resource in extra_cost_cycle:
+        if avoid_energy and resource == "E":
+            continue
+        return resource
+    return "W"
 
 
 def build_cost_shares(tags, era_index, idx, force_non_energy=False):
@@ -658,25 +663,48 @@ def build_cost_shares(tags, era_index, idx, force_non_energy=False):
         if not cost_tags:
             cost_tags = ["S" if (era_index + idx) % 2 == 0 else "W"]
 
-    # Encourage multi-resource costs broadly.
-    needs_extra = len(cost_tags) == 1 or ((era_index + idx) % 2 == 0)
-    produced_cost_tags = set(cost_tags)
+    era = era_index + 1
+    base_tags = cost_tags_for(tags)
 
-    if needs_extra:
-        candidate = select_extra_resource(
-            existing=produced_cost_tags,
-            avoid_energy=force_non_energy,
-        )
+    if era == 1 and idx < 5:
+        primary = cost_tags[0] if cost_tags else "W"
+        shares = {primary: 1.0}
+        return shares
+
+    desired_total = len(cost_tags)
+    if era <= 3:
+        if len(cost_tags) == 1 and idx % 8 == 0 and idx >= 4:
+            desired_total = 2
+    elif era <= 6:
+        if len(cost_tags) == 1 and idx % 3 == 0:
+            desired_total = 2
+        if idx % 10 == 0:
+            desired_total = max(desired_total, 3)
+    elif era <= 10:
+        desired_total = max(desired_total, 2)
+        if idx % 4 == 0:
+            desired_total = max(desired_total, 3)
+        if idx % 11 == 0:
+            desired_total = max(desired_total, 4)
+    else:
+        desired_total = max(desired_total, 2)
+        if idx % 3 == 0:
+            desired_total = max(desired_total, 3)
+        if idx % 7 == 0:
+            desired_total = max(desired_total, 4)
+        if idx % 15 == 0:
+            desired_total = max(desired_total, 5)
+
+    while len(cost_tags) < desired_total:
+        candidate = select_extra_resource(cost_tags, avoid_energy=force_non_energy)
         if candidate not in cost_tags:
             cost_tags.append(candidate)
+        else:
+            break
 
-    # Ensure at least one component differs from produced resources.
     produced_tags = set(cost_tags_for(tags))
-    if set(cost_tags) <= produced_tags:
-        candidate = select_extra_resource(
-            existing=produced_tags,
-            avoid_energy=force_non_energy,
-        )
+    if set(cost_tags).issubset(produced_tags):
+        candidate = select_extra_resource(cost_tags, avoid_energy=force_non_energy)
         if candidate not in cost_tags:
             cost_tags.append(candidate)
 

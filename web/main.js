@@ -20,6 +20,8 @@ const TICK_STEP = 0.2; // seconds per simulation step
 const AUTOSAVE_INTERVAL = 30; // seconds
 const OFFLINE_CAP = 60 * 60 * 8; // 8 hours
 const ERA_UNLOCK_SCALE = 3.0;
+const AUTOMATION_INTERVAL = 0.5; // seconds between automation passes
+const AUTOMATION_MAX_BATCH = 50; // max units purchased per building per pass
 
 class BuildingDefinition {
   constructor(data) {
@@ -61,6 +63,7 @@ class Game {
     this.lastSummary = this.computeProductionSummary();
     this.autosaveEnabled = true;
     this._autosaveTimer = 0;
+    this._automationTimer = 0;
   }
 
   _seedStartingBuildings() {
@@ -90,6 +93,7 @@ class Game {
       state.automation = false;
     }
     this._seedStartingBuildings();
+    this._automationTimer = 0;
     this.lastSummary = this.computeProductionSummary();
   }
 
@@ -181,6 +185,7 @@ class Game {
         (this.totalProduced[resource] || 0) + gained;
     }
     this.elapsedSeconds += deltaSeconds;
+    this._automationTimer += deltaSeconds;
     this._applyAutomation();
     this._updateEraUnlock(summary.totalRate);
     this._autosaveTimer += deltaSeconds;
@@ -318,22 +323,25 @@ class Game {
   }
 
   _applyAutomation() {
-    let purchasesMade = false;
-    for (const state of this.states) {
-      if (!state.automation || state.definition.era_index > this.eraUnlocked) {
-        continue;
-      }
-      let guard = 0;
-      while (guard < 25) {
-        const affordability = this._canAfford(state, 1);
-        if (!affordability.afford) break;
-        this._spend(affordability.cost);
-        state.owned += 1;
-        purchasesMade = true;
-        guard += 1;
+    if (this._automationTimer < AUTOMATION_INTERVAL) return;
+    let needsRecalc = false;
+    while (this._automationTimer >= AUTOMATION_INTERVAL) {
+      this._automationTimer -= AUTOMATION_INTERVAL;
+      for (const state of this.states) {
+        if (!state.automation || state.definition.era_index > this.eraUnlocked) {
+          continue;
+        }
+        const maxQty = this.maxAffordable(state);
+        if (maxQty <= 0) continue;
+        const quantity = Math.min(maxQty, AUTOMATION_MAX_BATCH);
+        if (quantity <= 0) continue;
+        const cost = costFor(state.definition, state.owned, quantity);
+        this._spend(cost);
+        state.owned += quantity;
+        needsRecalc = true;
       }
     }
-    if (purchasesMade) {
+    if (needsRecalc) {
       this.lastSummary = this.computeProductionSummary();
     }
   }

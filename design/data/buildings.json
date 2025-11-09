@@ -12,8 +12,7 @@
     "base_cost": 6,
     "growth": 1.12,
     "cost_shares": {
-      "W": 0.5,
-      "S": 0.5
+      "W": 1.0
     },
     "synergy_a": "+4% output per Forager Trail owned.",
     "synergy_b": "+3% Wood output while stored Wood \u2265 3.",
@@ -43,8 +42,7 @@
     "base_cost": 7,
     "growth": 1.12,
     "cost_shares": {
-      "S": 0.5,
-      "W": 0.5
+      "S": 1.0
     },
     "synergy_a": "+6% output per Stick Pile owned.",
     "synergy_b": "+6% Stone output while stored Stone \u2265 3.",
@@ -74,8 +72,7 @@
     "base_cost": 8,
     "growth": 1.12,
     "cost_shares": {
-      "F": 0.5,
-      "W": 0.5
+      "F": 1.0
     },
     "synergy_a": "+8% output per Stone Cache owned.",
     "synergy_b": "+9% Food output while stored Food \u2265 3.",
@@ -105,8 +102,7 @@
     "base_cost": 8,
     "growth": 1.12,
     "cost_shares": {
-      "W": 0.5,
-      "S": 0.5
+      "W": 1.0
     },
     "synergy_a": "+10% output per Berry Bush owned.",
     "synergy_b": "+12% Energy output while stored Energy \u2265 4.",
@@ -136,8 +132,7 @@
     "base_cost": 9,
     "growth": 1.12,
     "cost_shares": {
-      "F": 0.5,
-      "W": 0.5
+      "F": 1.0
     },
     "synergy_a": "+4% output per Fire Pit owned.",
     "synergy_b": "+15% Population output while stored Population \u2265 4.",
@@ -833,8 +828,7 @@
     "base_cost": 61,
     "growth": 1.12,
     "cost_shares": {
-      "S": 0.5,
-      "W": 0.5
+      "S": 1.0
     },
     "synergy_a": "+6% output per Thatch Hut owned.",
     "synergy_b": "+6% Energy output while stored Energy \u2265 28.",
@@ -1646,8 +1640,7 @@
     "base_cost": 616,
     "growth": 1.13,
     "cost_shares": {
-      "S": 0.5,
-      "W": 0.5
+      "S": 1.0
     },
     "synergy_a": "+8% output per Stonecutters\u2019 Guild owned.",
     "synergy_b": "+9% Energy output while stored Energy \u2265 277.",
@@ -2360,8 +2353,9 @@
     "base_cost": 4374,
     "growth": 1.13,
     "cost_shares": {
-      "S": 0.5,
-      "W": 0.5
+      "S": 0.3333,
+      "W": 0.3333,
+      "F": 0.3333
     },
     "synergy_a": "+4% output per Insula Block owned.",
     "synergy_b": "+3% Energy output while stored Energy \u2265 1.97K. Additional +1% Stone output.",
@@ -2672,8 +2666,9 @@
     "base_cost": 5249,
     "growth": 1.13,
     "cost_shares": {
-      "S": 0.5,
-      "W": 0.5
+      "S": 0.3333,
+      "W": 0.3333,
+      "F": 0.3333
     },
     "synergy_a": "+8% output per Shipwright owned.",
     "synergy_b": "+3% Stone output while stored Stone \u2265 2.36K.",
@@ -2986,8 +2981,9 @@
     "base_cost": 14288,
     "growth": 1.13,
     "cost_shares": {
-      "W": 0.5,
-      "S": 0.5
+      "W": 0.3333,
+      "S": 0.3333,
+      "F": 0.3333
     },
     "synergy_a": "+4% output per Vineyard owned.",
     "synergy_b": "+3% Wood output while stored Wood \u2265 6.43K.",
@@ -3141,8 +3137,9 @@
     "base_cost": 39366,
     "growth": 1.14,
     "cost_shares": {
-      "S": 0.5,
-      "W": 0.5
+      "S": 0.3333,
+      "W": 0.3333,
+      "F": 0.3333
     },
     "synergy_a": "+4% output per River Dock owned.",
     "synergy_b": "+3% Stone output while stored Stone \u2265 17.71K.",
@@ -3203,8 +3200,7 @@
     "base_cost": 49864,
     "growth": 1.14,
     "cost_shares": {
-      "S": 0.5,
-      "W": 0.5
+      "S": 1.0
     },
     "synergy_a": "+8% output per Olive Grove Estate owned.",
     "synergy_b": "+9% Energy output while stored Energy \u2265 22.44K.",
@@ -3451,8 +3447,9 @@
     "base_cost": 47239,
     "growth": 1.14,
     "cost_shares": {
-      "S": 0.5,
-      "W": 0.5
+      "S": 0.3333,
+      "W": 0.3333,
+      "F": 0.3333
     },
     "synergy_a": "+8% output per Timber Exchange owned.",
     "synergy_b": "+3% Stone output while stored Stone \u2265 21.26K.",
@@ -3761,8 +3758,9 @@
     "base_cost": 128596,
     "growth": 1.14,
     "cost_shares": {
-      "S": 0.5,
-      "W": 0.5
+      "S": 0.3333,
+      "W": 0.3333,
+      "F": 0.3333
     },
     "synergy_a": "+4% output per Cedar Preserve owned.",
     "synergy_b": "+3% Stone output while stored Stone \u2265 57.87K.",
@@ -3920,8 +3918,9 @@
     "base_cost": 354294,
     "growth": 1.14,
     "cost_shares": {
-      "W": 0.5,
-      "S": 0.5
+      "W": 0.3333,
+      "S": 0.3333,
+      "F": 0.3333
     },
     "synergy_a": "+4% output per Timber Fair owned.",
     "synergy_b": "+3% Wood output while stored Wood \u2265 159.43K.",
@@ -3982,8 +3981,7 @@
     "base_cost": 448772,
     "growth": 1.14,
     "cost_shares": {
-      "W": 0.5,
-      "S": 0.5
+      "W": 1.0
     },
     "synergy_a": "+8% output per Stone Keep owned.",
     "synergy_b": "+9% Energy output while stored Energy \u2265 201.95K.",
@@ -4230,8 +4228,9 @@
     "base_cost": 425153,
     "growth": 1.14,
     "cost_shares": {
-      "E": 0.5,
-      "W": 0.5
+      "E": 0.3333,
+      "W": 0.3333,
+      "S": 0.3333
     },
     "synergy_a": "+8% output per Burg Ward owned.",
     "synergy_b": "+3% Energy output while stored Energy \u2265 191.32K.",
@@ -4540,8 +4539,9 @@
     "base_cost": 1157360,
     "growth": 1.14,
     "cost_shares": {
-      "S": 0.5,
-      "W": 0.5
+      "S": 0.3333,
+      "W": 0.3333,
+      "F": 0.3333
     },
     "synergy_a": "+4% output per Boat Builder owned.",
     "synergy_b": "+3% Stone output while stored Stone \u2265 520.81K.",
@@ -4695,8 +4695,10 @@
     "base_cost": 3188646,
     "growth": 1.15,
     "cost_shares": {
-      "W": 0.5,
-      "S": 0.5
+      "W": 0.25,
+      "S": 0.25,
+      "F": 0.25,
+      "E": 0.25
     },
     "synergy_a": "+4% output per Opera Residences owned.",
     "synergy_b": "+3% Wood output while stored Wood \u2265 1.43M.",
@@ -4819,8 +4821,9 @@
     "base_cost": 4995545,
     "growth": 1.15,
     "cost_shares": {
-      "F": 0.5,
-      "W": 0.5
+      "F": 0.3333,
+      "W": 0.3333,
+      "S": 0.3333
     },
     "synergy_a": "+4% output per Crop Rotation Fields owned.",
     "synergy_b": "+15% Population output while stored Population \u2265 2.25M.",
@@ -4943,8 +4946,9 @@
     "base_cost": 5739563,
     "growth": 1.15,
     "cost_shares": {
-      "F": 0.5,
-      "W": 0.5
+      "F": 0.3333,
+      "W": 0.3333,
+      "S": 0.3333
     },
     "synergy_a": "+4% output per Clocktower Dynamo owned.",
     "synergy_b": "+12% Food output while stored Food \u2265 2.58M.",
@@ -5036,8 +5040,10 @@
     "base_cost": 4251528,
     "growth": 1.15,
     "cost_shares": {
-      "F": 0.5,
-      "W": 0.5
+      "F": 0.25,
+      "W": 0.25,
+      "S": 0.25,
+      "E": 0.25
     },
     "synergy_a": "+10% output per Print Shop owned.",
     "synergy_b": "+6% Food output while stored Food \u2265 1.91M.",
@@ -5067,8 +5073,9 @@
     "base_cost": 4676681,
     "growth": 1.15,
     "cost_shares": {
-      "F": 0.5,
-      "W": 0.5
+      "F": 0.3333,
+      "W": 0.3333,
+      "S": 0.3333
     },
     "synergy_a": "+4% output per Botanical Garden owned.",
     "synergy_b": "+9% Population output while stored Population \u2265 2.10M.",
@@ -5191,8 +5198,9 @@
     "base_cost": 7015021,
     "growth": 1.15,
     "cost_shares": {
-      "E": 0.5,
-      "W": 0.5
+      "E": 0.3333,
+      "W": 0.3333,
+      "S": 0.3333
     },
     "synergy_a": "+4% output per Tannery owned.",
     "synergy_b": "+6% Energy output while stored Energy \u2265 3.16M.",
@@ -5315,8 +5323,9 @@
     "base_cost": 10416244,
     "growth": 1.15,
     "cost_shares": {
-      "F": 0.5,
-      "W": 0.5
+      "F": 0.3333,
+      "W": 0.3333,
+      "S": 0.3333
     },
     "synergy_a": "+4% output per Granite Works owned.",
     "synergy_b": "+3% Food output while stored Food \u2265 4.69M.",
@@ -5377,8 +5386,10 @@
     "base_cost": 8396768,
     "growth": 1.15,
     "cost_shares": {
-      "E": 0.5,
-      "W": 0.5
+      "E": 0.25,
+      "W": 0.25,
+      "S": 0.25,
+      "F": 0.25
     },
     "synergy_a": "+8% output per Loom Hall owned.",
     "synergy_b": "+9% Energy output while stored Energy \u2265 3.78M.",
@@ -5439,8 +5450,9 @@
     "base_cost": 6271004,
     "growth": 1.15,
     "cost_shares": {
-      "F": 0.5,
-      "W": 0.5
+      "F": 0.3333,
+      "W": 0.3333,
+      "S": 0.3333
     },
     "synergy_a": "+4% output per Vineyard Estate owned.",
     "synergy_b": "+15% Population output while stored Population \u2265 2.82M.",
@@ -5470,8 +5482,10 @@
     "base_cost": 28697814,
     "growth": 1.15,
     "cost_shares": {
-      "W": 0.5,
-      "S": 0.5
+      "W": 0.25,
+      "S": 0.25,
+      "F": 0.25,
+      "E": 0.25
     },
     "synergy_a": "+4% output per Brick Row owned.",
     "synergy_b": "+3% Wood output while stored Wood \u2265 12.91M.",
@@ -5594,8 +5608,9 @@
     "base_cost": 44959909,
     "growth": 1.15,
     "cost_shares": {
-      "F": 0.5,
-      "W": 0.5
+      "F": 0.3333,
+      "W": 0.3333,
+      "S": 0.3333
     },
     "synergy_a": "+4% output per Grain Elevator owned.",
     "synergy_b": "+15% Population output while stored Population \u2265 20.23M.",
@@ -5718,8 +5733,9 @@
     "base_cost": 51656065,
     "growth": 1.15,
     "cost_shares": {
-      "F": 0.5,
-      "W": 0.5
+      "F": 0.3333,
+      "W": 0.3333,
+      "S": 0.3333
     },
     "synergy_a": "+4% output per Coal Plant owned.",
     "synergy_b": "+12% Food output while stored Food \u2265 23.25M.",
@@ -5811,8 +5827,10 @@
     "base_cost": 38263752,
     "growth": 1.15,
     "cost_shares": {
-      "F": 0.5,
-      "W": 0.5
+      "F": 0.25,
+      "W": 0.25,
+      "S": 0.25,
+      "E": 0.25
     },
     "synergy_a": "+10% output per Telegraph Station owned.",
     "synergy_b": "+6% Food output while stored Food \u2265 17.22M.",
@@ -5842,8 +5860,9 @@
     "base_cost": 42090127,
     "growth": 1.15,
     "cost_shares": {
-      "W": 0.5,
-      "S": 0.5
+      "W": 0.3333,
+      "S": 0.3333,
+      "F": 0.3333
     },
     "synergy_a": "+4% output per Fish Cannery owned.",
     "synergy_b": "+9% Wood output while stored Wood \u2265 18.94M.",
@@ -5966,8 +5985,9 @@
     "base_cost": 63135191,
     "growth": 1.15,
     "cost_shares": {
-      "F": 0.5,
-      "W": 0.5
+      "F": 0.3333,
+      "W": 0.3333,
+      "S": 0.3333
     },
     "synergy_a": "+4% output per Sugar Refinery owned.",
     "synergy_b": "+6% Population output while stored Population \u2265 28.41M.",
@@ -6090,8 +6110,9 @@
     "base_cost": 93746192,
     "growth": 1.15,
     "cost_shares": {
-      "F": 0.5,
-      "W": 0.5
+      "F": 0.3333,
+      "W": 0.3333,
+      "S": 0.3333
     },
     "synergy_a": "+4% output per Hydropower Dam owned.",
     "synergy_b": "+3% Food output while stored Food \u2265 42.19M.",
@@ -6152,8 +6173,10 @@
     "base_cost": 75570910,
     "growth": 1.15,
     "cost_shares": {
-      "E": 0.5,
-      "W": 0.5
+      "E": 0.25,
+      "W": 0.25,
+      "S": 0.25,
+      "F": 0.25
     },
     "synergy_a": "+8% output per Company Town owned.",
     "synergy_b": "+9% Energy output while stored Energy \u2265 34.01M.",
@@ -6249,8 +6272,10 @@
     "base_cost": 258280326,
     "growth": 1.16,
     "cost_shares": {
-      "W": 0.5,
-      "S": 0.5
+      "W": 0.25,
+      "S": 0.25,
+      "F": 0.25,
+      "E": 0.25
     },
     "synergy_a": "+4% output per Smart Grid Node owned.",
     "synergy_b": "+3% Wood output while stored Wood \u2265 116.23M.",
@@ -6373,8 +6398,9 @@
     "base_cost": 404639177,
     "growth": 1.16,
     "cost_shares": {
-      "F": 0.5,
-      "W": 0.5
+      "F": 0.3333,
+      "W": 0.3333,
+      "S": 0.3333
     },
     "synergy_a": "+4% output per Industrial Farms owned.",
     "synergy_b": "+15% Population output while stored Population \u2265 182.09M.",
@@ -6497,8 +6523,9 @@
     "base_cost": 464904587,
     "growth": 1.16,
     "cost_shares": {
-      "F": 0.5,
-      "W": 0.5
+      "F": 0.3333,
+      "W": 0.3333,
+      "S": 0.3333
     },
     "synergy_a": "+4% output per Wind Turbine Field owned.",
     "synergy_b": "+12% Food output while stored Food \u2265 209.21M.",
@@ -6590,8 +6617,10 @@
     "base_cost": 344373768,
     "growth": 1.16,
     "cost_shares": {
-      "F": 0.5,
-      "W": 0.5
+      "F": 0.25,
+      "W": 0.25,
+      "S": 0.25,
+      "E": 0.25
     },
     "synergy_a": "+10% output per Transmission Yard owned.",
     "synergy_b": "+6% Food output while stored Food \u2265 154.97M.",
@@ -6621,8 +6650,9 @@
     "base_cost": 378811145,
     "growth": 1.16,
     "cost_shares": {
-      "W": 0.5,
-      "S": 0.5
+      "W": 0.3333,
+      "S": 0.3333,
+      "F": 0.3333
     },
     "synergy_a": "+4% output per Aquaculture Farm owned.",
     "synergy_b": "+9% Wood output while stored Wood \u2265 170.47M.",
@@ -6745,8 +6775,9 @@
     "base_cost": 568216717,
     "growth": 1.16,
     "cost_shares": {
-      "F": 0.5,
-      "W": 0.5
+      "F": 0.3333,
+      "W": 0.3333,
+      "S": 0.3333
     },
     "synergy_a": "+4% output per Vertical Farm owned.",
     "synergy_b": "+6% Population output while stored Population \u2265 255.70M.",
@@ -6869,8 +6900,9 @@
     "base_cost": 843715732,
     "growth": 1.16,
     "cost_shares": {
-      "S": 0.5,
-      "W": 0.5
+      "S": 0.3333,
+      "W": 0.3333,
+      "F": 0.3333
     },
     "synergy_a": "+4% output per Timber Genetics Lab owned.",
     "synergy_b": "+3% Stone output while stored Stone \u2265 379.67M.",
@@ -6931,8 +6963,10 @@
     "base_cost": 680138192,
     "growth": 1.16,
     "cost_shares": {
-      "F": 0.5,
-      "W": 0.5
+      "F": 0.25,
+      "W": 0.25,
+      "S": 0.25,
+      "E": 0.25
     },
     "synergy_a": "+8% output per Geothermal Plant owned.",
     "synergy_b": "+9% Food output while stored Food \u2265 306.06M.",
@@ -6993,8 +7027,9 @@
     "base_cost": 507951308,
     "growth": 1.16,
     "cost_shares": {
-      "E": 0.5,
-      "W": 0.5
+      "E": 0.3333,
+      "W": 0.3333,
+      "S": 0.3333
     },
     "synergy_a": "+4% output per Tech Campus owned.",
     "synergy_b": "+15% Energy output while stored Energy \u2265 228.58M.",
@@ -7024,8 +7059,10 @@
     "base_cost": 2324522934,
     "growth": 1.16,
     "cost_shares": {
-      "W": 0.5,
-      "S": 0.5
+      "W": 0.25,
+      "S": 0.25,
+      "F": 0.25,
+      "E": 0.25
     },
     "synergy_a": "+4% output per O\u2019Neill Cylinder Ring owned.",
     "synergy_b": "+3% Wood output while stored Wood \u2265 1.05B.",
@@ -7148,8 +7185,9 @@
     "base_cost": 3641752597,
     "growth": 1.16,
     "cost_shares": {
-      "F": 0.5,
-      "W": 0.5
+      "F": 0.3333,
+      "W": 0.3333,
+      "S": 0.3333
     },
     "synergy_a": "+4% output per Nutrient Plant owned.",
     "synergy_b": "+15% Population output while stored Population \u2265 1.64B.",
@@ -7272,8 +7310,9 @@
     "base_cost": 4184141281,
     "growth": 1.16,
     "cost_shares": {
-      "F": 0.5,
-      "W": 0.5
+      "F": 0.3333,
+      "W": 0.3333,
+      "S": 0.3333
     },
     "synergy_a": "+4% output per Fusion Testbed owned.",
     "synergy_b": "+12% Food output while stored Food \u2265 1.88B.",
@@ -7365,8 +7404,10 @@
     "base_cost": 3099363912,
     "growth": 1.16,
     "cost_shares": {
-      "E": 0.5,
-      "W": 0.5
+      "E": 0.25,
+      "W": 0.25,
+      "S": 0.25,
+      "F": 0.25
     },
     "synergy_a": "+10% output per Offshore Wind Port owned.",
     "synergy_b": "+6% Energy output while stored Energy \u2265 1.39B.",
@@ -7396,8 +7437,9 @@
     "base_cost": 3409300303,
     "growth": 1.16,
     "cost_shares": {
-      "F": 0.5,
-      "W": 0.5
+      "F": 0.3333,
+      "W": 0.3333,
+      "S": 0.3333
     },
     "synergy_a": "+4% output per Desert Solar Farm owned.",
     "synergy_b": "+9% Food output while stored Food \u2265 1.53B.",
@@ -7520,8 +7562,9 @@
     "base_cost": 5113950455,
     "growth": 1.16,
     "cost_shares": {
-      "F": 0.5,
-      "W": 0.5
+      "F": 0.3333,
+      "W": 0.3333,
+      "S": 0.3333
     },
     "synergy_a": "+4% output per Microgrid Block owned.",
     "synergy_b": "+6% Food output while stored Food \u2265 2.30B.",
@@ -7644,8 +7687,9 @@
     "base_cost": 7593441584,
     "growth": 1.16,
     "cost_shares": {
-      "W": 0.5,
-      "S": 0.5
+      "W": 0.3333,
+      "S": 0.3333,
+      "F": 0.3333
     },
     "synergy_a": "+4% output per Aeroponics Tower owned.",
     "synergy_b": "+3% Wood output while stored Wood \u2265 3.42B.",
@@ -7706,8 +7750,10 @@
     "base_cost": 6121243726,
     "growth": 1.16,
     "cost_shares": {
-      "E": 0.5,
-      "W": 0.5
+      "E": 0.25,
+      "W": 0.25,
+      "S": 0.25,
+      "F": 0.25
     },
     "synergy_a": "+8% output per Crystal Quarry owned.",
     "synergy_b": "+9% Energy output while stored Energy \u2265 2.75B.",
@@ -7768,8 +7814,9 @@
     "base_cost": 4571561770,
     "growth": 1.16,
     "cost_shares": {
-      "F": 0.5,
-      "W": 0.5
+      "F": 0.3333,
+      "W": 0.3333,
+      "S": 0.3333
     },
     "synergy_a": "+4% output per Protein Printer owned.",
     "synergy_b": "+15% Population output while stored Population \u2265 2.06B.",
@@ -7799,8 +7846,11 @@
     "base_cost": 20920706406,
     "growth": 1.17,
     "cost_shares": {
-      "W": 0.5,
-      "S": 0.5
+      "W": 0.2,
+      "S": 0.2,
+      "F": 0.2,
+      "E": 0.2,
+      "P": 0.2
     },
     "synergy_a": "+4% output per Bernal Sphere owned.",
     "synergy_b": "+3% Wood output while stored Wood \u2265 9.41B.",
@@ -7892,8 +7942,9 @@
     "base_cost": 29637667408,
     "growth": 1.17,
     "cost_shares": {
-      "F": 0.5,
-      "W": 0.5
+      "F": 0.3333,
+      "W": 0.3333,
+      "S": 0.3333
     },
     "synergy_a": "+10% output per Helium-3 Plant owned.",
     "synergy_b": "+12% Food output while stored Food \u2265 13.34B.",
@@ -7985,8 +8036,9 @@
     "base_cost": 31381059609,
     "growth": 1.17,
     "cost_shares": {
-      "S": 0.5,
-      "W": 0.5
+      "S": 0.3333,
+      "W": 0.3333,
+      "F": 0.3333
     },
     "synergy_a": "+8% output per Solar Sail Farm owned.",
     "synergy_b": "+6% Stone output while stored Stone \u2265 14.12B.",
@@ -8016,8 +8068,10 @@
     "base_cost": 34519165570,
     "growth": 1.17,
     "cost_shares": {
-      "W": 0.5,
-      "S": 0.5
+      "W": 0.25,
+      "S": 0.25,
+      "F": 0.25,
+      "E": 0.25
     },
     "synergy_a": "+10% output per Asteroid Crusher owned.",
     "synergy_b": "+9% Wood output while stored Wood \u2265 15.53B.",
@@ -8078,8 +8132,9 @@
     "base_cost": 41144055932,
     "growth": 1.17,
     "cost_shares": {
-      "F": 0.5,
-      "W": 0.5
+      "F": 0.3333,
+      "W": 0.3333,
+      "S": 0.3333
     },
     "synergy_a": "+6% output per Bioreactors owned.",
     "synergy_b": "+15% Population output while stored Population \u2265 18.51B.",
@@ -8171,8 +8226,9 @@
     "base_cost": 30683702729,
     "growth": 1.17,
     "cost_shares": {
-      "W": 0.5,
-      "S": 0.5
+      "W": 0.3333,
+      "S": 0.3333,
+      "F": 0.3333
     },
     "synergy_a": "+4% output per Ice Harvester owned.",
     "synergy_b": "+9% Wood output while stored Wood \u2265 13.81B.",
@@ -8233,8 +8289,10 @@
     "base_cost": 36959914651,
     "growth": 1.17,
     "cost_shares": {
-      "E": 0.5,
-      "W": 0.5
+      "E": 0.25,
+      "W": 0.25,
+      "S": 0.25,
+      "F": 0.25
     },
     "synergy_a": "+8% output per Basalt Fiber Yard owned.",
     "synergy_b": "+15% Energy output while stored Energy \u2265 16.63B.",
@@ -8264,8 +8322,11 @@
     "base_cost": 41144055932,
     "growth": 1.17,
     "cost_shares": {
-      "F": 0.5,
-      "W": 0.5
+      "F": 0.2,
+      "W": 0.2,
+      "S": 0.2,
+      "E": 0.2,
+      "P": 0.2
     },
     "synergy_a": "+10% output per Fusion Tokamak owned.",
     "synergy_b": "+3% Food output while stored Food \u2265 18.51B.",
@@ -8357,8 +8418,9 @@
     "base_cost": 56485907296,
     "growth": 1.17,
     "cost_shares": {
-      "F": 0.5,
-      "W": 0.5
+      "F": 0.3333,
+      "W": 0.3333,
+      "S": 0.3333
     },
     "synergy_a": "+8% output per Rectenna Field owned.",
     "synergy_b": "+12% Food output while stored Food \u2265 25.42B.",
@@ -8450,8 +8512,10 @@
     "base_cost": 74965864622,
     "growth": 1.17,
     "cost_shares": {
-      "S": 0.5,
-      "W": 0.5
+      "S": 0.25,
+      "W": 0.25,
+      "F": 0.25,
+      "E": 0.25
     },
     "synergy_a": "+6% output per Graphite Yard owned.",
     "synergy_b": "+6% Stone output while stored Stone \u2265 33.73B.",
@@ -8543,8 +8607,9 @@
     "base_cost": 41144055932,
     "growth": 1.17,
     "cost_shares": {
-      "F": 0.5,
-      "W": 0.5
+      "F": 0.3333,
+      "W": 0.3333,
+      "S": 0.3333
     },
     "synergy_a": "+4% output per Mycoprotein Farm owned.",
     "synergy_b": "+15% Population output while stored Population \u2265 18.51B.",
@@ -8574,8 +8639,11 @@
     "base_cost": 188286357654,
     "growth": 1.17,
     "cost_shares": {
-      "F": 0.5,
-      "W": 0.5
+      "F": 0.2,
+      "W": 0.2,
+      "S": 0.2,
+      "E": 0.2,
+      "P": 0.2
     },
     "synergy_a": "+4% output per Starship Quarter-City owned.",
     "synergy_b": "+3% Food output while stored Food \u2265 84.73B.",
@@ -8667,8 +8735,9 @@
     "base_cost": 266739006676,
     "growth": 1.17,
     "cost_shares": {
-      "E": 0.5,
-      "W": 0.5
+      "E": 0.3333,
+      "W": 0.3333,
+      "S": 0.3333
     },
     "synergy_a": "+10% output per Orbital Fusion Grid owned.",
     "synergy_b": "+12% Energy output while stored Energy \u2265 120.03B.",
@@ -8760,8 +8829,9 @@
     "base_cost": 282429536481,
     "growth": 1.17,
     "cost_shares": {
-      "F": 0.5,
-      "W": 0.5
+      "F": 0.3333,
+      "W": 0.3333,
+      "S": 0.3333
     },
     "synergy_a": "+8% output per Venus Cloud Float owned.",
     "synergy_b": "+6% Food output while stored Food \u2265 127.09B.",
@@ -8791,8 +8861,10 @@
     "base_cost": 310672490129,
     "growth": 1.17,
     "cost_shares": {
-      "W": 0.5,
-      "S": 0.5
+      "W": 0.25,
+      "S": 0.25,
+      "F": 0.25,
+      "E": 0.25
     },
     "synergy_a": "+10% output per Ceres Ice Melt owned.",
     "synergy_b": "+9% Wood output while stored Wood \u2265 139.80B.",
@@ -8853,8 +8925,9 @@
     "base_cost": 370296503386,
     "growth": 1.17,
     "cost_shares": {
-      "E": 0.5,
-      "W": 0.5
+      "E": 0.3333,
+      "W": 0.3333,
+      "S": 0.3333
     },
     "synergy_a": "+6% output per Lunar Quarry 2 owned.",
     "synergy_b": "+15% Energy output while stored Energy \u2265 166.63B.",
@@ -8946,8 +9019,9 @@
     "base_cost": 276153324559,
     "growth": 1.17,
     "cost_shares": {
-      "E": 0.5,
-      "W": 0.5
+      "E": 0.3333,
+      "W": 0.3333,
+      "S": 0.3333
     },
     "synergy_a": "+4% output per Deimos Slab Yard owned.",
     "synergy_b": "+9% Energy output while stored Energy \u2265 124.27B.",
@@ -9008,8 +9082,10 @@
     "base_cost": 332639231855,
     "growth": 1.17,
     "cost_shares": {
-      "F": 0.5,
-      "W": 0.5
+      "F": 0.25,
+      "W": 0.25,
+      "S": 0.25,
+      "E": 0.25
     },
     "synergy_a": "+8% output per Orbital Orchards owned.",
     "synergy_b": "+15% Population output while stored Population \u2265 149.69B.",
@@ -9039,8 +9115,11 @@
     "base_cost": 370296503386,
     "growth": 1.17,
     "cost_shares": {
-      "W": 0.5,
-      "S": 0.5
+      "W": 0.2,
+      "S": 0.2,
+      "F": 0.2,
+      "E": 0.2,
+      "P": 0.2
     },
     "synergy_a": "+10% output per Terraformer Barracks owned.",
     "synergy_b": "+3% Wood output while stored Wood \u2265 166.63B.",
@@ -9132,8 +9211,9 @@
     "base_cost": 508373165666,
     "growth": 1.17,
     "cost_shares": {
-      "F": 0.5,
-      "W": 0.5
+      "F": 0.3333,
+      "W": 0.3333,
+      "S": 0.3333
     },
     "synergy_a": "+8% output per Stellar Mirror owned.",
     "synergy_b": "+12% Food output while stored Food \u2265 228.77B.",
@@ -9225,8 +9305,10 @@
     "base_cost": 674692781594,
     "growth": 1.17,
     "cost_shares": {
-      "F": 0.5,
-      "W": 0.5
+      "F": 0.25,
+      "W": 0.25,
+      "S": 0.25,
+      "E": 0.25
     },
     "synergy_a": "+6% output per Helioharvester owned.",
     "synergy_b": "+6% Food output while stored Food \u2265 303.61B.",
@@ -9318,8 +9400,9 @@
     "base_cost": 370296503386,
     "growth": 1.17,
     "cost_shares": {
-      "F": 0.5,
-      "W": 0.5
+      "F": 0.3333,
+      "W": 0.3333,
+      "S": 0.3333
     },
     "synergy_a": "+4% output per Igneous Print Farm owned.",
     "synergy_b": "+15% Population output while stored Population \u2265 166.63B.",
@@ -9349,8 +9432,11 @@
     "base_cost": 1694577218886,
     "growth": 1.18,
     "cost_shares": {
-      "W": 0.5,
-      "S": 0.5
+      "W": 0.2,
+      "S": 0.2,
+      "F": 0.2,
+      "E": 0.2,
+      "P": 0.2
     },
     "synergy_a": "+4% output per Interstellar Dock owned.",
     "synergy_b": "+3% Wood output while stored Wood \u2265 762.56B.",
@@ -9442,8 +9528,9 @@
     "base_cost": 2400651060088,
     "growth": 1.18,
     "cost_shares": {
-      "F": 0.5,
-      "W": 0.5
+      "F": 0.3333,
+      "W": 0.3333,
+      "S": 0.3333
     },
     "synergy_a": "+10% output per Beam-Rider Power owned.",
     "synergy_b": "+12% Food output while stored Food \u2265 1.08T.",
@@ -9535,8 +9622,9 @@
     "base_cost": 2541865828329,
     "growth": 1.18,
     "cost_shares": {
-      "S": 0.5,
-      "W": 0.5
+      "S": 0.3333,
+      "W": 0.3333,
+      "F": 0.3333
     },
     "synergy_a": "+8% output per Pulsar Collector owned.",
     "synergy_b": "+6% Stone output while stored Stone \u2265 1.14T.",
@@ -9566,8 +9654,10 @@
     "base_cost": 2796052411162,
     "growth": 1.18,
     "cost_shares": {
-      "W": 0.5,
-      "S": 0.5
+      "W": 0.25,
+      "S": 0.25,
+      "F": 0.25,
+      "E": 0.25
     },
     "synergy_a": "+10% output per Planet-Cracker owned.",
     "synergy_b": "+9% Wood output while stored Wood \u2265 1.26T.",
@@ -9628,8 +9718,9 @@
     "base_cost": 3332668530476,
     "growth": 1.18,
     "cost_shares": {
-      "F": 0.5,
-      "W": 0.5
+      "F": 0.3333,
+      "W": 0.3333,
+      "S": 0.3333
     },
     "synergy_a": "+6% output per Nebula Plankton owned.",
     "synergy_b": "+15% Population output while stored Population \u2265 1.50T.",
@@ -9721,8 +9812,9 @@
     "base_cost": 2485379921033,
     "growth": 1.18,
     "cost_shares": {
-      "W": 0.5,
-      "S": 0.5
+      "W": 0.3333,
+      "S": 0.3333,
+      "F": 0.3333
     },
     "synergy_a": "+4% output per Icebelt Aquifers owned.",
     "synergy_b": "+9% Wood output while stored Wood \u2265 1.12T.",
@@ -9783,8 +9875,10 @@
     "base_cost": 2993753086699,
     "growth": 1.18,
     "cost_shares": {
-      "E": 0.5,
-      "W": 0.5
+      "E": 0.25,
+      "W": 0.25,
+      "S": 0.25,
+      "F": 0.25
     },
     "synergy_a": "+8% output per Crystal Lattice Mines owned.",
     "synergy_b": "+15% Energy output while stored Energy \u2265 1.35T.",
@@ -9814,8 +9908,11 @@
     "base_cost": 3332668530476,
     "growth": 1.18,
     "cost_shares": {
-      "F": 0.5,
-      "W": 0.5
+      "F": 0.2,
+      "W": 0.2,
+      "S": 0.2,
+      "E": 0.2,
+      "P": 0.2
     },
     "synergy_a": "+10% output per Starlifter owned.",
     "synergy_b": "+3% Food output while stored Food \u2265 1.50T.",
@@ -9907,8 +10004,9 @@
     "base_cost": 4575358490992,
     "growth": 1.18,
     "cost_shares": {
-      "F": 0.5,
-      "W": 0.5
+      "F": 0.3333,
+      "W": 0.3333,
+      "S": 0.3333
     },
     "synergy_a": "+8% output per EM Scoop Net owned.",
     "synergy_b": "+12% Food output while stored Food \u2265 2.06T.",
@@ -10000,8 +10098,10 @@
     "base_cost": 6072235034342,
     "growth": 1.18,
     "cost_shares": {
-      "E": 0.5,
-      "W": 0.5
+      "E": 0.25,
+      "W": 0.25,
+      "S": 0.25,
+      "F": 0.25
     },
     "synergy_a": "+6% output per Silicate Reef Quarry owned.",
     "synergy_b": "+6% Energy output while stored Energy \u2265 2.73T.",
@@ -10093,8 +10193,9 @@
     "base_cost": 3332668530476,
     "growth": 1.18,
     "cost_shares": {
-      "F": 0.5,
-      "W": 0.5
+      "F": 0.3333,
+      "W": 0.3333,
+      "S": 0.3333
     },
     "synergy_a": "+4% output per Far-Hab Row owned.",
     "synergy_b": "+15% Population output while stored Population \u2265 1.50T.",
@@ -10124,8 +10225,10 @@
     "base_cost": 15251194969974,
     "growth": 1.18,
     "cost_shares": {
-      "W": 0.5,
-      "S": 0.5
+      "W": 0.25,
+      "S": 0.25,
+      "F": 0.25,
+      "P": 0.25
     },
     "synergy_a": "+4% output per Sun-side Tenements owned.",
     "synergy_b": "+3% Energy output while stored Energy \u2265 6.86T.",
@@ -10217,8 +10320,9 @@
     "base_cost": 21605859540796,
     "growth": 1.18,
     "cost_shares": {
-      "W": 0.5,
-      "S": 0.5
+      "W": 0.3333,
+      "S": 0.3333,
+      "F": 0.3333
     },
     "synergy_a": "+10% output per Heliosheath Miner owned.",
     "synergy_b": "+12% Wood output while stored Wood \u2265 9.72T.",
@@ -10310,8 +10414,9 @@
     "base_cost": 22876792454961,
     "growth": 1.18,
     "cost_shares": {
-      "E": 0.5,
-      "W": 0.5
+      "E": 0.3333,
+      "W": 0.3333,
+      "S": 0.3333
     },
     "synergy_a": "+8% output per Swarm Habitat Stack owned.",
     "synergy_b": "+6% Energy output while stored Energy \u2265 10.29T.",
@@ -10341,8 +10446,10 @@
     "base_cost": 25164471700457,
     "growth": 1.18,
     "cost_shares": {
-      "E": 0.5,
-      "W": 0.5
+      "E": 0.25,
+      "W": 0.25,
+      "S": 0.25,
+      "F": 0.25
     },
     "synergy_a": "+10% output per Flux-Beamer owned.",
     "synergy_b": "+9% Energy output while stored Energy \u2265 11.32T.",
@@ -10403,8 +10510,9 @@
     "base_cost": 29994016774282,
     "growth": 1.18,
     "cost_shares": {
-      "F": 0.5,
-      "W": 0.5
+      "F": 0.3333,
+      "W": 0.3333,
+      "S": 0.3333
     },
     "synergy_a": "+6% output per Star Smelter owned.",
     "synergy_b": "+15% Food output while stored Food \u2265 13.50T.",
@@ -10496,8 +10604,9 @@
     "base_cost": 22368419289295,
     "growth": 1.18,
     "cost_shares": {
-      "S": 0.5,
-      "W": 0.5
+      "S": 0.3333,
+      "W": 0.3333,
+      "F": 0.3333
     },
     "synergy_a": "+4% output per Swarm Segment Yard owned.",
     "synergy_b": "+9% Stone output while stored Stone \u2265 10.07T.",
@@ -10558,8 +10667,10 @@
     "base_cost": 26943777780287,
     "growth": 1.18,
     "cost_shares": {
-      "F": 0.5,
-      "W": 0.5
+      "F": 0.25,
+      "W": 0.25,
+      "S": 0.25,
+      "E": 0.25
     },
     "synergy_a": "+8% output per Radiation Gardens owned.",
     "synergy_b": "+15% Population output while stored Population \u2265 12.12T.",
@@ -10589,8 +10700,11 @@
     "base_cost": 29994016774282,
     "growth": 1.18,
     "cost_shares": {
-      "E": 0.5,
-      "W": 0.5
+      "E": 0.2,
+      "W": 0.2,
+      "S": 0.2,
+      "F": 0.2,
+      "P": 0.2
     },
     "synergy_a": "+10% output per Dyson Borough owned.",
     "synergy_b": "+3% Energy output while stored Energy \u2265 13.50T.",
@@ -10682,8 +10796,9 @@
     "base_cost": 41178226418930,
     "growth": 1.18,
     "cost_shares": {
-      "F": 0.5,
-      "W": 0.5
+      "F": 0.3333,
+      "W": 0.3333,
+      "S": 0.3333
     },
     "synergy_a": "+8% output per Lightleaf Forests owned.",
     "synergy_b": "+12% Food output while stored Food \u2265 18.53T.",
@@ -10775,8 +10890,10 @@
     "base_cost": 54650115309074,
     "growth": 1.18,
     "cost_shares": {
-      "S": 0.5,
-      "W": 0.5
+      "S": 0.25,
+      "W": 0.25,
+      "F": 0.25,
+      "E": 0.25
     },
     "synergy_a": "+6% output per Photon Trap Rings owned.",
     "synergy_b": "+6% Stone output while stored Stone \u2265 24.59T.",
@@ -10868,8 +10985,9 @@
     "base_cost": 29994016774282,
     "growth": 1.18,
     "cost_shares": {
-      "F": 0.5,
-      "W": 0.5
+      "F": 0.3333,
+      "W": 0.3333,
+      "S": 0.3333
     },
     "synergy_a": "+4% output per Orbital Timber Mesh owned.",
     "synergy_b": "+15% Population output while stored Population \u2265 13.50T.",
@@ -10899,8 +11017,10 @@
     "base_cost": 137260754729766,
     "growth": 1.19,
     "cost_shares": {
-      "S": 0.5,
-      "W": 0.5
+      "S": 0.25,
+      "W": 0.25,
+      "F": 0.25,
+      "P": 0.25
     },
     "synergy_a": "+4% output per Mat-Hab Borough owned.",
     "synergy_b": "+3% Energy output while stored Energy \u2265 61.77T.",
@@ -10992,8 +11112,9 @@
     "base_cost": 194452735867168,
     "growth": 1.19,
     "cost_shares": {
-      "F": 0.5,
-      "W": 0.5
+      "F": 0.3333,
+      "W": 0.3333,
+      "S": 0.3333
     },
     "synergy_a": "+10% output per Photonic Timber owned.",
     "synergy_b": "+12% Food output while stored Food \u2265 87.50T.",
@@ -11085,8 +11206,9 @@
     "base_cost": 205891132094649,
     "growth": 1.19,
     "cost_shares": {
-      "S": 0.5,
-      "W": 0.5
+      "S": 0.3333,
+      "W": 0.3333,
+      "F": 0.3333
     },
     "synergy_a": "+8% output per Magnetic Scoop Lattice owned.",
     "synergy_b": "+6% Stone output while stored Stone \u2265 92.65T.",
@@ -11116,8 +11238,10 @@
     "base_cost": 226480245304114,
     "growth": 1.19,
     "cost_shares": {
-      "W": 0.5,
-      "S": 0.5
+      "W": 0.25,
+      "S": 0.25,
+      "F": 0.25,
+      "E": 0.25
     },
     "synergy_a": "+10% output per Core-Flux Quarry owned.",
     "synergy_b": "+9% Wood output while stored Wood \u2265 101.92T.",
@@ -11178,8 +11302,9 @@
     "base_cost": 269946150968540,
     "growth": 1.19,
     "cost_shares": {
-      "F": 0.5,
-      "W": 0.5
+      "F": 0.3333,
+      "W": 0.3333,
+      "S": 0.3333
     },
     "synergy_a": "+6% output per Heliogarden owned.",
     "synergy_b": "+15% Population output while stored Population \u2265 121.48T.",
@@ -11271,8 +11396,9 @@
     "base_cost": 201315773603657,
     "growth": 1.19,
     "cost_shares": {
-      "W": 0.5,
-      "S": 0.5
+      "W": 0.3333,
+      "S": 0.3333,
+      "F": 0.3333
     },
     "synergy_a": "+4% output per Starfoam Works owned.",
     "synergy_b": "+9% Wood output while stored Wood \u2265 90.59T.",
@@ -11333,8 +11459,10 @@
     "base_cost": 242494000022587,
     "growth": 1.19,
     "cost_shares": {
-      "F": 0.5,
-      "W": 0.5
+      "F": 0.25,
+      "W": 0.25,
+      "S": 0.25,
+      "E": 0.25
     },
     "synergy_a": "+8% output per Photosynthetic Reef owned.",
     "synergy_b": "+15% Population output while stored Population \u2265 109.12T.",
@@ -11364,8 +11492,11 @@
     "base_cost": 269946150968540,
     "growth": 1.19,
     "cost_shares": {
-      "E": 0.5,
-      "W": 0.5
+      "E": 0.2,
+      "W": 0.2,
+      "S": 0.2,
+      "F": 0.2,
+      "P": 0.2
     },
     "synergy_a": "+10% output per Habitat Helix owned.",
     "synergy_b": "+3% Energy output while stored Energy \u2265 121.48T.",
@@ -11457,8 +11588,9 @@
     "base_cost": 370604037770368,
     "growth": 1.19,
     "cost_shares": {
-      "F": 0.5,
-      "W": 0.5
+      "F": 0.3333,
+      "W": 0.3333,
+      "S": 0.3333
     },
     "synergy_a": "+8% output per Luxwood Loom owned.",
     "synergy_b": "+12% Food output while stored Food \u2265 166.77T.",
@@ -11550,8 +11682,10 @@
     "base_cost": 491851037781662,
     "growth": 1.19,
     "cost_shares": {
-      "S": 0.5,
-      "W": 0.5
+      "S": 0.25,
+      "W": 0.25,
+      "F": 0.25,
+      "E": 0.25
     },
     "synergy_a": "+6% output per Flux Capacitor Farms owned.",
     "synergy_b": "+6% Stone output while stored Stone \u2265 221.33T.",
@@ -11643,8 +11777,9 @@
     "base_cost": 269946150968540,
     "growth": 1.19,
     "cost_shares": {
-      "F": 0.5,
-      "W": 0.5
+      "F": 0.3333,
+      "W": 0.3333,
+      "S": 0.3333
     },
     "synergy_a": "+4% output per Plasma Orchards owned.",
     "synergy_b": "+15% Population output while stored Population \u2265 121.48T.",
@@ -11674,8 +11809,10 @@
     "base_cost": 1235346792567894,
     "growth": 1.19,
     "cost_shares": {
-      "W": 0.5,
-      "S": 0.5
+      "W": 0.25,
+      "S": 0.25,
+      "F": 0.25,
+      "P": 0.25
     },
     "synergy_a": "+4% output per Upload Borough owned.",
     "synergy_b": "+3% Energy output while stored Energy \u2265 555.91T.",
@@ -11767,8 +11904,9 @@
     "base_cost": 1750074622804516,
     "growth": 1.19,
     "cost_shares": {
-      "F": 0.5,
-      "W": 0.5
+      "F": 0.3333,
+      "W": 0.3333,
+      "S": 0.3333
     },
     "synergy_a": "+10% output per Datawood Array owned.",
     "synergy_b": "+12% Food output while stored Food \u2265 787.53T.",
@@ -11860,8 +11998,9 @@
     "base_cost": 1853020188851841,
     "growth": 1.19,
     "cost_shares": {
-      "S": 0.5,
-      "W": 0.5
+      "S": 0.3333,
+      "W": 0.3333,
+      "F": 0.3333
     },
     "synergy_a": "+8% output per Heat-Sink Spires owned.",
     "synergy_b": "+6% Stone output while stored Stone \u2265 833.86T.",
@@ -11891,8 +12030,10 @@
     "base_cost": 2038322207737025,
     "growth": 1.19,
     "cost_shares": {
-      "W": 0.5,
-      "S": 0.5
+      "W": 0.25,
+      "S": 0.25,
+      "F": 0.25,
+      "E": 0.25
     },
     "synergy_a": "+10% output per Lattice Quarry owned.",
     "synergy_b": "+9% Wood output while stored Wood \u2265 917.24T.",
@@ -11953,8 +12094,9 @@
     "base_cost": 2429515358716858,
     "growth": 1.19,
     "cost_shares": {
-      "F": 0.5,
-      "W": 0.5
+      "F": 0.3333,
+      "W": 0.3333,
+      "S": 0.3333
     },
     "synergy_a": "+6% output per Synthesis Gardens owned.",
     "synergy_b": "+15% Population output while stored Population \u2265 1.09Qa.",
@@ -12046,8 +12188,9 @@
     "base_cost": 1811841962432911,
     "growth": 1.19,
     "cost_shares": {
-      "W": 0.5,
-      "S": 0.5
+      "W": 0.3333,
+      "S": 0.3333,
+      "F": 0.3333
     },
     "synergy_a": "+4% output per Quantum Slab Yard owned.",
     "synergy_b": "+9% Wood output while stored Wood \u2265 815.33T.",
@@ -12108,8 +12251,10 @@
     "base_cost": 2182446000203280,
     "growth": 1.19,
     "cost_shares": {
-      "F": 0.5,
-      "W": 0.5
+      "F": 0.25,
+      "W": 0.25,
+      "S": 0.25,
+      "E": 0.25
     },
     "synergy_a": "+8% output per Feedstock Swarm owned.",
     "synergy_b": "+15% Population output while stored Population \u2265 982.10T.",
@@ -12139,8 +12284,11 @@
     "base_cost": 2429515358716858,
     "growth": 1.19,
     "cost_shares": {
-      "E": 0.5,
-      "W": 0.5
+      "E": 0.2,
+      "W": 0.2,
+      "S": 0.2,
+      "F": 0.2,
+      "P": 0.2
     },
     "synergy_a": "+10% output per Mind-Cluster owned.",
     "synergy_b": "+3% Energy output while stored Energy \u2265 1.09Qa.",
@@ -12232,8 +12380,9 @@
     "base_cost": 3335436339933314,
     "growth": 1.19,
     "cost_shares": {
-      "F": 0.5,
-      "W": 0.5
+      "F": 0.3333,
+      "W": 0.3333,
+      "S": 0.3333
     },
     "synergy_a": "+8% output per Algorithmic Timber owned.",
     "synergy_b": "+12% Food output while stored Food \u2265 1.50Qa.",
@@ -12325,8 +12474,10 @@
     "base_cost": 4426659340034954,
     "growth": 1.19,
     "cost_shares": {
-      "S": 0.5,
-      "W": 0.5
+      "S": 0.25,
+      "W": 0.25,
+      "F": 0.25,
+      "E": 0.25
     },
     "synergy_a": "+6% output per Blackbody Farm owned.",
     "synergy_b": "+6% Stone output while stored Stone \u2265 1.99Qa.",
@@ -12418,8 +12569,9 @@
     "base_cost": 2429515358716858,
     "growth": 1.19,
     "cost_shares": {
-      "F": 0.5,
-      "W": 0.5
+      "F": 0.3333,
+      "W": 0.3333,
+      "S": 0.3333
     },
     "synergy_a": "+4% output per Algae Cloud owned.",
     "synergy_b": "+15% Population output while stored Population \u2265 1.09Qa.",
@@ -12449,8 +12601,10 @@
     "base_cost": 11118121133111044,
     "growth": 1.2,
     "cost_shares": {
-      "S": 0.5,
-      "W": 0.5
+      "S": 0.25,
+      "W": 0.25,
+      "F": 0.25,
+      "P": 0.25
     },
     "synergy_a": "+4% output per Merger Habitat owned.",
     "synergy_b": "+3% Energy output while stored Energy \u2265 5.00Qa.",
@@ -12542,8 +12696,9 @@
     "base_cost": 15750671605240646,
     "growth": 1.2,
     "cost_shares": {
-      "F": 0.5,
-      "W": 0.5
+      "F": 0.3333,
+      "W": 0.3333,
+      "S": 0.3333
     },
     "synergy_a": "+10% output per Carbon Forest Nebula owned.",
     "synergy_b": "+12% Food output while stored Food \u2265 7.09Qa.",
@@ -12635,8 +12790,9 @@
     "base_cost": 16677181699666568,
     "growth": 1.2,
     "cost_shares": {
-      "S": 0.5,
-      "W": 0.5
+      "S": 0.3333,
+      "W": 0.3333,
+      "F": 0.3333
     },
     "synergy_a": "+8% output per Quasar Tap owned.",
     "synergy_b": "+6% Stone output while stored Stone \u2265 7.50Qa.",
@@ -12666,8 +12822,10 @@
     "base_cost": 18344899869633224,
     "growth": 1.2,
     "cost_shares": {
-      "W": 0.5,
-      "S": 0.5
+      "W": 0.25,
+      "S": 0.25,
+      "F": 0.25,
+      "E": 0.25
     },
     "synergy_a": "+10% output per Dark-Matter Stoneworks owned.",
     "synergy_b": "+9% Wood output while stored Wood \u2265 8.26Qa.",
@@ -12728,8 +12886,9 @@
     "base_cost": 21865638228451720,
     "growth": 1.2,
     "cost_shares": {
-      "F": 0.5,
-      "W": 0.5
+      "F": 0.3333,
+      "W": 0.3333,
+      "S": 0.3333
     },
     "synergy_a": "+6% output per Star-Nursery Aquaponics owned.",
     "synergy_b": "+15% Population output while stored Population \u2265 9.84Qa.",
@@ -12821,8 +12980,9 @@
     "base_cost": 16306577661896200,
     "growth": 1.2,
     "cost_shares": {
-      "W": 0.5,
-      "S": 0.5
+      "W": 0.3333,
+      "S": 0.3333,
+      "F": 0.3333
     },
     "synergy_a": "+4% output per Tidal Stone Press owned.",
     "synergy_b": "+9% Wood output while stored Wood \u2265 7.34Qa.",
@@ -12883,8 +13043,10 @@
     "base_cost": 19642014001829512,
     "growth": 1.2,
     "cost_shares": {
-      "F": 0.5,
-      "W": 0.5
+      "F": 0.25,
+      "W": 0.25,
+      "S": 0.25,
+      "E": 0.25
     },
     "synergy_a": "+8% output per Comet Reef Farms owned.",
     "synergy_b": "+15% Population output while stored Population \u2265 8.84Qa.",
@@ -12914,8 +13076,11 @@
     "base_cost": 21865638228451720,
     "growth": 1.2,
     "cost_shares": {
-      "E": 0.5,
-      "W": 0.5
+      "E": 0.2,
+      "W": 0.2,
+      "S": 0.2,
+      "F": 0.2,
+      "P": 0.2
     },
     "synergy_a": "+10% output per Cluster Boroughs owned.",
     "synergy_b": "+3% Energy output while stored Energy \u2265 9.84Qa.",
@@ -13007,8 +13172,9 @@
     "base_cost": 30018927059399824,
     "growth": 1.2,
     "cost_shares": {
-      "F": 0.5,
-      "W": 0.5
+      "F": 0.3333,
+      "W": 0.3333,
+      "S": 0.3333
     },
     "synergy_a": "+8% output per Resin Starwood owned.",
     "synergy_b": "+12% Food output while stored Food \u2265 13.51Qa.",
@@ -13100,8 +13266,10 @@
     "base_cost": 39839934060314576,
     "growth": 1.2,
     "cost_shares": {
-      "S": 0.5,
-      "W": 0.5
+      "S": 0.25,
+      "W": 0.25,
+      "F": 0.25,
+      "E": 0.25
     },
     "synergy_a": "+6% output per Jet Collector owned.",
     "synergy_b": "+6% Stone output while stored Stone \u2265 17.93Qa.",
@@ -13193,8 +13361,9 @@
     "base_cost": 21865638228451720,
     "growth": 1.2,
     "cost_shares": {
-      "F": 0.5,
-      "W": 0.5
+      "F": 0.3333,
+      "W": 0.3333,
+      "S": 0.3333
     },
     "synergy_a": "+4% output per Biosphere Clouds owned.",
     "synergy_b": "+15% Population output while stored Population \u2265 9.84Qa.",
@@ -13224,8 +13393,10 @@
     "base_cost": 100063090197999408,
     "growth": 1.2,
     "cost_shares": {
-      "W": 0.5,
-      "S": 0.5
+      "W": 0.25,
+      "S": 0.25,
+      "F": 0.25,
+      "P": 0.25
     },
     "synergy_a": "+4% output per Photon-Sphere City owned.",
     "synergy_b": "+3% Energy output while stored Energy \u2265 45.03Qa.",
@@ -13317,8 +13488,9 @@
     "base_cost": 141756044447165840,
     "growth": 1.2,
     "cost_shares": {
-      "F": 0.5,
-      "W": 0.5
+      "F": 0.3333,
+      "W": 0.3333,
+      "S": 0.3333
     },
     "synergy_a": "+10% output per Hawking Wood Synth owned.",
     "synergy_b": "+12% Food output while stored Food \u2265 63.79Qa.",
@@ -13410,8 +13582,9 @@
     "base_cost": 150094635296999136,
     "growth": 1.2,
     "cost_shares": {
-      "S": 0.5,
-      "W": 0.5
+      "S": 0.3333,
+      "W": 0.3333,
+      "F": 0.3333
     },
     "synergy_a": "+8% output per Penrose Mill owned.",
     "synergy_b": "+6% Stone output while stored Stone \u2265 67.54Qa.",
@@ -13441,8 +13614,10 @@
     "base_cost": 165104098826699040,
     "growth": 1.2,
     "cost_shares": {
-      "W": 0.5,
-      "S": 0.5
+      "W": 0.25,
+      "S": 0.25,
+      "F": 0.25,
+      "E": 0.25
     },
     "synergy_a": "+10% output per Quark-Stone Press owned.",
     "synergy_b": "+9% Wood output while stored Wood \u2265 74.30Qa.",
@@ -13503,8 +13678,9 @@
     "base_cost": 196790744056065504,
     "growth": 1.2,
     "cost_shares": {
-      "F": 0.5,
-      "W": 0.5
+      "F": 0.3333,
+      "W": 0.3333,
+      "S": 0.3333
     },
     "synergy_a": "+6% output per Degenerate Farms owned.",
     "synergy_b": "+15% Population output while stored Population \u2265 88.56Qa.",
@@ -13596,8 +13772,9 @@
     "base_cost": 146759198957065824,
     "growth": 1.2,
     "cost_shares": {
-      "W": 0.5,
-      "S": 0.5
+      "W": 0.3333,
+      "S": 0.3333,
+      "F": 0.3333
     },
     "synergy_a": "+4% output per Singularity Slab owned.",
     "synergy_b": "+9% Wood output while stored Wood \u2265 66.04Qa.",
@@ -13658,8 +13835,10 @@
     "base_cost": 176778126016465632,
     "growth": 1.2,
     "cost_shares": {
-      "F": 0.5,
-      "W": 0.5
+      "F": 0.25,
+      "W": 0.25,
+      "S": 0.25,
+      "E": 0.25
     },
     "synergy_a": "+8% output per Strangelet Gardens owned.",
     "synergy_b": "+15% Population output while stored Population \u2265 79.55Qa.",
@@ -13689,8 +13868,11 @@
     "base_cost": 196790744056065504,
     "growth": 1.2,
     "cost_shares": {
-      "E": 0.5,
-      "W": 0.5
+      "E": 0.2,
+      "W": 0.2,
+      "S": 0.2,
+      "F": 0.2,
+      "P": 0.2
     },
     "synergy_a": "+10% output per Horizon Hab owned.",
     "synergy_b": "+3% Energy output while stored Energy \u2265 88.56Qa.",
@@ -13782,8 +13964,9 @@
     "base_cost": 270170343534598432,
     "growth": 1.2,
     "cost_shares": {
-      "F": 0.5,
-      "W": 0.5
+      "F": 0.3333,
+      "W": 0.3333,
+      "S": 0.3333
     },
     "synergy_a": "+8% output per Shadowwood owned.",
     "synergy_b": "+12% Food output while stored Food \u2265 121.58Qa.",
@@ -13875,8 +14058,10 @@
     "base_cost": 358559406542831232,
     "growth": 1.2,
     "cost_shares": {
-      "S": 0.5,
-      "W": 0.5
+      "S": 0.25,
+      "W": 0.25,
+      "F": 0.25,
+      "E": 0.25
     },
     "synergy_a": "+6% output per Gamma Blade Array owned.",
     "synergy_b": "+6% Stone output while stored Stone \u2265 161.35Qa.",
@@ -13968,8 +14153,9 @@
     "base_cost": 196790744056065504,
     "growth": 1.2,
     "cost_shares": {
-      "F": 0.5,
-      "W": 0.5
+      "F": 0.3333,
+      "W": 0.3333,
+      "S": 0.3333
     },
     "synergy_a": "+4% output per False-Vacuum Tanks owned.",
     "synergy_b": "+15% Population output while stored Population \u2265 88.56Qa.",
@@ -13999,8 +14185,11 @@
     "base_cost": 900567811781994624,
     "growth": 1.21,
     "cost_shares": {
-      "W": 0.5,
-      "S": 0.5
+      "W": 0.2,
+      "S": 0.2,
+      "F": 0.2,
+      "E": 0.2,
+      "P": 0.2
     },
     "synergy_a": "+4% output per Nexus Borough owned.",
     "synergy_b": "+3% Wood output while stored Wood \u2265 405.26Qa.",
@@ -14092,8 +14281,9 @@
     "base_cost": 1275804400024492544,
     "growth": 1.21,
     "cost_shares": {
-      "F": 0.5,
-      "W": 0.5
+      "F": 0.3333,
+      "W": 0.3333,
+      "S": 0.3333
     },
     "synergy_a": "+10% output per Mind-Light Plant owned.",
     "synergy_b": "+12% Food output while stored Food \u2265 574.11Qa.",
@@ -14185,8 +14375,9 @@
     "base_cost": 1350851717672992000,
     "growth": 1.21,
     "cost_shares": {
-      "S": 0.5,
-      "W": 0.5
+      "S": 0.3333,
+      "W": 0.3333,
+      "F": 0.3333
     },
     "synergy_a": "+8% output per Dream Turbines owned.",
     "synergy_b": "+6% Stone output while stored Stone \u2265 607.88Qa.",
@@ -14216,8 +14407,10 @@
     "base_cost": 1485936889440291328,
     "growth": 1.21,
     "cost_shares": {
-      "W": 0.5,
-      "S": 0.5
+      "W": 0.25,
+      "S": 0.25,
+      "F": 0.25,
+      "E": 0.25
     },
     "synergy_a": "+10% output per Memory Mantle owned.",
     "synergy_b": "+9% Wood output while stored Wood \u2265 668.67Qa.",
@@ -14278,8 +14471,9 @@
     "base_cost": 1771116696504589568,
     "growth": 1.21,
     "cost_shares": {
-      "F": 0.5,
-      "W": 0.5
+      "F": 0.3333,
+      "W": 0.3333,
+      "S": 0.3333
     },
     "synergy_a": "+6% output per Archetype Farms owned.",
     "synergy_b": "+15% Population output while stored Population \u2265 797.00Qa.",
@@ -14371,8 +14565,9 @@
     "base_cost": 1320832790613592320,
     "growth": 1.21,
     "cost_shares": {
-      "W": 0.5,
-      "S": 0.5
+      "W": 0.3333,
+      "S": 0.3333,
+      "F": 0.3333
     },
     "synergy_a": "+4% output per Truth Quarry owned.",
     "synergy_b": "+9% Wood output while stored Wood \u2265 594.37Qa.",
@@ -14433,8 +14628,10 @@
     "base_cost": 1591003134148190720,
     "growth": 1.21,
     "cost_shares": {
-      "F": 0.5,
-      "W": 0.5
+      "F": 0.25,
+      "W": 0.25,
+      "S": 0.25,
+      "E": 0.25
     },
     "synergy_a": "+8% output per Symbol Farms owned.",
     "synergy_b": "+15% Population output while stored Population \u2265 715.95Qa.",
@@ -14464,8 +14661,11 @@
     "base_cost": 1771116696504589568,
     "growth": 1.21,
     "cost_shares": {
-      "E": 0.5,
-      "W": 0.5
+      "E": 0.2,
+      "W": 0.2,
+      "S": 0.2,
+      "F": 0.2,
+      "P": 0.2
     },
     "synergy_a": "+10% output per Chorus City owned.",
     "synergy_b": "+3% Energy output while stored Energy \u2265 797.00Qa.",
@@ -14557,8 +14757,9 @@
     "base_cost": 2431533091811385856,
     "growth": 1.21,
     "cost_shares": {
-      "F": 0.5,
-      "W": 0.5
+      "F": 0.3333,
+      "W": 0.3333,
+      "S": 0.3333
     },
     "synergy_a": "+8% output per Rune-wood owned.",
     "synergy_b": "+12% Food output while stored Food \u2265 1.09Qi.",
@@ -14650,8 +14851,10 @@
     "base_cost": 3227034658885480960,
     "growth": 1.21,
     "cost_shares": {
-      "S": 0.5,
-      "W": 0.5
+      "S": 0.25,
+      "W": 0.25,
+      "F": 0.25,
+      "E": 0.25
     },
     "synergy_a": "+6% output per Epiphany Beam owned.",
     "synergy_b": "+6% Stone output while stored Stone \u2265 1.45Qi.",
@@ -14743,8 +14946,9 @@
     "base_cost": 1771116696504589568,
     "growth": 1.21,
     "cost_shares": {
-      "F": 0.5,
-      "W": 0.5
+      "F": 0.3333,
+      "W": 0.3333,
+      "S": 0.3333
     },
     "synergy_a": "+4% output per Meaning Vats owned.",
     "synergy_b": "+15% Population output while stored Population \u2265 797.00Qa.",
@@ -14774,8 +14978,11 @@
     "base_cost": 8105110306037952512,
     "growth": 1.21,
     "cost_shares": {
-      "W": 0.5,
-      "S": 0.5
+      "W": 0.2,
+      "S": 0.2,
+      "F": 0.2,
+      "E": 0.2,
+      "P": 0.2
     },
     "synergy_a": "+4% output per Constellation Borough owned.",
     "synergy_b": "+3% Wood output while stored Wood \u2265 3.65Qi.",
@@ -14867,8 +15074,9 @@
     "base_cost": 11482239600220432384,
     "growth": 1.21,
     "cost_shares": {
-      "F": 0.5,
-      "W": 0.5
+      "F": 0.3333,
+      "W": 0.3333,
+      "S": 0.3333
     },
     "synergy_a": "+10% output per Hyperlane Power owned.",
     "synergy_b": "+12% Food output while stored Food \u2265 5.17Qi.",
@@ -14960,8 +15168,9 @@
     "base_cost": 12157665459056928768,
     "growth": 1.21,
     "cost_shares": {
-      "S": 0.5,
-      "W": 0.5
+      "S": 0.3333,
+      "W": 0.3333,
+      "F": 0.3333
     },
     "synergy_a": "+8% output per Lyman-Alpha Farm owned.",
     "synergy_b": "+6% Stone output while stored Stone \u2265 5.47Qi.",
@@ -14991,8 +15200,10 @@
     "base_cost": 13373432004962621440,
     "growth": 1.21,
     "cost_shares": {
-      "W": 0.5,
-      "S": 0.5
+      "W": 0.25,
+      "S": 0.25,
+      "F": 0.25,
+      "E": 0.25
     },
     "synergy_a": "+10% output per Filament Masonry owned.",
     "synergy_b": "+9% Wood output while stored Wood \u2265 6.02Qi.",
@@ -15053,8 +15264,9 @@
     "base_cost": 15940050268541306880,
     "growth": 1.21,
     "cost_shares": {
-      "F": 0.5,
-      "W": 0.5
+      "F": 0.3333,
+      "W": 0.3333,
+      "S": 0.3333
     },
     "synergy_a": "+6% output per Star-Sea Farms owned.",
     "synergy_b": "+15% Population output while stored Population \u2265 7.17Qi.",
@@ -15146,8 +15358,9 @@
     "base_cost": 11887495115522330624,
     "growth": 1.21,
     "cost_shares": {
-      "W": 0.5,
-      "S": 0.5
+      "W": 0.3333,
+      "S": 0.3333,
+      "F": 0.3333
     },
     "synergy_a": "+4% output per Filament Quarry 2 owned.",
     "synergy_b": "+9% Wood output while stored Wood \u2265 5.35Qi.",
@@ -15208,8 +15421,10 @@
     "base_cost": 14319028207333718016,
     "growth": 1.21,
     "cost_shares": {
-      "F": 0.5,
-      "W": 0.5
+      "F": 0.25,
+      "W": 0.25,
+      "S": 0.25,
+      "E": 0.25
     },
     "synergy_a": "+8% output per Cosmic Reef owned.",
     "synergy_b": "+15% Population output while stored Population \u2265 6.44Qi.",
@@ -15239,8 +15454,11 @@
     "base_cost": 15940050268541306880,
     "growth": 1.21,
     "cost_shares": {
-      "E": 0.5,
-      "W": 0.5
+      "E": 0.2,
+      "W": 0.2,
+      "S": 0.2,
+      "F": 0.2,
+      "P": 0.2
     },
     "synergy_a": "+10% output per Gate-City owned.",
     "synergy_b": "+3% Energy output while stored Energy \u2265 7.17Qi.",
@@ -15332,8 +15550,9 @@
     "base_cost": 21883797826302476288,
     "growth": 1.21,
     "cost_shares": {
-      "F": 0.5,
-      "W": 0.5
+      "F": 0.3333,
+      "W": 0.3333,
+      "S": 0.3333
     },
     "synergy_a": "+8% output per Allspace Timber owned.",
     "synergy_b": "+12% Food output while stored Food \u2265 9.85Qi.",
@@ -15425,8 +15644,10 @@
     "base_cost": 29043311929969328128,
     "growth": 1.21,
     "cost_shares": {
-      "S": 0.5,
-      "W": 0.5
+      "S": 0.25,
+      "W": 0.25,
+      "F": 0.25,
+      "E": 0.25
     },
     "synergy_a": "+6% output per Epoch Beamer owned.",
     "synergy_b": "+6% Stone output while stored Stone \u2265 13.07Qi.",
@@ -15518,8 +15739,9 @@
     "base_cost": 15940050268541306880,
     "growth": 1.21,
     "cost_shares": {
-      "F": 0.5,
-      "W": 0.5
+      "F": 0.3333,
+      "W": 0.3333,
+      "S": 0.3333
     },
     "synergy_a": "+4% output per Anthropic Farms owned.",
     "synergy_b": "+15% Population output while stored Population \u2265 7.17Qi.",
