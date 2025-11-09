@@ -1,0 +1,88 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Idle Civilization Prototype</title>
+    <link rel="stylesheet" href="styles.css" />
+  </head>
+  <body>
+    <div id="app">
+      <header class="top-bar" aria-label="Game status">
+        <div class="brand">
+          <h1>Idle Civilization</h1>
+          <span class="subtitle">From foragers to a Type III empire</span>
+        </div>
+        <div class="status-group">
+          <div class="status-item">
+            <span class="label">Era</span>
+            <span id="era-display" class="value">1</span>
+          </div>
+          <div class="status-item">
+            <span class="label">K-Scale</span>
+            <span id="k-index" class="value">K0.00</span>
+            <span id="k-next" class="hint">(Next K0.20)</span>
+          </div>
+          <div class="status-item">
+            <span class="label">Elapsed</span>
+            <span id="elapsed-time" class="value">0s</span>
+          </div>
+        </div>
+        <div class="actions">
+          <button id="save-btn">Save</button>
+          <button id="export-btn">Export</button>
+          <button id="import-btn">Import</button>
+          <button id="reset-btn" class="danger">Reset</button>
+        </div>
+      </header>
+
+      <div class="layout">
+        <aside class="sidebar left" aria-labelledby="resources-title">
+          <h2 id="resources-title">Resources</h2>
+          <div id="resource-panel" class="resource-list" role="list"></div>
+          <div class="settings-group">
+            <label for="format-select">Number Format</label>
+            <select id="format-select">
+              <option value="standard" selected>Standard</option>
+              <option value="scientific">Scientific</option>
+            </select>
+          </div>
+          <div class="settings-group">
+            <label>
+              <input type="checkbox" id="autosave-toggle" checked />
+              Auto-save every 30s
+            </label>
+          </div>
+        </aside>
+
+        <main id="buildings-panel" class="buildings" aria-live="polite"></main>
+
+        <aside class="sidebar right">
+          <section>
+            <h2>Top Producers</h2>
+            <ol id="top-producers" class="top-list"></ol>
+          </section>
+          <section>
+            <h2>Milestones</h2>
+            <div id="milestones"></div>
+          </section>
+          <section>
+            <h2>Help</h2>
+            <ul class="help-list">
+              <li>Use the era headers to collapse or expand sections.</li>
+              <li>Toggle auto-buy per building once you can sustain costs.</li>
+              <li>Save exports copy a code you can store anywhere.</li>
+              <li>Automation consumes resources instantly once available.</li>
+            </ul>
+          </section>
+        </aside>
+      </div>
+    </div>
+
+    <div id="toast" role="status" aria-live="assertive" aria-atomic="true"></div>
+
+    <script type="module" src="main.js"></script>
+  </body>
+</html>
+
+
