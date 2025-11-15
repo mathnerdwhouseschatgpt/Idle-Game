@@ -1,0 +1,12 @@
+### Build artifacts
+dist/
+Idle Civilization Setup*.exe
+idle-civilization-web.zip
+*.blockmap
+latest.yml
+builder-debug.yml
+builder-effective-config.yaml
+
+### Generated save data
+savegame.json
+

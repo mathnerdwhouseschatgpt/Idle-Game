@@ -43,3 +43,42 @@ The CLI mirrors the dataset and formulae used by the browser UI. Use the command
 - Kardashev index is derived from energy output and era depth; UI shows required delta per threshold.
 - Costs split across resource tags; Population costs are funded via Food to model support overhead.
 
+## Desktop Build / Steam Preparation
+The repository includes an Electron wrapper so you can ship the browser UI as a desktop executable suitable for Steam.
+
+### Prerequisites
+- Python 3.9+
+- Node.js 18+
+- Windows build tools (for NSIS) if you plan to deploy on Windows
+
+### Build Steps
+```bash
+npm install            # installs electron + electron-builder
+npm run dist           # regenerates data and creates packaged builds in dist/
+```
+
+The default configuration outputs:
+- `dist/win-unpacked` and `dist/Idle Civilization Setup.exe` (Windows NSIS installer)
+- Platform-specific bundles when run on macOS or Linux
+
+Upload the generated executable/folder through Steam’s partner portal (SteamPipe). The game stores saves in Electron’s per-user storage, so the distributed build ships without pre-existing saves.
+
+## Web Build for itch.io
+You can package the browser version as a static ZIP for HTML5 distribution on itch.io.
+
+```bash
+npm run web:build
+```
+
+This command regenerates data, copies the `web/` folder into `dist/web/`, and produces `dist/idle-civilization-web.zip`.
+
+### Uploading to itch.io
+1. Create or edit your project on itch.io and set **Kind of project** to **HTML**.
+2. Upload `dist/idle-civilization-web.zip`.
+3. Check **"This file will be played in the browser."**
+4. Configure the embed size (e.g., 1280×720) and publish or keep private for testing.
+
+The zip contains `index.html` plus the `data/` directory, so the game runs entirely client-side once itch.io unpacks it.
+
+## Additional Notes
+

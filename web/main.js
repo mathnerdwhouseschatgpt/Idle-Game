@@ -1,4 +1,4 @@
-const DATA_URL = "../design/data/buildings.json";
+const DATA_URL = "./data/buildings.json";
 const SAVE_KEY = "idle-civ-save-v1";
 const RESOURCE_NAMES = {
   W: "Wood",

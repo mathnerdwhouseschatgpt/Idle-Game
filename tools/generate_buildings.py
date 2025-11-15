@@ -664,7 +664,6 @@ def build_cost_shares(tags, era_index, idx, force_non_energy=False):
             cost_tags = ["S" if (era_index + idx) % 2 == 0 else "W"]
 
     era = era_index + 1
-    base_tags = cost_tags_for(tags)
 
     if era == 1 and idx < 5:
         primary = cost_tags[0] if cost_tags else "W"
@@ -817,9 +816,21 @@ def main():
             )
             total_buildings += 1
 
-    output_path = Path("design/data/buildings.json")
-    output_path.write_text(json.dumps(dataset, indent=2))
-    print(f"Wrote {total_buildings} buildings to {output_path}")
+    output_paths = [
+        Path("design/data/buildings.json"),
+        Path("web/data/buildings.json"),
+    ]
+    payload = json.dumps(dataset, indent=2)
+    for output_path in output_paths:
+        output_path.parent.mkdir(parents=True, exist_ok=True)
+        output_path.write_text(payload)
+    systems_path = Path("design/data/systems.json")
+    if systems_path.exists():
+        systems_payload = systems_path.read_text()
+        web_systems = Path("web/data/systems.json")
+        web_systems.parent.mkdir(parents=True, exist_ok=True)
+        web_systems.write_text(systems_payload)
+    print(f"Wrote {total_buildings} buildings to design/data/buildings.json and web/data/buildings.json")
 
 
 if __name__ == "__main__":
