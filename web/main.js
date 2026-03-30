@@ -17,6 +17,7 @@ const DEFAULT_START = {
 };
 
 const TICK_STEP = 0.2; // seconds per simulation step
+const MAX_TICKS_PER_FRAME = 5; // avoid spiral-of-death on slow machines
 const AUTOSAVE_INTERVAL = 30; // seconds
 const OFFLINE_CAP = 60 * 60 * 8; // 8 hours
 const ERA_UNLOCK_SCALE = 3.0;
@@ -388,7 +389,9 @@ class UI {
     this.eraSections = new Map();
     this.formatMode = "standard";
     this.lastRender = 0;
+    this.lastHeavyRender = 0;
     this.toastTimer = null;
+    this.resourceViews = new Map();
   }
 
   init() {
@@ -440,6 +443,7 @@ class UI {
       fragment.appendChild(entry);
 
       this.buildingViews.set(resource, { amount, delta });
+      this.resourceViews.set(resource, { amount, delta });
     }
     this.elements.resourcePanel.appendChild(fragment);
   }
@@ -688,8 +692,11 @@ class UI {
     this.updateResources();
     this.updateEraSections();
     this.updateBuildings();
-    this.updateTopProducers();
-    this.updateMilestones();
+    if (force || now - this.lastHeavyRender >= 500) {
+      this.lastHeavyRender = now;
+      this.updateTopProducers();
+      this.updateMilestones();
+    }
     if (this.game.pendingUnlocks && this.game.pendingUnlocks.length > 0) {
       while (this.game.pendingUnlocks.length > 0) {
         const era = this.game.pendingUnlocks.shift();
@@ -716,12 +723,10 @@ class UI {
 
   updateResources() {
     for (const resource of Object.keys(RESOURCE_NAMES)) {
-      const entry = this.elements.resourcePanel.querySelector(
-        `.resource-entry[data-resource="${resource}"]`
-      );
+      const entry = this.resourceViews.get(resource);
       if (!entry) continue;
-      const amountEl = entry.querySelector(".amount");
-      const deltaEl = entry.querySelector(".delta");
+      const amountEl = entry.amount;
+      const deltaEl = entry.delta;
       amountEl.textContent = formatNumber(
         this.game.resources[resource] || 0,
         this.formatMode
@@ -752,6 +757,9 @@ class UI {
       if (!view || !view.card) continue;
       const def = state.definition;
       const locked = def.era_index > this.game.eraUnlocked;
+      const eraSection = this.eraSections.get(def.era_index);
+      const isVisibleEra = eraSection?.details.open || def.era_index === 1;
+
       view.card.classList.toggle("locked", locked);
 
       view.owned.textContent = `Owned: ${state.owned}`;
@@ -788,7 +796,7 @@ class UI {
         button.disabled = locked;
       }
 
-      if (!locked) {
+      if (!locked && isVisibleEra) {
         controls.autoToggle.textContent = `Auto: ${state.automation ? "On" : "Off"}`;
         const afford1 = this.game.canAfford(state, 1);
         controls.buy1.disabled = !afford1;
@@ -1041,9 +1049,17 @@ async function bootstrap() {
     lastTimestamp = timestamp;
     accumulator += delta;
 
-    while (accumulator >= TICK_STEP) {
+    let ticks = 0;
+    while (accumulator >= TICK_STEP && ticks < MAX_TICKS_PER_FRAME) {
       game.tick(TICK_STEP);
       accumulator -= TICK_STEP;
+      ticks += 1;
+    }
+
+    if (accumulator >= TICK_STEP) {
+      const bulkSeconds = accumulator - (accumulator % TICK_STEP);
+      game.tickSeconds(bulkSeconds, TICK_STEP);
+      accumulator -= bulkSeconds;
     }
 
     if (game.shouldAutosave()) {
@@ -1065,4 +1081,3 @@ bootstrap().catch((err) => {
     toast.classList.add("show");
   }
 });
-
