@@ -12,7 +12,7 @@ This repository contains design documentation, a command-line simulator, and a b
    ```bash
    python -m http.server 8000
    ```
-2. Open `http://localhost:8000/web/` in your browser.
+2. Open `http://localhost:8000/` in your browser. The repository-root `index.html` redirects to the browser game in `web/`, matching the default GitHub Pages URL.
 
 ### Key Features
 - Real-time production loop with requestAnimationFrame pacing
