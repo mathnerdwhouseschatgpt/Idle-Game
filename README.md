@@ -80,5 +80,16 @@ This command regenerates data, copies the `web/` folder into `dist/web/`, and pr
 
 The zip contains `index.html` plus the `data/` directory, so the game runs entirely client-side once itch.io unpacks it.
 
-## Additional Notes
+## GitHub Pages Deployment
+The browser UI can be deployed directly to GitHub Pages using the included workflow.
 
+1. In GitHub, open **Settings → Pages** and set **Build and deployment → Source** to **GitHub Actions**.
+2. Push a branch containing this workflow, or run the **Deploy GitHub Pages** workflow manually from the Actions tab.
+3. The workflow runs `npm run pages:build`, publishes `dist/web/`, and serves the game from the Pages URL.
+
+For a local preview of the exact Pages artifact:
+```bash
+npm run pages:build
+python -m http.server 8000 --directory dist/web
+```
+Then open `http://localhost:8000/`.
