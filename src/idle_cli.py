@@ -25,6 +25,8 @@ DEFAULT_START = {
 }
 
 ERA_UNLOCK_SCALE = 3.0
+MAX_RUN_STEPS = 1_000
+
 
 
 def load_buildings() -> List[dict]:
@@ -38,7 +40,15 @@ def rate_baseline(era_index: int) -> float:
     return 0.1 * (3.6 ** (era_index - 1))
 
 
+def sanitize_seconds(value: float) -> float:
+    if not math.isfinite(value) or value <= 0:
+        return 0.0
+    return value
+
+
 def format_value(value: float) -> str:
+    if not math.isfinite(value):
+        return "∞"
     if abs(value) >= 1_000_000_000:
         return f"{value/1_000_000_000:.2f}B"
     if abs(value) >= 1_000_000:
@@ -165,6 +175,7 @@ class GameState:
         return 3.0
 
     def tick(self, seconds: float) -> Dict[str, float]:
+        seconds = sanitize_seconds(seconds)
         rates = self.current_rates()
         gains = {}
         for resource, per_second in rates.items():
@@ -392,6 +403,9 @@ class CommandLoop:
             except ValueError:
                 print("Seconds must be numeric.")
                 return
+        if not math.isfinite(seconds) or seconds <= 0:
+            print("Seconds must be a positive finite number.")
+            return
         gains = self.state.tick(seconds)
         gain_text = ", ".join(
             f"{RESOURCE_NAMES[key]} {format_value(value)}"
@@ -412,6 +426,9 @@ class CommandLoop:
         except ValueError:
             print("Seconds must be numeric.")
             return
+        if not math.isfinite(total) or total <= 0:
+            print("Seconds must be a positive finite number.")
+            return
         step = 1.0
         if len(args) > 1:
             try:
@@ -419,11 +436,18 @@ class CommandLoop:
             except ValueError:
                 print("Step must be numeric.")
                 return
+        if not math.isfinite(step) or step <= 0:
+            print("Step must be a positive finite number.")
+            return
         elapsed = 0.0
-        while elapsed < total:
+        steps = 0
+        while elapsed < total and steps < MAX_RUN_STEPS:
             delta = min(step, total - elapsed)
             self.state.tick(delta)
             elapsed += delta
+            steps += 1
+        if elapsed < total:
+            self.state.tick(total - elapsed)
         print(f"Auto-ran {format_value(total)}s.")
         self._print_status()
 
