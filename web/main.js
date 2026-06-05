@@ -18,11 +18,14 @@ const DEFAULT_START = {
 
 const TICK_STEP = 0.2; // seconds per simulation step
 const MAX_TICKS_PER_FRAME = 5; // avoid spiral-of-death on slow machines
+const MAX_FRAME_DELTA = 1; // seconds; cap catch-up after tab/app stalls
+const MAX_TICK_ITERATIONS = 100; // hard limit for manual/offline catch-up loops
 const AUTOSAVE_INTERVAL = 30; // seconds
 const OFFLINE_CAP = 60 * 60 * 8; // 8 hours
 const ERA_UNLOCK_SCALE = 3.0;
 const AUTOMATION_INTERVAL = 0.5; // seconds between automation passes
 const AUTOMATION_MAX_BATCH = 50; // max units purchased per building per pass
+const MAX_AUTOMATION_PASSES = 5; // hard cap to keep catch-up work bounded
 
 class BuildingDefinition {
   constructor(data) {
@@ -167,16 +170,23 @@ class Game {
   }
 
   tickSeconds(totalSeconds, step = 1) {
-    let remaining = totalSeconds;
-    const safeStep = Math.max(step, 0.1);
-    while (remaining > 0) {
+    let remaining = sanitizeSeconds(totalSeconds);
+    const safeStep = Math.max(sanitizeSeconds(step), 0.1);
+    let iterations = 0;
+    while (remaining > 0 && iterations < MAX_TICK_ITERATIONS) {
       const delta = Math.min(safeStep, remaining);
       this.tick(delta);
       remaining -= delta;
+      iterations += 1;
+    }
+    if (remaining > 0) {
+      this.tick(remaining);
     }
   }
 
   tick(deltaSeconds) {
+    deltaSeconds = sanitizeSeconds(deltaSeconds);
+    if (deltaSeconds <= 0) return;
     const summary = this.computeProductionSummary();
     this.lastSummary = summary;
     for (const [resource, perSecond] of Object.entries(summary.rates)) {
@@ -326,8 +336,13 @@ class Game {
   _applyAutomation() {
     if (this._automationTimer < AUTOMATION_INTERVAL) return;
     let needsRecalc = false;
-    while (this._automationTimer >= AUTOMATION_INTERVAL) {
+    let passes = 0;
+    while (
+      this._automationTimer >= AUTOMATION_INTERVAL &&
+      passes < MAX_AUTOMATION_PASSES
+    ) {
       this._automationTimer -= AUTOMATION_INTERVAL;
+      passes += 1;
       for (const state of this.states) {
         if (!state.automation || state.definition.era_index > this.eraUnlocked) {
           continue;
@@ -341,6 +356,9 @@ class Game {
         state.owned += quantity;
         needsRecalc = true;
       }
+    }
+    if (this._automationTimer >= AUTOMATION_INTERVAL) {
+      this._automationTimer %= AUTOMATION_INTERVAL;
     }
     if (needsRecalc) {
       this.lastSummary = this.computeProductionSummary();
@@ -985,6 +1003,11 @@ function rateBaseline(eraIndex) {
   return 0.1 * 3.6 ** (eraIndex - 1);
 }
 
+function sanitizeSeconds(value) {
+  if (!Number.isFinite(value) || value <= 0) return 0;
+  return value;
+}
+
 function clamp(value, min, max) {
   return Math.max(min, Math.min(max, value));
 }
@@ -1045,9 +1068,10 @@ async function bootstrap() {
   let accumulator = 0;
 
   function loop(timestamp) {
-    const delta = (timestamp - lastTimestamp) / 1000;
+    const rawDelta = (timestamp - lastTimestamp) / 1000;
+    const delta = Math.min(sanitizeSeconds(rawDelta), MAX_FRAME_DELTA);
     lastTimestamp = timestamp;
-    accumulator += delta;
+    accumulator = Math.min(accumulator + delta, MAX_FRAME_DELTA);
 
     let ticks = 0;
     while (accumulator >= TICK_STEP && ticks < MAX_TICKS_PER_FRAME) {
@@ -1057,9 +1081,8 @@ async function bootstrap() {
     }
 
     if (accumulator >= TICK_STEP) {
-      const bulkSeconds = accumulator - (accumulator % TICK_STEP);
-      game.tickSeconds(bulkSeconds, TICK_STEP);
-      accumulator -= bulkSeconds;
+      // Drop any remaining backlog instead of trying to catch up all at once.
+      accumulator = accumulator % TICK_STEP;
     }
 
     if (game.shouldAutosave()) {
