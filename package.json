@@ -7,7 +7,8 @@
     "prepare": "python tools/generate_buildings.py",
     "start": "npm run prepare && electron .",
     "dist": "npm run prepare && electron-builder",
-    "web:build": "python tools/package_web.py"
+    "web:build": "python tools/package_web.py",
+    "pages:build": "python tools/package_web.py --pages"
   },
   "build": {
     "appId": "com.idlecivilization.game",
@@ -43,4 +44,3 @@
     "electron-builder": "^24.6.4"
   }
 }
-
