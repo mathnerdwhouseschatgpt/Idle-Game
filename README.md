@@ -81,12 +81,11 @@ This command regenerates data, copies the `web/` folder into `dist/web/`, and pr
 The zip contains `index.html` plus the `data/` directory, so the game runs entirely client-side once itch.io unpacks it.
 
 ## GitHub Pages Deployment
-The browser UI can be deployed directly to GitHub Pages from the repository root or with the included workflow.
+The browser UI can be deployed directly to GitHub Pages using the included workflow.
 
-You can publish this project either from the repository root or with the included GitHub Actions workflow:
-
-- **Branch/root publishing:** In GitHub, open **Settings → Pages**, choose **Deploy from a branch**, select your branch and `/ (root)`. The root `index.html` redirects visitors from the Pages URL to `web/`, so GitHub Pages will not fall back to rendering this README.
-- **GitHub Actions publishing:** In **Settings → Pages**, set **Build and deployment → Source** to **GitHub Actions**, then push a branch containing this workflow or run the **Deploy GitHub Pages** workflow manually from the Actions tab. The workflow runs `npm run pages:build`, publishes `dist/web/`, and serves the game directly from the Pages URL.
+1. In GitHub, open **Settings → Pages** and set **Build and deployment → Source** to **GitHub Actions**.
+2. Push a branch containing this workflow, or run the **Deploy GitHub Pages** workflow manually from the Actions tab.
+3. The workflow runs `npm run pages:build`, publishes `dist/web/`, and serves the game from the Pages URL.
 
 For a local preview of the exact Pages artifact:
 ```bash
