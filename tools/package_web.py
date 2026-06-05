@@ -1,3 +1,4 @@
+import argparse
 import shutil
 import subprocess
 from pathlib import Path
@@ -32,6 +33,10 @@ def copy_additional_data():
         shutil.copy(json_file, data_dest / json_file.name)
 
 
+def add_pages_files():
+    (WEB_DIST / ".nojekyll").write_text("", encoding="utf-8")
+
+
 def create_zip():
     if ZIP_NAME.exists():
         ZIP_NAME.unlink()
@@ -42,13 +47,30 @@ def create_zip():
     )
 
 
+def parse_args():
+    parser = argparse.ArgumentParser(description="Package the web client for static hosting.")
+    parser.add_argument(
+        "--pages",
+        action="store_true",
+        help="Add GitHub Pages compatibility files and skip the itch.io zip.",
+    )
+    return parser.parse_args()
+
+
 def main():
+    args = parse_args()
     generate_data()
     refresh_dist()
     copy_additional_data()
-    create_zip()
+    if args.pages:
+        add_pages_files()
+    else:
+        create_zip()
     print(f"Web build ready: {WEB_DIST}")
-    print(f"Zip for itch.io: {ZIP_NAME}")
+    if args.pages:
+        print("GitHub Pages artifact ready.")
+    else:
+        print(f"Zip for itch.io: {ZIP_NAME}")
 
 
 if __name__ == "__main__":
