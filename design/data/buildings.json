@@ -1,3088 +1,788 @@
 [
   {
-    "identifier": "01-01",
-    "name": "Stick Pile",
-    "era": "Proto/Forager",
+    "identifier": "B01",
+    "name": "Habitation",
+    "era": "Dashboard",
     "era_index": 1,
-    "index_in_era": 1,
-    "tags": [
-      "W"
-    ],
-    "base_rate": 0.082,
-    "base_cost": 6,
-    "growth": 1.12,
-    "cost_shares": {
-      "W": 1.0
-    },
-    "synergy_a": "+4% output per Sleeping Hollow owned.",
-    "synergy_b": "+3% Wood output while stored Wood \u2265 3.",
-    "synergy_a_data": {
-      "type": "per_building",
-      "target_identifier": "01-05",
-      "bonus_percent": 4
-    },
-    "synergy_b_data": {
-      "type": "stored_resource",
-      "resource": "W",
-      "threshold": 2.7,
-      "bonus_percent": 3
-    },
-    "unique_upgrade": "Stick Pile \u2014 Reinforced Framework: doubles base output."
-  },
-  {
-    "identifier": "01-02",
-    "name": "Stone Cache",
-    "era": "Proto/Forager",
-    "era_index": 1,
-    "index_in_era": 2,
-    "tags": [
-      "S"
-    ],
-    "base_rate": 0.09,
-    "base_cost": 7,
-    "growth": 1.12,
-    "cost_shares": {
-      "S": 1.0
-    },
-    "synergy_a": "+6% output per Stick Pile owned.",
-    "synergy_b": "+6% Stone output while stored Stone \u2265 3.",
-    "synergy_a_data": {
-      "type": "per_building",
-      "target_identifier": "01-01",
-      "bonus_percent": 6
-    },
-    "synergy_b_data": {
-      "type": "stored_resource",
-      "resource": "S",
-      "threshold": 3.06,
-      "bonus_percent": 6
-    },
-    "unique_upgrade": "Stone Cache \u2014 Optimized Labor Flow: +50% output while automated."
-  },
-  {
-    "identifier": "01-03",
-    "name": "Berry Bush",
-    "era": "Proto/Forager",
-    "era_index": 1,
-    "index_in_era": 3,
-    "tags": [
-      "F"
-    ],
-    "base_rate": 0.1,
-    "base_cost": 8,
-    "growth": 1.12,
-    "cost_shares": {
-      "F": 1.0
-    },
-    "synergy_a": "+8% output per Stone Cache owned.",
-    "synergy_b": "+9% Food output while stored Food \u2265 3.",
-    "synergy_a_data": {
-      "type": "per_building",
-      "target_identifier": "01-02",
-      "bonus_percent": 8
-    },
-    "synergy_b_data": {
-      "type": "stored_resource",
-      "resource": "F",
-      "threshold": 3.42,
-      "bonus_percent": 9
-    },
-    "unique_upgrade": "Berry Bush \u2014 Resource Reclaimer: refunds 5% of cost on purchase."
-  },
-  {
-    "identifier": "01-04",
-    "name": "Fire Pit",
-    "era": "Proto/Forager",
-    "era_index": 1,
-    "index_in_era": 4,
-    "tags": [
-      "E"
-    ],
-    "base_rate": 0.112,
-    "base_cost": 8,
-    "growth": 1.12,
-    "cost_shares": {
-      "W": 1.0
-    },
-    "synergy_a": "+10% output per Berry Bush owned.",
-    "synergy_b": "+12% Energy output while stored Energy \u2265 4.",
-    "synergy_a_data": {
-      "type": "per_building",
-      "target_identifier": "01-03",
-      "bonus_percent": 10
-    },
-    "synergy_b_data": {
-      "type": "stored_resource",
-      "resource": "E",
-      "threshold": 3.83,
-      "bonus_percent": 12
-    },
-    "unique_upgrade": "Fire Pit \u2014 Synergy Amplifier: synergy bonuses +50%."
-  },
-  {
-    "identifier": "01-05",
-    "name": "Sleeping Hollow",
-    "era": "Proto/Forager",
-    "era_index": 1,
-    "index_in_era": 5,
-    "tags": [
-      "P"
-    ],
-    "base_rate": 0.124,
-    "base_cost": 9,
-    "growth": 1.12,
-    "cost_shares": {
-      "F": 1.0
-    },
-    "synergy_a": "+4% output per Fire Pit owned.",
-    "synergy_b": "+15% Population output while stored Population \u2265 4.",
-    "synergy_a_data": {
-      "type": "per_building",
-      "target_identifier": "01-04",
-      "bonus_percent": 4
-    },
-    "synergy_b_data": {
-      "type": "stored_resource",
-      "resource": "P",
-      "threshold": 4.23,
-      "bonus_percent": 15
-    },
-    "unique_upgrade": "Sleeping Hollow \u2014 Efficiency Protocols: growth reduced by 0.02 (min 1.05)."
-  },
-  {
-    "identifier": "02-01",
-    "name": "Thatch Hut",
-    "era": "Tribal",
-    "era_index": 2,
     "index_in_era": 1,
     "tags": [
       "W",
       "P"
     ],
-    "base_rate": 0.2952,
-    "base_cost": 54,
-    "growth": 1.12,
-    "cost_shares": {
-      "W": 0.3333,
-      "F": 0.3333,
-      "S": 0.3333
-    },
-    "synergy_a": "+4% output per Communal Garden owned.",
-    "synergy_b": "+3% Wood output while stored Wood \u2265 24. Additional +1% Population output.",
-    "synergy_a_data": {
-      "type": "per_building",
-      "target_identifier": "02-04",
-      "bonus_percent": 4
-    },
-    "synergy_b_data": {
-      "type": "stored_resource",
-      "resource": "W",
-      "threshold": 24.3,
-      "bonus_percent": 3,
-      "secondary_resource": "P",
-      "secondary_bonus_percent": 1
-    },
-    "unique_upgrade": "Thatch Hut \u2014 Reinforced Framework: doubles base output."
-  },
-  {
-    "identifier": "02-02",
-    "name": "Pit Kiln",
-    "era": "Tribal",
-    "era_index": 2,
-    "index_in_era": 2,
-    "tags": [
-      "E"
-    ],
-    "base_rate": 0.324,
-    "base_cost": 61,
-    "growth": 1.12,
-    "cost_shares": {
-      "S": 1.0
-    },
-    "synergy_a": "+6% output per Thatch Hut owned.",
-    "synergy_b": "+6% Energy output while stored Energy \u2265 28.",
-    "synergy_a_data": {
-      "type": "per_building",
-      "target_identifier": "02-01",
-      "bonus_percent": 6
-    },
-    "synergy_b_data": {
-      "type": "stored_resource",
-      "resource": "E",
-      "threshold": 27.54,
-      "bonus_percent": 6
-    },
-    "unique_upgrade": "Pit Kiln \u2014 Optimized Labor Flow: +50% output while automated."
-  },
-  {
-    "identifier": "02-03",
-    "name": "Clay Pit",
-    "era": "Tribal",
-    "era_index": 2,
-    "index_in_era": 3,
-    "tags": [
-      "S"
-    ],
-    "base_rate": 0.36,
-    "base_cost": 68,
-    "growth": 1.12,
-    "cost_shares": {
-      "S": 0.5,
-      "W": 0.5
-    },
-    "synergy_a": "+8% output per Pit Kiln owned.",
-    "synergy_b": "+9% Stone output while stored Stone \u2265 31.",
-    "synergy_a_data": {
-      "type": "per_building",
-      "target_identifier": "02-02",
-      "bonus_percent": 8
-    },
-    "synergy_b_data": {
-      "type": "stored_resource",
-      "resource": "S",
-      "threshold": 30.78,
-      "bonus_percent": 9
-    },
-    "unique_upgrade": "Clay Pit \u2014 Resource Reclaimer: refunds 5% of cost on purchase."
-  },
-  {
-    "identifier": "02-04",
-    "name": "Communal Garden",
-    "era": "Tribal",
-    "era_index": 2,
-    "index_in_era": 4,
-    "tags": [
-      "F"
-    ],
-    "base_rate": 0.4032,
-    "base_cost": 76,
-    "growth": 1.12,
-    "cost_shares": {
-      "F": 0.5,
-      "W": 0.5
-    },
-    "synergy_a": "+10% output per Clay Pit owned.",
-    "synergy_b": "+12% Food output while stored Food \u2265 34.",
-    "synergy_a_data": {
-      "type": "per_building",
-      "target_identifier": "02-03",
-      "bonus_percent": 10
-    },
-    "synergy_b_data": {
-      "type": "stored_resource",
-      "resource": "F",
-      "threshold": 34.43,
-      "bonus_percent": 12
-    },
-    "unique_upgrade": "Communal Garden \u2014 Synergy Amplifier: synergy bonuses +50%."
-  },
-  {
-    "identifier": "03-01",
-    "name": "Timber Yard",
-    "era": "Village",
-    "era_index": 3,
-    "index_in_era": 1,
-    "tags": [
-      "W"
-    ],
-    "base_rate": 1.06272,
-    "base_cost": 486,
-    "growth": 1.13,
+    "base_rate": 0.0944,
+    "base_cost": 8,
+    "growth": 1.186,
     "cost_shares": {
       "W": 0.5,
-      "S": 0.5
+      "F": 0.5
     },
-    "synergy_a": "+4% output per Cottage Row owned.",
-    "synergy_b": "+3% Wood output while stored Wood \u2265 219.",
+    "prestige_names": [
+      "House",
+      "Town",
+      "City",
+      "Metropolis",
+      "Arcology"
+    ],
+    "synergy_a": "+5% output per level in Habitation.",
+    "synergy_b": "+9% output while stored Wood reaches this module's calibration threshold.",
     "synergy_a_data": {
       "type": "per_building",
-      "target_identifier": "03-05",
-      "bonus_percent": 4
+      "target_identifier": "B01",
+      "bonus_percent": 5
     },
     "synergy_b_data": {
       "type": "stored_resource",
       "resource": "W",
-      "threshold": 218.7,
-      "bonus_percent": 3
-    },
-    "unique_upgrade": "Timber Yard \u2014 Reinforced Framework: doubles base output."
-  },
-  {
-    "identifier": "03-02",
-    "name": "Stonecutters\u2019 Guild",
-    "era": "Village",
-    "era_index": 3,
-    "index_in_era": 2,
-    "tags": [
-      "S"
-    ],
-    "base_rate": 1.1664,
-    "base_cost": 551,
-    "growth": 1.13,
-    "cost_shares": {
-      "S": 0.5,
-      "W": 0.5
-    },
-    "synergy_a": "+6% output per Timber Yard owned.",
-    "synergy_b": "+6% Stone output while stored Stone \u2265 248.",
-    "synergy_a_data": {
-      "type": "per_building",
-      "target_identifier": "03-01",
-      "bonus_percent": 6
-    },
-    "synergy_b_data": {
-      "type": "stored_resource",
-      "resource": "S",
-      "threshold": 247.86,
-      "bonus_percent": 6
-    },
-    "unique_upgrade": "Stonecutters\u2019 Guild \u2014 Optimized Labor Flow: +50% output while automated."
-  },
-  {
-    "identifier": "03-03",
-    "name": "Mill Pond",
-    "era": "Village",
-    "era_index": 3,
-    "index_in_era": 3,
-    "tags": [
-      "E"
-    ],
-    "base_rate": 1.296,
-    "base_cost": 616,
-    "growth": 1.13,
-    "cost_shares": {
-      "S": 1.0
-    },
-    "synergy_a": "+8% output per Stonecutters\u2019 Guild owned.",
-    "synergy_b": "+9% Energy output while stored Energy \u2265 277.",
-    "synergy_a_data": {
-      "type": "per_building",
-      "target_identifier": "03-02",
-      "bonus_percent": 8
-    },
-    "synergy_b_data": {
-      "type": "stored_resource",
-      "resource": "E",
-      "threshold": 277.02,
+      "threshold": 4.4,
       "bonus_percent": 9
     },
-    "unique_upgrade": "Mill Pond \u2014 Resource Reclaimer: refunds 5% of cost on purchase."
+    "unique_upgrade": "Every 5 levels triggers prestige: the module evolves, doubles output, and strengthens its active boost profile."
   },
   {
-    "identifier": "03-04",
-    "name": "Wheat Field",
-    "era": "Village",
-    "era_index": 3,
-    "index_in_era": 4,
-    "tags": [
-      "F"
-    ],
-    "base_rate": 1.45152,
-    "base_cost": 688,
-    "growth": 1.13,
-    "cost_shares": {
-      "F": 0.5,
-      "W": 0.5
-    },
-    "synergy_a": "+10% output per Mill Pond owned.",
-    "synergy_b": "+12% Food output while stored Food \u2265 310.",
-    "synergy_a_data": {
-      "type": "per_building",
-      "target_identifier": "03-03",
-      "bonus_percent": 10
-    },
-    "synergy_b_data": {
-      "type": "stored_resource",
-      "resource": "F",
-      "threshold": 309.82,
-      "bonus_percent": 12
-    },
-    "unique_upgrade": "Wheat Field \u2014 Synergy Amplifier: synergy bonuses +50%."
-  },
-  {
-    "identifier": "03-05",
-    "name": "Cottage Row",
-    "era": "Village",
-    "era_index": 3,
-    "index_in_era": 5,
-    "tags": [
-      "P"
-    ],
-    "base_rate": 1.60704,
-    "base_cost": 761,
-    "growth": 1.13,
-    "cost_shares": {
-      "F": 0.5,
-      "W": 0.5
-    },
-    "synergy_a": "+4% output per Wheat Field owned.",
-    "synergy_b": "+15% Population output while stored Population \u2265 343.",
-    "synergy_a_data": {
-      "type": "per_building",
-      "target_identifier": "03-04",
-      "bonus_percent": 4
-    },
-    "synergy_b_data": {
-      "type": "stored_resource",
-      "resource": "P",
-      "threshold": 342.63,
-      "bonus_percent": 15
-    },
-    "unique_upgrade": "Cottage Row \u2014 Efficiency Protocols: growth reduced by 0.02 (min 1.05)."
-  },
-  {
-    "identifier": "04-01",
-    "name": "Bronze Foundry",
-    "era": "Bronze Age",
-    "era_index": 4,
-    "index_in_era": 1,
-    "tags": [
-      "E",
-      "S"
-    ],
-    "base_rate": 3.825792,
-    "base_cost": 4374,
-    "growth": 1.13,
-    "cost_shares": {
-      "S": 0.3333,
-      "W": 0.3333,
-      "F": 0.3333
-    },
-    "synergy_a": "+4% output per Courtyard House owned.",
-    "synergy_b": "+3% Energy output while stored Energy \u2265 1.97K. Additional +1% Stone output.",
-    "synergy_a_data": {
-      "type": "per_building",
-      "target_identifier": "04-04",
-      "bonus_percent": 4
-    },
-    "synergy_b_data": {
-      "type": "stored_resource",
-      "resource": "E",
-      "threshold": 1968.3,
-      "bonus_percent": 3,
-      "secondary_resource": "S",
-      "secondary_bonus_percent": 1
-    },
-    "unique_upgrade": "Bronze Foundry \u2014 Reinforced Framework: doubles base output."
-  },
-  {
-    "identifier": "04-02",
-    "name": "Terrace Farm",
-    "era": "Bronze Age",
-    "era_index": 4,
+    "identifier": "B02",
+    "name": "Lumber Operation",
+    "era": "Dashboard",
+    "era_index": 1,
     "index_in_era": 2,
-    "tags": [
-      "F"
-    ],
-    "base_rate": 4.19904,
-    "base_cost": 4957,
-    "growth": 1.13,
-    "cost_shares": {
-      "F": 0.5,
-      "W": 0.5
-    },
-    "synergy_a": "+6% output per Bronze Foundry owned.",
-    "synergy_b": "+6% Food output while stored Food \u2265 2.23K.",
-    "synergy_a_data": {
-      "type": "per_building",
-      "target_identifier": "04-01",
-      "bonus_percent": 6
-    },
-    "synergy_b_data": {
-      "type": "stored_resource",
-      "resource": "F",
-      "threshold": 2230.74,
-      "bonus_percent": 6
-    },
-    "unique_upgrade": "Terrace Farm \u2014 Optimized Labor Flow: +50% output while automated."
-  },
-  {
-    "identifier": "04-03",
-    "name": "Beam Workshop",
-    "era": "Bronze Age",
-    "era_index": 4,
-    "index_in_era": 3,
     "tags": [
       "W"
     ],
-    "base_rate": 4.6656,
-    "base_cost": 5540,
-    "growth": 1.13,
-    "cost_shares": {
-      "W": 0.5,
-      "S": 0.5
-    },
-    "synergy_a": "+8% output per Terrace Farm owned.",
-    "synergy_b": "+9% Wood output while stored Wood \u2265 2.49K.",
-    "synergy_a_data": {
-      "type": "per_building",
-      "target_identifier": "04-02",
-      "bonus_percent": 8
-    },
-    "synergy_b_data": {
-      "type": "stored_resource",
-      "resource": "W",
-      "threshold": 2493.18,
-      "bonus_percent": 9
-    },
-    "unique_upgrade": "Beam Workshop \u2014 Resource Reclaimer: refunds 5% of cost on purchase."
-  },
-  {
-    "identifier": "04-04",
-    "name": "Courtyard House",
-    "era": "Bronze Age",
-    "era_index": 4,
-    "index_in_era": 4,
-    "tags": [
-      "P"
-    ],
-    "base_rate": 5.225472,
-    "base_cost": 6196,
-    "growth": 1.13,
-    "cost_shares": {
-      "F": 0.5,
-      "W": 0.5
-    },
-    "synergy_a": "+10% output per Beam Workshop owned.",
-    "synergy_b": "+12% Population output while stored Population \u2265 2.79K.",
-    "synergy_a_data": {
-      "type": "per_building",
-      "target_identifier": "04-03",
-      "bonus_percent": 10
-    },
-    "synergy_b_data": {
-      "type": "stored_resource",
-      "resource": "P",
-      "threshold": 2788.43,
-      "bonus_percent": 12
-    },
-    "unique_upgrade": "Courtyard House \u2014 Synergy Amplifier: synergy bonuses +50%."
-  },
-  {
-    "identifier": "05-01",
-    "name": "Marble Quarry",
-    "era": "Classical",
-    "era_index": 5,
-    "index_in_era": 1,
-    "tags": [
-      "S"
-    ],
-    "base_rate": 13.772851,
-    "base_cost": 39366,
-    "growth": 1.14,
-    "cost_shares": {
-      "S": 0.3333,
-      "W": 0.3333,
-      "F": 0.3333
-    },
-    "synergy_a": "+4% output per Cedar Mill owned.",
-    "synergy_b": "+3% Stone output while stored Stone \u2265 17.71K.",
-    "synergy_a_data": {
-      "type": "per_building",
-      "target_identifier": "05-05",
-      "bonus_percent": 4
-    },
-    "synergy_b_data": {
-      "type": "stored_resource",
-      "resource": "S",
-      "threshold": 17714.7,
-      "bonus_percent": 3
-    },
-    "unique_upgrade": "Marble Quarry \u2014 Reinforced Framework: doubles base output."
-  },
-  {
-    "identifier": "05-02",
-    "name": "Olive Grove Estate",
-    "era": "Classical",
-    "era_index": 5,
-    "index_in_era": 2,
-    "tags": [
-      "F"
-    ],
-    "base_rate": 15.116544,
-    "base_cost": 44615,
-    "growth": 1.14,
-    "cost_shares": {
-      "F": 0.5,
-      "W": 0.5
-    },
-    "synergy_a": "+6% output per Marble Quarry owned.",
-    "synergy_b": "+6% Food output while stored Food \u2265 20.08K.",
-    "synergy_a_data": {
-      "type": "per_building",
-      "target_identifier": "05-01",
-      "bonus_percent": 6
-    },
-    "synergy_b_data": {
-      "type": "stored_resource",
-      "resource": "F",
-      "threshold": 20076.66,
-      "bonus_percent": 6
-    },
-    "unique_upgrade": "Olive Grove Estate \u2014 Optimized Labor Flow: +50% output while automated."
-  },
-  {
-    "identifier": "05-03",
-    "name": "Waterworks",
-    "era": "Classical",
-    "era_index": 5,
-    "index_in_era": 3,
-    "tags": [
-      "E"
-    ],
-    "base_rate": 16.79616,
-    "base_cost": 49864,
-    "growth": 1.14,
-    "cost_shares": {
-      "S": 1.0
-    },
-    "synergy_a": "+8% output per Olive Grove Estate owned.",
-    "synergy_b": "+9% Energy output while stored Energy \u2265 22.44K.",
-    "synergy_a_data": {
-      "type": "per_building",
-      "target_identifier": "05-02",
-      "bonus_percent": 8
-    },
-    "synergy_b_data": {
-      "type": "stored_resource",
-      "resource": "E",
-      "threshold": 22438.62,
-      "bonus_percent": 9
-    },
-    "unique_upgrade": "Waterworks \u2014 Resource Reclaimer: refunds 5% of cost on purchase."
-  },
-  {
-    "identifier": "05-04",
-    "name": "Villa District",
-    "era": "Classical",
-    "era_index": 5,
-    "index_in_era": 4,
-    "tags": [
-      "P"
-    ],
-    "base_rate": 18.811699,
-    "base_cost": 55768,
-    "growth": 1.14,
-    "cost_shares": {
-      "F": 0.5,
-      "W": 0.5
-    },
-    "synergy_a": "+10% output per Waterworks owned.",
-    "synergy_b": "+12% Population output while stored Population \u2265 25.10K.",
-    "synergy_a_data": {
-      "type": "per_building",
-      "target_identifier": "05-03",
-      "bonus_percent": 10
-    },
-    "synergy_b_data": {
-      "type": "stored_resource",
-      "resource": "P",
-      "threshold": 25095.83,
-      "bonus_percent": 12
-    },
-    "unique_upgrade": "Villa District \u2014 Synergy Amplifier: synergy bonuses +50%."
-  },
-  {
-    "identifier": "05-05",
-    "name": "Cedar Mill",
-    "era": "Classical",
-    "era_index": 5,
-    "index_in_era": 5,
-    "tags": [
-      "W"
-    ],
-    "base_rate": 20.827238,
-    "base_cost": 61673,
-    "growth": 1.14,
-    "cost_shares": {
-      "W": 0.5,
-      "S": 0.5
-    },
-    "synergy_a": "+4% output per Villa District owned.",
-    "synergy_b": "+15% Wood output while stored Wood \u2265 27.75K.",
-    "synergy_a_data": {
-      "type": "per_building",
-      "target_identifier": "05-04",
-      "bonus_percent": 4
-    },
-    "synergy_b_data": {
-      "type": "stored_resource",
-      "resource": "W",
-      "threshold": 27753.03,
-      "bonus_percent": 15
-    },
-    "unique_upgrade": "Cedar Mill \u2014 Efficiency Protocols: growth reduced by 0.02 (min 1.05)."
-  },
-  {
-    "identifier": "06-01",
-    "name": "Forester\u2019s Lodge",
-    "era": "Medieval",
-    "era_index": 6,
-    "index_in_era": 1,
-    "tags": [
-      "W"
-    ],
-    "base_rate": 49.582264,
-    "base_cost": 354294,
-    "growth": 1.14,
-    "cost_shares": {
-      "W": 0.3333,
-      "S": 0.3333,
-      "F": 0.3333
-    },
-    "synergy_a": "+4% output per Hamlet Cottages owned.",
-    "synergy_b": "+3% Wood output while stored Wood \u2265 159.43K.",
-    "synergy_a_data": {
-      "type": "per_building",
-      "target_identifier": "06-05",
-      "bonus_percent": 4
-    },
-    "synergy_b_data": {
-      "type": "stored_resource",
-      "resource": "W",
-      "threshold": 159432.3,
-      "bonus_percent": 3
-    },
-    "unique_upgrade": "Forester\u2019s Lodge \u2014 Reinforced Framework: doubles base output."
-  },
-  {
-    "identifier": "06-02",
-    "name": "Stone Keep",
-    "era": "Medieval",
-    "era_index": 6,
-    "index_in_era": 2,
-    "tags": [
-      "S"
-    ],
-    "base_rate": 54.419558,
-    "base_cost": 401533,
-    "growth": 1.14,
-    "cost_shares": {
-      "S": 0.5,
-      "W": 0.5
-    },
-    "synergy_a": "+6% output per Forester\u2019s Lodge owned.",
-    "synergy_b": "+6% Stone output while stored Stone \u2265 180.69K.",
-    "synergy_a_data": {
-      "type": "per_building",
-      "target_identifier": "06-01",
-      "bonus_percent": 6
-    },
-    "synergy_b_data": {
-      "type": "stored_resource",
-      "resource": "S",
-      "threshold": 180689.94,
-      "bonus_percent": 6
-    },
-    "unique_upgrade": "Stone Keep \u2014 Optimized Labor Flow: +50% output while automated."
-  },
-  {
-    "identifier": "06-03",
-    "name": "Watermill",
-    "era": "Medieval",
-    "era_index": 6,
-    "index_in_era": 3,
-    "tags": [
-      "E"
-    ],
-    "base_rate": 60.466176,
-    "base_cost": 448772,
-    "growth": 1.14,
+    "base_rate": 0.1104,
+    "base_cost": 13,
+    "growth": 1.192,
     "cost_shares": {
       "W": 1.0
     },
-    "synergy_a": "+8% output per Stone Keep owned.",
-    "synergy_b": "+9% Energy output while stored Energy \u2265 201.95K.",
-    "synergy_a_data": {
-      "type": "per_building",
-      "target_identifier": "06-02",
-      "bonus_percent": 8
-    },
-    "synergy_b_data": {
-      "type": "stored_resource",
-      "resource": "E",
-      "threshold": 201947.58,
-      "bonus_percent": 9
-    },
-    "unique_upgrade": "Watermill \u2014 Resource Reclaimer: refunds 5% of cost on purchase."
-  },
-  {
-    "identifier": "06-04",
-    "name": "Rye Field",
-    "era": "Medieval",
-    "era_index": 6,
-    "index_in_era": 4,
-    "tags": [
-      "F"
+    "prestige_names": [
+      "Woodlot",
+      "Lumber Camp",
+      "Sawmill",
+      "Timberworks",
+      "Megaforest"
     ],
-    "base_rate": 67.722117,
-    "base_cost": 501916,
-    "growth": 1.14,
-    "cost_shares": {
-      "F": 0.5,
-      "W": 0.5
-    },
-    "synergy_a": "+10% output per Watermill owned.",
-    "synergy_b": "+12% Food output while stored Food \u2265 225.86K.",
+    "synergy_a": "+6% output per level in Habitation.",
+    "synergy_b": "+12% output while stored Wood reaches this module's calibration threshold.",
     "synergy_a_data": {
       "type": "per_building",
-      "target_identifier": "06-03",
-      "bonus_percent": 10
-    },
-    "synergy_b_data": {
-      "type": "stored_resource",
-      "resource": "F",
-      "threshold": 225862.43,
-      "bonus_percent": 12
-    },
-    "unique_upgrade": "Rye Field \u2014 Synergy Amplifier: synergy bonuses +50%."
-  },
-  {
-    "identifier": "06-05",
-    "name": "Hamlet Cottages",
-    "era": "Medieval",
-    "era_index": 6,
-    "index_in_era": 5,
-    "tags": [
-      "P"
-    ],
-    "base_rate": 74.978058,
-    "base_cost": 555061,
-    "growth": 1.14,
-    "cost_shares": {
-      "F": 0.5,
-      "W": 0.5
-    },
-    "synergy_a": "+4% output per Rye Field owned.",
-    "synergy_b": "+15% Population output while stored Population \u2265 249.78K.",
-    "synergy_a_data": {
-      "type": "per_building",
-      "target_identifier": "06-04",
-      "bonus_percent": 4
-    },
-    "synergy_b_data": {
-      "type": "stored_resource",
-      "resource": "P",
-      "threshold": 249777.27,
-      "bonus_percent": 15
-    },
-    "unique_upgrade": "Hamlet Cottages \u2014 Efficiency Protocols: growth reduced by 0.02 (min 1.05)."
-  },
-  {
-    "identifier": "07-01",
-    "name": "Managed Forest",
-    "era": "Renaissance",
-    "era_index": 7,
-    "index_in_era": 1,
-    "tags": [
-      "W"
-    ],
-    "base_rate": 178.496152,
-    "base_cost": 3188646,
-    "growth": 1.15,
-    "cost_shares": {
-      "W": 0.25,
-      "S": 0.25,
-      "F": 0.25,
-      "E": 0.25
-    },
-    "synergy_a": "+4% output per Townhouses owned.",
-    "synergy_b": "+3% Wood output while stored Wood \u2265 1.43M.",
-    "synergy_a_data": {
-      "type": "per_building",
-      "target_identifier": "07-05",
-      "bonus_percent": 4
+      "target_identifier": "B01",
+      "bonus_percent": 6
     },
     "synergy_b_data": {
       "type": "stored_resource",
       "resource": "W",
-      "threshold": 1434890.7,
-      "bonus_percent": 3
+      "threshold": 7.15,
+      "bonus_percent": 12
     },
-    "unique_upgrade": "Managed Forest \u2014 Reinforced Framework: doubles base output."
+    "unique_upgrade": "Every 5 levels triggers prestige: the module evolves, doubles output, and strengthens its active boost profile."
   },
   {
-    "identifier": "07-02",
-    "name": "Cut-Stone Atelier",
-    "era": "Renaissance",
-    "era_index": 7,
-    "index_in_era": 2,
+    "identifier": "B03",
+    "name": "Stone Operation",
+    "era": "Dashboard",
+    "era_index": 1,
+    "index_in_era": 3,
     "tags": [
       "S"
     ],
-    "base_rate": 195.91041,
-    "base_cost": 3613799,
-    "growth": 1.15,
+    "base_rate": 0.1524,
+    "base_cost": 21,
+    "growth": 1.198,
     "cost_shares": {
-      "S": 0.5,
-      "W": 0.5
+      "S": 1.0
     },
-    "synergy_a": "+6% output per Managed Forest owned.",
-    "synergy_b": "+6% Stone output while stored Stone \u2265 1.63M.",
+    "prestige_names": [
+      "Stone Pit",
+      "Quarry",
+      "Mason Guild",
+      "Granite Complex",
+      "Planetary Mine"
+    ],
+    "synergy_a": "+7% output per level in Lumber Operation.",
+    "synergy_b": "+15% output while stored Stone reaches this module's calibration threshold.",
     "synergy_a_data": {
       "type": "per_building",
-      "target_identifier": "07-01",
-      "bonus_percent": 6
+      "target_identifier": "B02",
+      "bonus_percent": 7
     },
     "synergy_b_data": {
       "type": "stored_resource",
       "resource": "S",
-      "threshold": 1626209.46,
-      "bonus_percent": 6
+      "threshold": 11.55,
+      "bonus_percent": 15
     },
-    "unique_upgrade": "Cut-Stone Atelier \u2014 Optimized Labor Flow: +50% output while automated."
+    "unique_upgrade": "Every 5 levels triggers prestige: the module evolves, doubles output, and strengthens its active boost profile."
   },
   {
-    "identifier": "07-03",
-    "name": "Waterworks Hub",
-    "era": "Renaissance",
-    "era_index": 7,
-    "index_in_era": 3,
-    "tags": [
-      "E"
-    ],
-    "base_rate": 217.678234,
-    "base_cost": 4038952,
-    "growth": 1.15,
-    "cost_shares": {
-      "S": 0.5,
-      "W": 0.5
-    },
-    "synergy_a": "+8% output per Cut-Stone Atelier owned.",
-    "synergy_b": "+9% Energy output while stored Energy \u2265 1.82M.",
-    "synergy_a_data": {
-      "type": "per_building",
-      "target_identifier": "07-02",
-      "bonus_percent": 8
-    },
-    "synergy_b_data": {
-      "type": "stored_resource",
-      "resource": "E",
-      "threshold": 1817528.22,
-      "bonus_percent": 9
-    },
-    "unique_upgrade": "Waterworks Hub \u2014 Resource Reclaimer: refunds 5% of cost on purchase."
-  },
-  {
-    "identifier": "07-04",
-    "name": "Crop Rotation Fields",
-    "era": "Renaissance",
-    "era_index": 7,
+    "identifier": "B04",
+    "name": "Food Operation",
+    "era": "Dashboard",
+    "era_index": 1,
     "index_in_era": 4,
     "tags": [
       "F"
     ],
-    "base_rate": 243.799622,
-    "base_cost": 4517248,
-    "growth": 1.15,
+    "base_rate": 0.2102,
+    "base_cost": 34,
+    "growth": 1.204,
     "cost_shares": {
-      "F": 0.5,
-      "W": 0.5
+      "F": 1.0
     },
-    "synergy_a": "+10% output per Waterworks Hub owned.",
-    "synergy_b": "+12% Food output while stored Food \u2265 2.03M.",
+    "prestige_names": [
+      "Garden",
+      "Farm",
+      "Agri-District",
+      "Hydroponic Grid",
+      "Biosphere"
+    ],
+    "synergy_a": "+8% output per level in Stone Operation.",
+    "synergy_b": "+18% output while stored Food reaches this module's calibration threshold.",
     "synergy_a_data": {
       "type": "per_building",
-      "target_identifier": "07-03",
-      "bonus_percent": 10
+      "target_identifier": "B03",
+      "bonus_percent": 8
     },
     "synergy_b_data": {
       "type": "stored_resource",
       "resource": "F",
-      "threshold": 2032761.82,
-      "bonus_percent": 12
+      "threshold": 18.7,
+      "bonus_percent": 18
     },
-    "unique_upgrade": "Crop Rotation Fields \u2014 Synergy Amplifier: synergy bonuses +50%."
+    "unique_upgrade": "Every 5 levels triggers prestige: the module evolves, doubles output, and strengthens its active boost profile."
   },
   {
-    "identifier": "07-05",
-    "name": "Townhouses",
-    "era": "Renaissance",
-    "era_index": 7,
+    "identifier": "B05",
+    "name": "Energy Operation",
+    "era": "Dashboard",
+    "era_index": 1,
     "index_in_era": 5,
-    "tags": [
-      "P"
-    ],
-    "base_rate": 269.92101,
-    "base_cost": 4995545,
-    "growth": 1.15,
-    "cost_shares": {
-      "F": 0.3333,
-      "W": 0.3333,
-      "S": 0.3333
-    },
-    "synergy_a": "+4% output per Crop Rotation Fields owned.",
-    "synergy_b": "+15% Population output while stored Population \u2265 2.25M.",
-    "synergy_a_data": {
-      "type": "per_building",
-      "target_identifier": "07-04",
-      "bonus_percent": 4
-    },
-    "synergy_b_data": {
-      "type": "stored_resource",
-      "resource": "P",
-      "threshold": 2247995.43,
-      "bonus_percent": 15
-    },
-    "unique_upgrade": "Townhouses \u2014 Efficiency Protocols: growth reduced by 0.02 (min 1.05)."
-  },
-  {
-    "identifier": "08-01",
-    "name": "Saw Mill Complex",
-    "era": "Early Industrial",
-    "era_index": 8,
-    "index_in_era": 1,
-    "tags": [
-      "W"
-    ],
-    "base_rate": 642.586146,
-    "base_cost": 28697814,
-    "growth": 1.15,
-    "cost_shares": {
-      "W": 0.25,
-      "S": 0.25,
-      "F": 0.25,
-      "E": 0.25
-    },
-    "synergy_a": "+4% output per Tenement Block owned.",
-    "synergy_b": "+3% Wood output while stored Wood \u2265 12.91M.",
-    "synergy_a_data": {
-      "type": "per_building",
-      "target_identifier": "08-05",
-      "bonus_percent": 4
-    },
-    "synergy_b_data": {
-      "type": "stored_resource",
-      "resource": "W",
-      "threshold": 12914016.3,
-      "bonus_percent": 3
-    },
-    "unique_upgrade": "Saw Mill Complex \u2014 Reinforced Framework: doubles base output."
-  },
-  {
-    "identifier": "08-02",
-    "name": "Blast Quarry",
-    "era": "Early Industrial",
-    "era_index": 8,
-    "index_in_era": 2,
-    "tags": [
-      "S"
-    ],
-    "base_rate": 705.277477,
-    "base_cost": 32524189,
-    "growth": 1.15,
-    "cost_shares": {
-      "S": 0.5,
-      "W": 0.5
-    },
-    "synergy_a": "+6% output per Saw Mill Complex owned.",
-    "synergy_b": "+6% Stone output while stored Stone \u2265 14.64M.",
-    "synergy_a_data": {
-      "type": "per_building",
-      "target_identifier": "08-01",
-      "bonus_percent": 6
-    },
-    "synergy_b_data": {
-      "type": "stored_resource",
-      "resource": "S",
-      "threshold": 14635885.14,
-      "bonus_percent": 6
-    },
-    "unique_upgrade": "Blast Quarry \u2014 Optimized Labor Flow: +50% output while automated."
-  },
-  {
-    "identifier": "08-03",
-    "name": "Steam Engine House",
-    "era": "Early Industrial",
-    "era_index": 8,
-    "index_in_era": 3,
     "tags": [
       "E"
     ],
-    "base_rate": 783.641641,
-    "base_cost": 36350564,
-    "growth": 1.15,
+    "base_rate": 0.2901,
+    "base_cost": 55,
+    "growth": 1.21,
+    "cost_shares": {
+      "W": 0.55,
+      "S": 0.45
+    },
+    "prestige_names": [
+      "Fire Pit",
+      "Generator",
+      "Power Plant",
+      "Fusion Grid",
+      "Dyson Relay"
+    ],
+    "synergy_a": "+9% output per level in Food Operation.",
+    "synergy_b": "+6% output while stored Energy reaches this module's calibration threshold.",
+    "synergy_a_data": {
+      "type": "per_building",
+      "target_identifier": "B04",
+      "bonus_percent": 9
+    },
+    "synergy_b_data": {
+      "type": "stored_resource",
+      "resource": "E",
+      "threshold": 30.25,
+      "bonus_percent": 6
+    },
+    "unique_upgrade": "Every 5 levels triggers prestige: the module evolves, doubles output, and strengthens its active boost profile."
+  },
+  {
+    "identifier": "B06",
+    "name": "Workshop",
+    "era": "Dashboard",
+    "era_index": 1,
+    "index_in_era": 6,
+    "tags": [
+      "W",
+      "S"
+    ],
+    "base_rate": 0.4725,
+    "base_cost": 89,
+    "growth": 1.216,
     "cost_shares": {
       "W": 0.5,
       "S": 0.5
     },
-    "synergy_a": "+8% output per Blast Quarry owned.",
-    "synergy_b": "+9% Energy output while stored Energy \u2265 16.36M.",
-    "synergy_a_data": {
-      "type": "per_building",
-      "target_identifier": "08-02",
-      "bonus_percent": 8
-    },
-    "synergy_b_data": {
-      "type": "stored_resource",
-      "resource": "E",
-      "threshold": 16357753.98,
-      "bonus_percent": 9
-    },
-    "unique_upgrade": "Steam Engine House \u2014 Resource Reclaimer: refunds 5% of cost on purchase."
-  },
-  {
-    "identifier": "08-04",
-    "name": "Grain Elevator",
-    "era": "Early Industrial",
-    "era_index": 8,
-    "index_in_era": 4,
-    "tags": [
-      "F"
+    "prestige_names": [
+      "Tool Bench",
+      "Workshop",
+      "Factory",
+      "Automated Foundry",
+      "Matter Printer"
     ],
-    "base_rate": 877.678638,
-    "base_cost": 40655236,
-    "growth": 1.15,
-    "cost_shares": {
-      "F": 0.5,
-      "W": 0.5
-    },
-    "synergy_a": "+10% output per Steam Engine House owned.",
-    "synergy_b": "+12% Food output while stored Food \u2265 18.29M.",
+    "synergy_a": "+4% output per level in Energy Operation.",
+    "synergy_b": "+9% output while stored Wood reaches this module's calibration threshold.",
     "synergy_a_data": {
       "type": "per_building",
-      "target_identifier": "08-03",
-      "bonus_percent": 10
-    },
-    "synergy_b_data": {
-      "type": "stored_resource",
-      "resource": "F",
-      "threshold": 18294856.43,
-      "bonus_percent": 12
-    },
-    "unique_upgrade": "Grain Elevator \u2014 Synergy Amplifier: synergy bonuses +50%."
-  },
-  {
-    "identifier": "08-05",
-    "name": "Tenement Block",
-    "era": "Early Industrial",
-    "era_index": 8,
-    "index_in_era": 5,
-    "tags": [
-      "P"
-    ],
-    "base_rate": 971.715635,
-    "base_cost": 44959909,
-    "growth": 1.15,
-    "cost_shares": {
-      "F": 0.3333,
-      "W": 0.3333,
-      "S": 0.3333
-    },
-    "synergy_a": "+4% output per Grain Elevator owned.",
-    "synergy_b": "+15% Population output while stored Population \u2265 20.23M.",
-    "synergy_a_data": {
-      "type": "per_building",
-      "target_identifier": "08-04",
-      "bonus_percent": 4
-    },
-    "synergy_b_data": {
-      "type": "stored_resource",
-      "resource": "P",
-      "threshold": 20231958.87,
-      "bonus_percent": 15
-    },
-    "unique_upgrade": "Tenement Block \u2014 Efficiency Protocols: growth reduced by 0.02 (min 1.05)."
-  },
-  {
-    "identifier": "09-01",
-    "name": "Managed Lumber Farm",
-    "era": "Electrical/Modernizing",
-    "era_index": 9,
-    "index_in_era": 1,
-    "tags": [
-      "W"
-    ],
-    "base_rate": 2313.310124,
-    "base_cost": 258280326,
-    "growth": 1.16,
-    "cost_shares": {
-      "W": 0.25,
-      "S": 0.25,
-      "F": 0.25,
-      "E": 0.25
-    },
-    "synergy_a": "+4% output per Suburban Tract owned.",
-    "synergy_b": "+3% Wood output while stored Wood \u2265 116.23M.",
-    "synergy_a_data": {
-      "type": "per_building",
-      "target_identifier": "09-05",
+      "target_identifier": "B05",
       "bonus_percent": 4
     },
     "synergy_b_data": {
       "type": "stored_resource",
       "resource": "W",
-      "threshold": 116226146.7,
-      "bonus_percent": 3
-    },
-    "unique_upgrade": "Managed Lumber Farm \u2014 Reinforced Framework: doubles base output."
-  },
-  {
-    "identifier": "09-02",
-    "name": "Aggregate Crusher",
-    "era": "Electrical/Modernizing",
-    "era_index": 9,
-    "index_in_era": 2,
-    "tags": [
-      "S"
-    ],
-    "base_rate": 2538.998917,
-    "base_cost": 292717703,
-    "growth": 1.16,
-    "cost_shares": {
-      "S": 0.5,
-      "W": 0.5
-    },
-    "synergy_a": "+6% output per Managed Lumber Farm owned.",
-    "synergy_b": "+6% Stone output while stored Stone \u2265 131.72M.",
-    "synergy_a_data": {
-      "type": "per_building",
-      "target_identifier": "09-01",
-      "bonus_percent": 6
-    },
-    "synergy_b_data": {
-      "type": "stored_resource",
-      "resource": "S",
-      "threshold": 131722966.26,
-      "bonus_percent": 6
-    },
-    "unique_upgrade": "Aggregate Crusher \u2014 Optimized Labor Flow: +50% output while automated."
-  },
-  {
-    "identifier": "09-03",
-    "name": "Thermal Power Plant",
-    "era": "Electrical/Modernizing",
-    "era_index": 9,
-    "index_in_era": 3,
-    "tags": [
-      "E"
-    ],
-    "base_rate": 2821.109907,
-    "base_cost": 327155080,
-    "growth": 1.16,
-    "cost_shares": {
-      "S": 0.5,
-      "W": 0.5
-    },
-    "synergy_a": "+8% output per Aggregate Crusher owned.",
-    "synergy_b": "+9% Energy output while stored Energy \u2265 147.22M.",
-    "synergy_a_data": {
-      "type": "per_building",
-      "target_identifier": "09-02",
-      "bonus_percent": 8
-    },
-    "synergy_b_data": {
-      "type": "stored_resource",
-      "resource": "E",
-      "threshold": 147219785.82,
+      "threshold": 48.95,
       "bonus_percent": 9
     },
-    "unique_upgrade": "Thermal Power Plant \u2014 Resource Reclaimer: refunds 5% of cost on purchase."
+    "unique_upgrade": "Every 5 levels triggers prestige: the module evolves, doubles output, and strengthens its active boost profile."
   },
   {
-    "identifier": "09-04",
-    "name": "Industrial Farms",
-    "era": "Electrical/Modernizing",
-    "era_index": 9,
-    "index_in_era": 4,
+    "identifier": "B07",
+    "name": "Storehouse",
+    "era": "Dashboard",
+    "era_index": 1,
+    "index_in_era": 7,
     "tags": [
+      "W",
       "F"
     ],
-    "base_rate": 3159.643096,
-    "base_cost": 365897128,
-    "growth": 1.16,
-    "cost_shares": {
-      "F": 0.5,
-      "W": 0.5
-    },
-    "synergy_a": "+10% output per Thermal Power Plant owned.",
-    "synergy_b": "+12% Food output while stored Food \u2265 164.65M.",
-    "synergy_a_data": {
-      "type": "per_building",
-      "target_identifier": "09-03",
-      "bonus_percent": 10
-    },
-    "synergy_b_data": {
-      "type": "stored_resource",
-      "resource": "F",
-      "threshold": 164653707.83,
-      "bonus_percent": 12
-    },
-    "unique_upgrade": "Industrial Farms \u2014 Synergy Amplifier: synergy bonuses +50%."
-  },
-  {
-    "identifier": "09-05",
-    "name": "Suburban Tract",
-    "era": "Electrical/Modernizing",
-    "era_index": 9,
-    "index_in_era": 5,
-    "tags": [
-      "P"
-    ],
-    "base_rate": 3498.176285,
-    "base_cost": 404639177,
-    "growth": 1.16,
-    "cost_shares": {
-      "F": 0.3333,
-      "W": 0.3333,
-      "S": 0.3333
-    },
-    "synergy_a": "+4% output per Industrial Farms owned.",
-    "synergy_b": "+15% Population output while stored Population \u2265 182.09M.",
-    "synergy_a_data": {
-      "type": "per_building",
-      "target_identifier": "09-04",
-      "bonus_percent": 4
-    },
-    "synergy_b_data": {
-      "type": "stored_resource",
-      "resource": "P",
-      "threshold": 182087629.83,
-      "bonus_percent": 15
-    },
-    "unique_upgrade": "Suburban Tract \u2014 Efficiency Protocols: growth reduced by 0.02 (min 1.05)."
-  },
-  {
-    "identifier": "10-01",
-    "name": "Particle Board Works",
-    "era": "Atomic/Space Dawn",
-    "era_index": 10,
-    "index_in_era": 1,
-    "tags": [
-      "W"
-    ],
-    "base_rate": 8327.916447,
-    "base_cost": 2324522934,
-    "growth": 1.16,
-    "cost_shares": {
-      "W": 0.25,
-      "S": 0.25,
-      "F": 0.25,
-      "E": 0.25
-    },
-    "synergy_a": "+4% output per Space Habitat owned.",
-    "synergy_b": "+3% Wood output while stored Wood \u2265 1.05B.",
-    "synergy_a_data": {
-      "type": "per_building",
-      "target_identifier": "10-05",
-      "bonus_percent": 4
-    },
-    "synergy_b_data": {
-      "type": "stored_resource",
-      "resource": "W",
-      "threshold": 1046035320.3,
-      "bonus_percent": 3
-    },
-    "unique_upgrade": "Particle Board Works \u2014 Reinforced Framework: doubles base output."
-  },
-  {
-    "identifier": "10-02",
-    "name": "Basalt Mill",
-    "era": "Atomic/Space Dawn",
-    "era_index": 10,
-    "index_in_era": 2,
-    "tags": [
-      "S"
-    ],
-    "base_rate": 9140.3961,
-    "base_cost": 2634459325,
-    "growth": 1.16,
-    "cost_shares": {
-      "S": 0.5,
-      "W": 0.5
-    },
-    "synergy_a": "+6% output per Particle Board Works owned.",
-    "synergy_b": "+6% Stone output while stored Stone \u2265 1.19B.",
-    "synergy_a_data": {
-      "type": "per_building",
-      "target_identifier": "10-01",
-      "bonus_percent": 6
-    },
-    "synergy_b_data": {
-      "type": "stored_resource",
-      "resource": "S",
-      "threshold": 1185506696.34,
-      "bonus_percent": 6
-    },
-    "unique_upgrade": "Basalt Mill \u2014 Optimized Labor Flow: +50% output while automated."
-  },
-  {
-    "identifier": "10-03",
-    "name": "Nuclear Fission Plant",
-    "era": "Atomic/Space Dawn",
-    "era_index": 10,
-    "index_in_era": 3,
-    "tags": [
-      "E"
-    ],
-    "base_rate": 10155.995667,
-    "base_cost": 2944395716,
-    "growth": 1.16,
+    "base_rate": 0.652,
+    "base_cost": 145,
+    "growth": 1.222,
     "cost_shares": {
       "W": 0.5,
-      "S": 0.5
+      "F": 0.5
     },
-    "synergy_a": "+8% output per Basalt Mill owned.",
-    "synergy_b": "+9% Energy output while stored Energy \u2265 1.32B.",
+    "prestige_names": [
+      "Storehouse",
+      "Depot",
+      "Logistics Hub",
+      "Continental Port",
+      "Orbital Warehouse"
+    ],
+    "synergy_a": "+5% output per level in Workshop.",
+    "synergy_b": "+12% output while stored Wood reaches this module's calibration threshold.",
     "synergy_a_data": {
       "type": "per_building",
-      "target_identifier": "10-02",
-      "bonus_percent": 8
+      "target_identifier": "B06",
+      "bonus_percent": 5
     },
     "synergy_b_data": {
       "type": "stored_resource",
-      "resource": "E",
-      "threshold": 1324978072.38,
-      "bonus_percent": 9
+      "resource": "W",
+      "threshold": 79.75,
+      "bonus_percent": 12
     },
-    "unique_upgrade": "Nuclear Fission Plant \u2014 Resource Reclaimer: refunds 5% of cost on purchase."
+    "unique_upgrade": "Every 5 levels triggers prestige: the module evolves, doubles output, and strengthens its active boost profile."
   },
   {
-    "identifier": "10-04",
-    "name": "Nutrient Plant",
-    "era": "Atomic/Space Dawn",
-    "era_index": 10,
-    "index_in_era": 4,
+    "identifier": "B08",
+    "name": "Waterworks",
+    "era": "Dashboard",
+    "era_index": 1,
+    "index_in_era": 8,
     "tags": [
-      "F"
+      "F",
+      "E"
     ],
-    "base_rate": 11374.715147,
-    "base_cost": 3293074156,
-    "growth": 1.16,
+    "base_rate": 0.8998,
+    "base_cost": 234,
+    "growth": 1.228,
     "cost_shares": {
       "F": 0.5,
-      "W": 0.5
+      "W": 0.275,
+      "S": 0.225
     },
-    "synergy_a": "+10% output per Nuclear Fission Plant owned.",
-    "synergy_b": "+12% Food output while stored Food \u2265 1.48B.",
+    "prestige_names": [
+      "Well",
+      "Canal",
+      "Aqueduct",
+      "Pumping Network",
+      "Atmospheric Condenser"
+    ],
+    "synergy_a": "+6% output per level in Storehouse.",
+    "synergy_b": "+15% output while stored Food reaches this module's calibration threshold.",
     "synergy_a_data": {
       "type": "per_building",
-      "target_identifier": "10-03",
-      "bonus_percent": 10
+      "target_identifier": "B07",
+      "bonus_percent": 6
     },
     "synergy_b_data": {
       "type": "stored_resource",
       "resource": "F",
-      "threshold": 1481883370.42,
-      "bonus_percent": 12
+      "threshold": 128.7,
+      "bonus_percent": 15
     },
-    "unique_upgrade": "Nutrient Plant \u2014 Synergy Amplifier: synergy bonuses +50%."
+    "unique_upgrade": "Every 5 levels triggers prestige: the module evolves, doubles output, and strengthens its active boost profile."
   },
   {
-    "identifier": "10-05",
-    "name": "Space Habitat",
-    "era": "Atomic/Space Dawn",
-    "era_index": 10,
-    "index_in_era": 5,
+    "identifier": "B09",
+    "name": "Market",
+    "era": "Dashboard",
+    "era_index": 1,
+    "index_in_era": 9,
     "tags": [
-      "P"
+      "P",
+      "F"
     ],
-    "base_rate": 12593.434627,
-    "base_cost": 3641752597,
-    "growth": 1.16,
+    "base_rate": 1.2417,
+    "base_cost": 379,
+    "growth": 1.234,
     "cost_shares": {
-      "F": 0.3333,
-      "W": 0.3333,
-      "S": 0.3333
+      "F": 1.0
     },
-    "synergy_a": "+4% output per Nutrient Plant owned.",
-    "synergy_b": "+15% Population output while stored Population \u2265 1.64B.",
+    "prestige_names": [
+      "Market Stall",
+      "Market",
+      "Trade Exchange",
+      "Global Bazaar",
+      "Interstellar Exchange"
+    ],
+    "synergy_a": "+7% output per level in Waterworks.",
+    "synergy_b": "+18% output while stored Population reaches this module's calibration threshold.",
     "synergy_a_data": {
       "type": "per_building",
-      "target_identifier": "10-04",
-      "bonus_percent": 4
+      "target_identifier": "B08",
+      "bonus_percent": 7
     },
     "synergy_b_data": {
       "type": "stored_resource",
       "resource": "P",
-      "threshold": 1638788668.47,
-      "bonus_percent": 15
+      "threshold": 208.45,
+      "bonus_percent": 18
     },
-    "unique_upgrade": "Space Habitat \u2014 Efficiency Protocols: growth reduced by 0.02 (min 1.05)."
+    "unique_upgrade": "Every 5 levels triggers prestige: the module evolves, doubles output, and strengthens its active boost profile."
   },
   {
-    "identifier": "11-01",
-    "name": "Orbital Lumber Foundry",
-    "era": "Early Spacefaring",
-    "era_index": 11,
-    "index_in_era": 1,
+    "identifier": "B10",
+    "name": "Barracks",
+    "era": "Dashboard",
+    "era_index": 1,
+    "index_in_era": 10,
     "tags": [
-      "W"
+      "S",
+      "P"
     ],
-    "base_rate": 29980.499209,
-    "base_cost": 20920706406,
-    "growth": 1.17,
+    "base_rate": 1.7135,
+    "base_cost": 615,
+    "growth": 1.24,
     "cost_shares": {
-      "W": 0.2,
-      "S": 0.2,
-      "F": 0.2,
-      "E": 0.2,
-      "P": 0.2
+      "S": 0.5,
+      "F": 0.5
     },
-    "synergy_a": "+4% output per LEO Habitat Stack owned.",
-    "synergy_b": "+3% Wood output while stored Wood \u2265 9.41B.",
+    "prestige_names": [
+      "Watch Hut",
+      "Barracks",
+      "Fortress",
+      "Defense Grid",
+      "Planetary Shield"
+    ],
+    "synergy_a": "+8% output per level in Market.",
+    "synergy_b": "+6% output while stored Stone reaches this module's calibration threshold.",
     "synergy_a_data": {
       "type": "per_building",
-      "target_identifier": "11-05",
+      "target_identifier": "B09",
+      "bonus_percent": 8
+    },
+    "synergy_b_data": {
+      "type": "stored_resource",
+      "resource": "S",
+      "threshold": 338.25,
+      "bonus_percent": 6
+    },
+    "unique_upgrade": "Every 5 levels triggers prestige: the module evolves, doubles output, and strengthens its active boost profile."
+  },
+  {
+    "identifier": "B11",
+    "name": "School",
+    "era": "Dashboard",
+    "era_index": 1,
+    "index_in_era": 11,
+    "tags": [
+      "P",
+      "E"
+    ],
+    "base_rate": 2.3646,
+    "base_cost": 996,
+    "growth": 1.246,
+    "cost_shares": {
+      "F": 0.5,
+      "W": 0.275,
+      "S": 0.225
+    },
+    "prestige_names": [
+      "Tutor Hut",
+      "School",
+      "Academy",
+      "Research Campus",
+      "Cognition Core"
+    ],
+    "synergy_a": "+9% output per level in Barracks.",
+    "synergy_b": "+9% output while stored Population reaches this module's calibration threshold.",
+    "synergy_a_data": {
+      "type": "per_building",
+      "target_identifier": "B10",
+      "bonus_percent": 9
+    },
+    "synergy_b_data": {
+      "type": "stored_resource",
+      "resource": "P",
+      "threshold": 547.8,
+      "bonus_percent": 9
+    },
+    "unique_upgrade": "Every 5 levels triggers prestige: the module evolves, doubles output, and strengthens its active boost profile."
+  },
+  {
+    "identifier": "B12",
+    "name": "Road Network",
+    "era": "Dashboard",
+    "era_index": 1,
+    "index_in_era": 12,
+    "tags": [
+      "W",
+      "S",
+      "P"
+    ],
+    "base_rate": 3.761,
+    "base_cost": 1613,
+    "growth": 1.252,
+    "cost_shares": {
+      "W": 0.333,
+      "S": 0.333,
+      "F": 0.333
+    },
+    "prestige_names": [
+      "Trail",
+      "Road",
+      "Highway",
+      "Maglev Spine",
+      "Orbital Transit"
+    ],
+    "synergy_a": "+4% output per level in School.",
+    "synergy_b": "+12% output while stored Wood reaches this module's calibration threshold.",
+    "synergy_a_data": {
+      "type": "per_building",
+      "target_identifier": "B11",
       "bonus_percent": 4
     },
     "synergy_b_data": {
       "type": "stored_resource",
       "resource": "W",
-      "threshold": 9414317882.7,
-      "bonus_percent": 3
+      "threshold": 887.15,
+      "bonus_percent": 12
     },
-    "unique_upgrade": "Orbital Lumber Foundry \u2014 Reinforced Framework: doubles base output."
+    "unique_upgrade": "Every 5 levels triggers prestige: the module evolves, doubles output, and strengthens its active boost profile."
   },
   {
-    "identifier": "11-02",
-    "name": "Lunar Quarry",
-    "era": "Early Spacefaring",
-    "era_index": 11,
-    "index_in_era": 2,
+    "identifier": "B13",
+    "name": "Mine",
+    "era": "Dashboard",
+    "era_index": 1,
+    "index_in_era": 13,
     "tags": [
-      "S"
+      "S",
+      "E"
     ],
-    "base_rate": 32905.425961,
-    "base_cost": 23710133927,
-    "growth": 1.17,
+    "base_rate": 4.5032,
+    "base_cost": 2614,
+    "growth": 1.258,
     "cost_shares": {
-      "S": 0.5,
-      "W": 0.5
+      "S": 0.725,
+      "W": 0.275
     },
-    "synergy_a": "+6% output per Orbital Lumber Foundry owned.",
-    "synergy_b": "+6% Stone output while stored Stone \u2265 10.67B.",
+    "prestige_names": [
+      "Surface Mine",
+      "Deep Mine",
+      "Strip Mine",
+      "Core Bore",
+      "Asteroid Mine"
+    ],
+    "synergy_a": "+5% output per level in Road Network.",
+    "synergy_b": "+15% output while stored Stone reaches this module's calibration threshold.",
     "synergy_a_data": {
       "type": "per_building",
-      "target_identifier": "11-01",
-      "bonus_percent": 6
+      "target_identifier": "B12",
+      "bonus_percent": 5
     },
     "synergy_b_data": {
       "type": "stored_resource",
       "resource": "S",
-      "threshold": 10669560267.06,
-      "bonus_percent": 6
-    },
-    "unique_upgrade": "Lunar Quarry \u2014 Optimized Labor Flow: +50% output while automated."
-  },
-  {
-    "identifier": "11-03",
-    "name": "Helium-3 Plant",
-    "era": "Early Spacefaring",
-    "era_index": 11,
-    "index_in_era": 3,
-    "tags": [
-      "E"
-    ],
-    "base_rate": 36561.584401,
-    "base_cost": 26499561448,
-    "growth": 1.17,
-    "cost_shares": {
-      "S": 0.5,
-      "W": 0.5
-    },
-    "synergy_a": "+8% output per Lunar Quarry owned.",
-    "synergy_b": "+9% Energy output while stored Energy \u2265 11.92B.",
-    "synergy_a_data": {
-      "type": "per_building",
-      "target_identifier": "11-02",
-      "bonus_percent": 8
-    },
-    "synergy_b_data": {
-      "type": "stored_resource",
-      "resource": "E",
-      "threshold": 11924802651.42,
-      "bonus_percent": 9
-    },
-    "unique_upgrade": "Helium-3 Plant \u2014 Resource Reclaimer: refunds 5% of cost on purchase."
-  },
-  {
-    "identifier": "11-04",
-    "name": "Comet Greenhouses",
-    "era": "Early Spacefaring",
-    "era_index": 11,
-    "index_in_era": 4,
-    "tags": [
-      "F"
-    ],
-    "base_rate": 40948.974529,
-    "base_cost": 29637667408,
-    "growth": 1.17,
-    "cost_shares": {
-      "F": 0.3333,
-      "W": 0.3333,
-      "S": 0.3333
-    },
-    "synergy_a": "+10% output per Helium-3 Plant owned.",
-    "synergy_b": "+12% Food output while stored Food \u2265 13.34B.",
-    "synergy_a_data": {
-      "type": "per_building",
-      "target_identifier": "11-03",
-      "bonus_percent": 10
-    },
-    "synergy_b_data": {
-      "type": "stored_resource",
-      "resource": "F",
-      "threshold": 13336950333.83,
-      "bonus_percent": 12
-    },
-    "unique_upgrade": "Comet Greenhouses \u2014 Synergy Amplifier: synergy bonuses +50%."
-  },
-  {
-    "identifier": "11-05",
-    "name": "LEO Habitat Stack",
-    "era": "Early Spacefaring",
-    "era_index": 11,
-    "index_in_era": 5,
-    "tags": [
-      "P"
-    ],
-    "base_rate": 45336.364657,
-    "base_cost": 32775773369,
-    "growth": 1.17,
-    "cost_shares": {
-      "F": 0.5,
-      "W": 0.5
-    },
-    "synergy_a": "+4% output per Comet Greenhouses owned.",
-    "synergy_b": "+15% Population output while stored Population \u2265 14.75B.",
-    "synergy_a_data": {
-      "type": "per_building",
-      "target_identifier": "11-04",
-      "bonus_percent": 4
-    },
-    "synergy_b_data": {
-      "type": "stored_resource",
-      "resource": "P",
-      "threshold": 14749098016.23,
+      "threshold": 1437.7,
       "bonus_percent": 15
     },
-    "unique_upgrade": "LEO Habitat Stack \u2014 Efficiency Protocols: growth reduced by 0.02 (min 1.05)."
+    "unique_upgrade": "Every 5 levels triggers prestige: the module evolves, doubles output, and strengthens its active boost profile."
   },
   {
-    "identifier": "12-01",
-    "name": "Mars Lichen Farms",
-    "era": "Interplanetary",
-    "era_index": 12,
-    "index_in_era": 1,
+    "identifier": "B14",
+    "name": "Harbor",
+    "era": "Dashboard",
+    "era_index": 1,
+    "index_in_era": 14,
     "tags": [
-      "F"
-    ],
-    "base_rate": 107929.797151,
-    "base_cost": 188286357654,
-    "growth": 1.17,
-    "cost_shares": {
-      "F": 0.2,
-      "W": 0.2,
-      "S": 0.2,
-      "E": 0.2,
-      "P": 0.2
-    },
-    "synergy_a": "+4% output per Space Timber Polymers owned.",
-    "synergy_b": "+3% Food output while stored Food \u2265 84.73B.",
-    "synergy_a_data": {
-      "type": "per_building",
-      "target_identifier": "12-05",
-      "bonus_percent": 4
-    },
-    "synergy_b_data": {
-      "type": "stored_resource",
-      "resource": "F",
-      "threshold": 84728860944.3,
-      "bonus_percent": 3
-    },
-    "unique_upgrade": "Mars Lichen Farms \u2014 Reinforced Framework: doubles base output."
-  },
-  {
-    "identifier": "12-02",
-    "name": "Phobos Regolith Press",
-    "era": "Interplanetary",
-    "era_index": 12,
-    "index_in_era": 2,
-    "tags": [
-      "S"
-    ],
-    "base_rate": 118459.533458,
-    "base_cost": 213391205341,
-    "growth": 1.17,
-    "cost_shares": {
-      "S": 0.5,
-      "W": 0.5
-    },
-    "synergy_a": "+6% output per Mars Lichen Farms owned.",
-    "synergy_b": "+6% Stone output while stored Stone \u2265 96.03B.",
-    "synergy_a_data": {
-      "type": "per_building",
-      "target_identifier": "12-01",
-      "bonus_percent": 6
-    },
-    "synergy_b_data": {
-      "type": "stored_resource",
-      "resource": "S",
-      "threshold": 96026042403.54,
-      "bonus_percent": 6
-    },
-    "unique_upgrade": "Phobos Regolith Press \u2014 Optimized Labor Flow: +50% output while automated."
-  },
-  {
-    "identifier": "12-03",
-    "name": "Orbital Fusion Grid",
-    "era": "Interplanetary",
-    "era_index": 12,
-    "index_in_era": 3,
-    "tags": [
-      "E"
-    ],
-    "base_rate": 131621.703842,
-    "base_cost": 238496053028,
-    "growth": 1.17,
-    "cost_shares": {
-      "W": 0.5,
-      "S": 0.5
-    },
-    "synergy_a": "+8% output per Phobos Regolith Press owned.",
-    "synergy_b": "+9% Energy output while stored Energy \u2265 107.32B.",
-    "synergy_a_data": {
-      "type": "per_building",
-      "target_identifier": "12-02",
-      "bonus_percent": 8
-    },
-    "synergy_b_data": {
-      "type": "stored_resource",
-      "resource": "E",
-      "threshold": 107323223862.78,
-      "bonus_percent": 9
-    },
-    "unique_upgrade": "Orbital Fusion Grid \u2014 Resource Reclaimer: refunds 5% of cost on purchase."
-  },
-  {
-    "identifier": "12-04",
-    "name": "Mars Dome",
-    "era": "Interplanetary",
-    "era_index": 12,
-    "index_in_era": 4,
-    "tags": [
+      "W",
+      "F",
       "P"
     ],
-    "base_rate": 147416.308303,
-    "base_cost": 266739006676,
-    "growth": 1.17,
+    "base_rate": 7.1624,
+    "base_cost": 4234,
+    "growth": 1.264,
     "cost_shares": {
-      "F": 0.3333,
-      "W": 0.3333,
-      "S": 0.3333
+      "W": 0.333,
+      "F": 0.667
     },
-    "synergy_a": "+10% output per Orbital Fusion Grid owned.",
-    "synergy_b": "+12% Population output while stored Population \u2265 120.03B.",
-    "synergy_a_data": {
-      "type": "per_building",
-      "target_identifier": "12-03",
-      "bonus_percent": 10
-    },
-    "synergy_b_data": {
-      "type": "stored_resource",
-      "resource": "P",
-      "threshold": 120032553004.43,
-      "bonus_percent": 12
-    },
-    "unique_upgrade": "Mars Dome \u2014 Synergy Amplifier: synergy bonuses +50%."
-  },
-  {
-    "identifier": "12-05",
-    "name": "Space Timber Polymers",
-    "era": "Interplanetary",
-    "era_index": 12,
-    "index_in_era": 5,
-    "tags": [
-      "W"
+    "prestige_names": [
+      "Dock",
+      "Harbor",
+      "Shipyard",
+      "Mega Port",
+      "Starport"
     ],
-    "base_rate": 163210.912764,
-    "base_cost": 294981960325,
-    "growth": 1.17,
-    "cost_shares": {
-      "W": 0.5,
-      "S": 0.5
-    },
-    "synergy_a": "+4% output per Mars Dome owned.",
-    "synergy_b": "+15% Wood output while stored Wood \u2265 132.74B.",
+    "synergy_a": "+6% output per level in Mine.",
+    "synergy_b": "+18% output while stored Wood reaches this module's calibration threshold.",
     "synergy_a_data": {
       "type": "per_building",
-      "target_identifier": "12-04",
-      "bonus_percent": 4
+      "target_identifier": "B13",
+      "bonus_percent": 6
     },
     "synergy_b_data": {
       "type": "stored_resource",
       "resource": "W",
-      "threshold": 132741882146.07,
-      "bonus_percent": 15
+      "threshold": 2328.7,
+      "bonus_percent": 18
     },
-    "unique_upgrade": "Space Timber Polymers \u2014 Efficiency Protocols: growth reduced by 0.02 (min 1.05)."
+    "unique_upgrade": "Every 5 levels triggers prestige: the module evolves, doubles output, and strengthens its active boost profile."
   },
   {
-    "identifier": "13-01",
-    "name": "Interstellar Timber Forge",
-    "era": "Interstellar",
-    "era_index": 13,
-    "index_in_era": 1,
+    "identifier": "B15",
+    "name": "Temple",
+    "era": "Dashboard",
+    "era_index": 1,
+    "index_in_era": 15,
     "tags": [
-      "W"
+      "P"
     ],
-    "base_rate": 388547.269742,
-    "base_cost": 1694577218886,
-    "growth": 1.18,
+    "base_rate": 7.2677,
+    "base_cost": 6860,
+    "growth": 1.27,
     "cost_shares": {
-      "W": 0.2,
-      "S": 0.2,
-      "F": 0.2,
-      "E": 0.2,
-      "P": 0.2
+      "F": 1.0
     },
-    "synergy_a": "+4% output per Generation Ark owned.",
-    "synergy_b": "+3% Wood output while stored Wood \u2265 762.56B.",
+    "prestige_names": [
+      "Shrine",
+      "Temple",
+      "Cathedral",
+      "Civic Monument",
+      "Unity Beacon"
+    ],
+    "synergy_a": "+7% output per level in Harbor.",
+    "synergy_b": "+6% output while stored Population reaches this module's calibration threshold.",
     "synergy_a_data": {
       "type": "per_building",
-      "target_identifier": "13-05",
-      "bonus_percent": 4
+      "target_identifier": "B14",
+      "bonus_percent": 7
     },
     "synergy_b_data": {
       "type": "stored_resource",
-      "resource": "W",
-      "threshold": 762559748498.7,
-      "bonus_percent": 3
-    },
-    "unique_upgrade": "Interstellar Timber Forge \u2014 Reinforced Framework: doubles base output."
-  },
-  {
-    "identifier": "13-02",
-    "name": "Rogue-Planet Quarry",
-    "era": "Interstellar",
-    "era_index": 13,
-    "index_in_era": 2,
-    "tags": [
-      "S"
-    ],
-    "base_rate": 426454.320449,
-    "base_cost": 1920520848071,
-    "growth": 1.18,
-    "cost_shares": {
-      "S": 0.5,
-      "W": 0.5
-    },
-    "synergy_a": "+6% output per Interstellar Timber Forge owned.",
-    "synergy_b": "+6% Stone output while stored Stone \u2265 864.23B.",
-    "synergy_a_data": {
-      "type": "per_building",
-      "target_identifier": "13-01",
+      "resource": "P",
+      "threshold": 3773.0,
       "bonus_percent": 6
     },
-    "synergy_b_data": {
-      "type": "stored_resource",
-      "resource": "S",
-      "threshold": 864234381631.86,
-      "bonus_percent": 6
-    },
-    "unique_upgrade": "Rogue-Planet Quarry \u2014 Optimized Labor Flow: +50% output while automated."
+    "unique_upgrade": "Every 5 levels triggers prestige: the module evolves, doubles output, and strengthens its active boost profile."
   },
   {
-    "identifier": "13-03",
-    "name": "Beam-Rider Power",
-    "era": "Interstellar",
-    "era_index": 13,
-    "index_in_era": 3,
+    "identifier": "B16",
+    "name": "Observatory",
+    "era": "Dashboard",
+    "era_index": 1,
+    "index_in_era": 16,
     "tags": [
-      "E"
+      "E",
+      "P"
     ],
-    "base_rate": 473838.133832,
-    "base_cost": 2146464477256,
-    "growth": 1.18,
+    "base_rate": 11.8347,
+    "base_cost": 11113,
+    "growth": 1.276,
     "cost_shares": {
-      "S": 0.5,
-      "W": 0.5
+      "W": 0.275,
+      "S": 0.225,
+      "F": 0.5
     },
-    "synergy_a": "+8% output per Rogue-Planet Quarry owned.",
-    "synergy_b": "+9% Energy output while stored Energy \u2265 965.91B.",
+    "prestige_names": [
+      "Lookout",
+      "Observatory",
+      "Radio Array",
+      "Deep Space Lab",
+      "Quantum Telescope"
+    ],
+    "synergy_a": "+8% output per level in Temple.",
+    "synergy_b": "+9% output while stored Energy reaches this module's calibration threshold.",
     "synergy_a_data": {
       "type": "per_building",
-      "target_identifier": "13-02",
+      "target_identifier": "B15",
       "bonus_percent": 8
     },
     "synergy_b_data": {
       "type": "stored_resource",
       "resource": "E",
-      "threshold": 965909014765.02,
+      "threshold": 6112.15,
       "bonus_percent": 9
     },
-    "unique_upgrade": "Beam-Rider Power \u2014 Resource Reclaimer: refunds 5% of cost on purchase."
+    "unique_upgrade": "Every 5 levels triggers prestige: the module evolves, doubles output, and strengthens its active boost profile."
   },
   {
-    "identifier": "13-04",
-    "name": "Sleeper-Ship Hydrofarms",
-    "era": "Interstellar",
-    "era_index": 13,
-    "index_in_era": 4,
+    "identifier": "B17",
+    "name": "Laboratory",
+    "era": "Dashboard",
+    "era_index": 1,
+    "index_in_era": 17,
     "tags": [
-      "F"
-    ],
-    "base_rate": 530698.709892,
-    "base_cost": 2400651060088,
-    "growth": 1.18,
-    "cost_shares": {
-      "F": 0.3333,
-      "W": 0.3333,
-      "S": 0.3333
-    },
-    "synergy_a": "+10% output per Beam-Rider Power owned.",
-    "synergy_b": "+12% Food output while stored Food \u2265 1.08T.",
-    "synergy_a_data": {
-      "type": "per_building",
-      "target_identifier": "13-03",
-      "bonus_percent": 10
-    },
-    "synergy_b_data": {
-      "type": "stored_resource",
-      "resource": "F",
-      "threshold": 1080292977039.83,
-      "bonus_percent": 12
-    },
-    "unique_upgrade": "Sleeper-Ship Hydrofarms \u2014 Synergy Amplifier: synergy bonuses +50%."
-  },
-  {
-    "identifier": "13-05",
-    "name": "Generation Ark",
-    "era": "Interstellar",
-    "era_index": 13,
-    "index_in_era": 5,
-    "tags": [
+      "E",
+      "S",
       "P"
     ],
-    "base_rate": 587559.285952,
-    "base_cost": 2654837642921,
-    "growth": 1.18,
+    "base_rate": 18.8232,
+    "base_cost": 18002,
+    "growth": 1.282,
     "cost_shares": {
-      "F": 0.5,
-      "W": 0.5
+      "W": 0.183,
+      "S": 0.483,
+      "F": 0.333
     },
-    "synergy_a": "+4% output per Sleeper-Ship Hydrofarms owned.",
-    "synergy_b": "+15% Population output while stored Population \u2265 1.19T.",
-    "synergy_a_data": {
-      "type": "per_building",
-      "target_identifier": "13-04",
-      "bonus_percent": 4
-    },
-    "synergy_b_data": {
-      "type": "stored_resource",
-      "resource": "P",
-      "threshold": 1194676939314.63,
-      "bonus_percent": 15
-    },
-    "unique_upgrade": "Generation Ark \u2014 Efficiency Protocols: growth reduced by 0.02 (min 1.05)."
-  },
-  {
-    "identifier": "14-01",
-    "name": "Dyson Sail Looms",
-    "era": "Dyson Era",
-    "era_index": 14,
-    "index_in_era": 1,
-    "tags": [
-      "E"
+    "prestige_names": [
+      "Alchemy Table",
+      "Laboratory",
+      "Research Institute",
+      "Nanotech Lab",
+      "Singularity Lab"
     ],
-    "base_rate": 1398770.171073,
-    "base_cost": 15251194969974,
-    "growth": 1.18,
-    "cost_shares": {
-      "W": 0.25,
-      "S": 0.25,
-      "F": 0.25,
-      "P": 0.25
-    },
-    "synergy_a": "+4% output per Swarm Habitat Stack owned.",
-    "synergy_b": "+3% Energy output while stored Energy \u2265 6.86T.",
+    "synergy_a": "+9% output per level in Observatory.",
+    "synergy_b": "+12% output while stored Energy reaches this module's calibration threshold.",
     "synergy_a_data": {
       "type": "per_building",
-      "target_identifier": "14-05",
-      "bonus_percent": 4
+      "target_identifier": "B16",
+      "bonus_percent": 9
     },
     "synergy_b_data": {
       "type": "stored_resource",
       "resource": "E",
-      "threshold": 6863037736488.3,
-      "bonus_percent": 3
-    },
-    "unique_upgrade": "Dyson Sail Looms \u2014 Reinforced Framework: doubles base output."
-  },
-  {
-    "identifier": "14-02",
-    "name": "Heliosheath Miner",
-    "era": "Dyson Era",
-    "era_index": 14,
-    "index_in_era": 2,
-    "tags": [
-      "S"
-    ],
-    "base_rate": 1535235.553616,
-    "base_cost": 17284687632637,
-    "growth": 1.18,
-    "cost_shares": {
-      "S": 0.5,
-      "W": 0.5
-    },
-    "synergy_a": "+6% output per Dyson Sail Looms owned.",
-    "synergy_b": "+6% Stone output while stored Stone \u2265 7.78T.",
-    "synergy_a_data": {
-      "type": "per_building",
-      "target_identifier": "14-01",
-      "bonus_percent": 6
-    },
-    "synergy_b_data": {
-      "type": "stored_resource",
-      "resource": "S",
-      "threshold": 7778109434686.74,
-      "bonus_percent": 6
-    },
-    "unique_upgrade": "Heliosheath Miner \u2014 Optimized Labor Flow: +50% output while automated."
-  },
-  {
-    "identifier": "14-03",
-    "name": "Solar Wood Synth",
-    "era": "Dyson Era",
-    "era_index": 14,
-    "index_in_era": 3,
-    "tags": [
-      "W"
-    ],
-    "base_rate": 1705817.281796,
-    "base_cost": 19318180295300,
-    "growth": 1.18,
-    "cost_shares": {
-      "W": 0.5,
-      "S": 0.5
-    },
-    "synergy_a": "+8% output per Heliosheath Miner owned.",
-    "synergy_b": "+9% Wood output while stored Wood \u2265 8.69T.",
-    "synergy_a_data": {
-      "type": "per_building",
-      "target_identifier": "14-02",
-      "bonus_percent": 8
-    },
-    "synergy_b_data": {
-      "type": "stored_resource",
-      "resource": "W",
-      "threshold": 8693181132885.18,
-      "bonus_percent": 9
-    },
-    "unique_upgrade": "Solar Wood Synth \u2014 Resource Reclaimer: refunds 5% of cost on purchase."
-  },
-  {
-    "identifier": "14-04",
-    "name": "Stellar Orchard",
-    "era": "Dyson Era",
-    "era_index": 14,
-    "index_in_era": 4,
-    "tags": [
-      "F"
-    ],
-    "base_rate": 1910515.355611,
-    "base_cost": 21605859540796,
-    "growth": 1.18,
-    "cost_shares": {
-      "F": 0.3333,
-      "W": 0.3333,
-      "S": 0.3333
-    },
-    "synergy_a": "+10% output per Solar Wood Synth owned.",
-    "synergy_b": "+12% Food output while stored Food \u2265 9.72T.",
-    "synergy_a_data": {
-      "type": "per_building",
-      "target_identifier": "14-03",
-      "bonus_percent": 10
-    },
-    "synergy_b_data": {
-      "type": "stored_resource",
-      "resource": "F",
-      "threshold": 9722636793358.43,
+      "threshold": 9901.1,
       "bonus_percent": 12
     },
-    "unique_upgrade": "Stellar Orchard \u2014 Synergy Amplifier: synergy bonuses +50%."
+    "unique_upgrade": "Every 5 levels triggers prestige: the module evolves, doubles output, and strengthens its active boost profile."
   },
   {
-    "identifier": "14-05",
-    "name": "Swarm Habitat Stack",
-    "era": "Dyson Era",
-    "era_index": 14,
-    "index_in_era": 5,
+    "identifier": "B18",
+    "name": "Habitat Ring",
+    "era": "Dashboard",
+    "era_index": 1,
+    "index_in_era": 18,
     "tags": [
-      "P"
+      "P",
+      "E",
+      "W"
     ],
-    "base_rate": 2115213.429427,
-    "base_cost": 23893538786293,
-    "growth": 1.18,
+    "base_rate": 25.9761,
+    "base_cost": 29164,
+    "growth": 1.288,
     "cost_shares": {
-      "F": 0.5,
-      "W": 0.5
+      "F": 0.333,
+      "W": 0.517,
+      "S": 0.15
     },
-    "synergy_a": "+4% output per Stellar Orchard owned.",
-    "synergy_b": "+15% Population output while stored Population \u2265 10.75T.",
+    "prestige_names": [
+      "Tenement",
+      "Habitat Block",
+      "Habitat Ring",
+      "Orbital City",
+      "Ringworld Segment"
+    ],
+    "synergy_a": "+4% output per level in Laboratory.",
+    "synergy_b": "+15% output while stored Population reaches this module's calibration threshold.",
     "synergy_a_data": {
       "type": "per_building",
-      "target_identifier": "14-04",
+      "target_identifier": "B17",
       "bonus_percent": 4
     },
     "synergy_b_data": {
       "type": "stored_resource",
       "resource": "P",
-      "threshold": 10752092453831.67,
+      "threshold": 16040.2,
       "bonus_percent": 15
     },
-    "unique_upgrade": "Swarm Habitat Stack \u2014 Efficiency Protocols: growth reduced by 0.02 (min 1.05)."
+    "unique_upgrade": "Every 5 levels triggers prestige: the module evolves, doubles output, and strengthens its active boost profile."
   },
   {
-    "identifier": "15-01",
-    "name": "Shell-Layer Foundry",
-    "era": "Matrioshka",
-    "era_index": 15,
-    "index_in_era": 1,
+    "identifier": "B19",
+    "name": "Terraformer",
+    "era": "Dashboard",
+    "era_index": 1,
+    "index_in_era": 19,
     "tags": [
-      "E"
-    ],
-    "base_rate": 5035572.615861,
-    "base_cost": 137260754729766,
-    "growth": 1.19,
-    "cost_shares": {
-      "S": 0.25,
-      "W": 0.25,
-      "F": 0.25,
-      "P": 0.25
-    },
-    "synergy_a": "+4% output per Shell-City owned.",
-    "synergy_b": "+3% Energy output while stored Energy \u2265 61.77T.",
-    "synergy_a_data": {
-      "type": "per_building",
-      "target_identifier": "15-05",
-      "bonus_percent": 4
-    },
-    "synergy_b_data": {
-      "type": "stored_resource",
-      "resource": "E",
-      "threshold": 61767339628394.7,
-      "bonus_percent": 3
-    },
-    "unique_upgrade": "Shell-Layer Foundry \u2014 Reinforced Framework: doubles base output."
-  },
-  {
-    "identifier": "15-02",
-    "name": "Star-Brick Yard",
-    "era": "Matrioshka",
-    "era_index": 15,
-    "index_in_era": 2,
-    "tags": [
+      "F",
+      "E",
       "S"
     ],
-    "base_rate": 5526847.993018,
-    "base_cost": 155562188693735,
-    "growth": 1.19,
+    "base_rate": 35.847,
+    "base_cost": 47245,
+    "growth": 1.288,
     "cost_shares": {
-      "S": 0.5,
-      "W": 0.5
+      "F": 0.333,
+      "W": 0.183,
+      "S": 0.483
     },
-    "synergy_a": "+6% output per Shell-Layer Foundry owned.",
-    "synergy_b": "+6% Stone output while stored Stone \u2265 70.00T.",
-    "synergy_a_data": {
-      "type": "per_building",
-      "target_identifier": "15-01",
-      "bonus_percent": 6
-    },
-    "synergy_b_data": {
-      "type": "stored_resource",
-      "resource": "S",
-      "threshold": 70002984912180.66,
-      "bonus_percent": 6
-    },
-    "unique_upgrade": "Star-Brick Yard \u2014 Optimized Labor Flow: +50% output while automated."
-  },
-  {
-    "identifier": "15-03",
-    "name": "Photonic Timber",
-    "era": "Matrioshka",
-    "era_index": 15,
-    "index_in_era": 3,
-    "tags": [
-      "W"
+    "prestige_names": [
+      "Irrigation Crew",
+      "Terraformer",
+      "Climate Engine",
+      "Gaia Network",
+      "Stellar Seeder"
     ],
-    "base_rate": 6140942.214465,
-    "base_cost": 173863622657704,
-    "growth": 1.19,
-    "cost_shares": {
-      "W": 0.5,
-      "S": 0.5
-    },
-    "synergy_a": "+8% output per Star-Brick Yard owned.",
-    "synergy_b": "+9% Wood output while stored Wood \u2265 78.24T.",
+    "synergy_a": "+5% output per level in Habitat Ring.",
+    "synergy_b": "+18% output while stored Food reaches this module's calibration threshold.",
     "synergy_a_data": {
       "type": "per_building",
-      "target_identifier": "15-02",
-      "bonus_percent": 8
-    },
-    "synergy_b_data": {
-      "type": "stored_resource",
-      "resource": "W",
-      "threshold": 78238630195966.62,
-      "bonus_percent": 9
-    },
-    "unique_upgrade": "Photonic Timber \u2014 Resource Reclaimer: refunds 5% of cost on purchase."
-  },
-  {
-    "identifier": "15-04",
-    "name": "Neutrino Farms",
-    "era": "Matrioshka",
-    "era_index": 15,
-    "index_in_era": 4,
-    "tags": [
-      "F"
-    ],
-    "base_rate": 6877855.280201,
-    "base_cost": 194452735867168,
-    "growth": 1.19,
-    "cost_shares": {
-      "F": 0.3333,
-      "W": 0.3333,
-      "S": 0.3333
-    },
-    "synergy_a": "+10% output per Photonic Timber owned.",
-    "synergy_b": "+12% Food output while stored Food \u2265 87.50T.",
-    "synergy_a_data": {
-      "type": "per_building",
-      "target_identifier": "15-03",
-      "bonus_percent": 10
+      "target_identifier": "B18",
+      "bonus_percent": 5
     },
     "synergy_b_data": {
       "type": "stored_resource",
       "resource": "F",
-      "threshold": 87503731140225.83,
-      "bonus_percent": 12
+      "threshold": 25984.75,
+      "bonus_percent": 18
     },
-    "unique_upgrade": "Neutrino Farms \u2014 Synergy Amplifier: synergy bonuses +50%."
+    "unique_upgrade": "Every 5 levels triggers prestige: the module evolves, doubles output, and strengthens its active boost profile."
   },
   {
-    "identifier": "15-05",
-    "name": "Shell-City",
-    "era": "Matrioshka",
-    "era_index": 15,
-    "index_in_era": 5,
+    "identifier": "B20",
+    "name": "Command Nexus",
+    "era": "Dashboard",
+    "era_index": 1,
+    "index_in_era": 20,
     "tags": [
+      "W",
+      "S",
+      "E",
+      "F",
       "P"
     ],
-    "base_rate": 7614768.345936,
-    "base_cost": 215041849076633,
-    "growth": 1.19,
+    "base_rate": 62.5635,
+    "base_cost": 76538,
+    "growth": 1.288,
     "cost_shares": {
-      "F": 0.5,
-      "W": 0.5
+      "W": 0.31,
+      "S": 0.29,
+      "F": 0.4
     },
-    "synergy_a": "+4% output per Neutrino Farms owned.",
-    "synergy_b": "+15% Population output while stored Population \u2265 96.77T.",
-    "synergy_a_data": {
-      "type": "per_building",
-      "target_identifier": "15-04",
-      "bonus_percent": 4
-    },
-    "synergy_b_data": {
-      "type": "stored_resource",
-      "resource": "P",
-      "threshold": 96768832084485.02,
-      "bonus_percent": 15
-    },
-    "unique_upgrade": "Shell-City \u2014 Efficiency Protocols: growth reduced by 0.02 (min 1.05)."
-  },
-  {
-    "identifier": "16-01",
-    "name": "Computronium Grove",
-    "era": "Post-Biological",
-    "era_index": 16,
-    "index_in_era": 1,
-    "tags": [
-      "E"
+    "prestige_names": [
+      "Signal Post",
+      "Town Hall",
+      "Command Center",
+      "Planetary Nexus",
+      "Galactic Core"
     ],
-    "base_rate": 18128061.4171,
-    "base_cost": 1235346792567894,
-    "growth": 1.19,
-    "cost_shares": {
-      "W": 0.25,
-      "S": 0.25,
-      "F": 0.25,
-      "P": 0.25
-    },
-    "synergy_a": "+4% output per Substrate City owned.",
-    "synergy_b": "+3% Energy output while stored Energy \u2265 555.91T.",
+    "synergy_a": "+6% output per level in Terraformer.",
+    "synergy_b": "+6% output while stored Wood reaches this module's calibration threshold.",
     "synergy_a_data": {
       "type": "per_building",
-      "target_identifier": "16-05",
-      "bonus_percent": 4
-    },
-    "synergy_b_data": {
-      "type": "stored_resource",
-      "resource": "E",
-      "threshold": 555906056655552.3,
-      "bonus_percent": 3
-    },
-    "unique_upgrade": "Computronium Grove \u2014 Reinforced Framework: doubles base output."
-  },
-  {
-    "identifier": "16-02",
-    "name": "Logic-Stone Foundry",
-    "era": "Post-Biological",
-    "era_index": 16,
-    "index_in_era": 2,
-    "tags": [
-      "S"
-    ],
-    "base_rate": 19896652.774866,
-    "base_cost": 1400059698243613,
-    "growth": 1.19,
-    "cost_shares": {
-      "S": 0.5,
-      "W": 0.5
-    },
-    "synergy_a": "+6% output per Computronium Grove owned.",
-    "synergy_b": "+6% Stone output while stored Stone \u2265 630.03T.",
-    "synergy_a_data": {
-      "type": "per_building",
-      "target_identifier": "16-01",
+      "target_identifier": "B19",
       "bonus_percent": 6
-    },
-    "synergy_b_data": {
-      "type": "stored_resource",
-      "resource": "S",
-      "threshold": 630026864209626.0,
-      "bonus_percent": 6
-    },
-    "unique_upgrade": "Logic-Stone Foundry \u2014 Optimized Labor Flow: +50% output while automated."
-  },
-  {
-    "identifier": "16-03",
-    "name": "Datawood Array",
-    "era": "Post-Biological",
-    "era_index": 16,
-    "index_in_era": 3,
-    "tags": [
-      "W"
-    ],
-    "base_rate": 22107391.972073,
-    "base_cost": 1564772603919332,
-    "growth": 1.19,
-    "cost_shares": {
-      "W": 0.5,
-      "S": 0.5
-    },
-    "synergy_a": "+8% output per Logic-Stone Foundry owned.",
-    "synergy_b": "+9% Wood output while stored Wood \u2265 704.15T.",
-    "synergy_a_data": {
-      "type": "per_building",
-      "target_identifier": "16-02",
-      "bonus_percent": 8
     },
     "synergy_b_data": {
       "type": "stored_resource",
       "resource": "W",
-      "threshold": 704147671763699.6,
-      "bonus_percent": 9
-    },
-    "unique_upgrade": "Datawood Array \u2014 Resource Reclaimer: refunds 5% of cost on purchase."
-  },
-  {
-    "identifier": "16-04",
-    "name": "Nutrient Fog Vats",
-    "era": "Post-Biological",
-    "era_index": 16,
-    "index_in_era": 4,
-    "tags": [
-      "F"
-    ],
-    "base_rate": 24760279.008722,
-    "base_cost": 1750074622804516,
-    "growth": 1.19,
-    "cost_shares": {
-      "F": 0.3333,
-      "W": 0.3333,
-      "S": 0.3333
-    },
-    "synergy_a": "+10% output per Datawood Array owned.",
-    "synergy_b": "+12% Food output while stored Food \u2265 787.53T.",
-    "synergy_a_data": {
-      "type": "per_building",
-      "target_identifier": "16-03",
-      "bonus_percent": 10
-    },
-    "synergy_b_data": {
-      "type": "stored_resource",
-      "resource": "F",
-      "threshold": 787533580262032.5,
-      "bonus_percent": 12
-    },
-    "unique_upgrade": "Nutrient Fog Vats \u2014 Synergy Amplifier: synergy bonuses +50%."
-  },
-  {
-    "identifier": "16-05",
-    "name": "Substrate City",
-    "era": "Post-Biological",
-    "era_index": 16,
-    "index_in_era": 5,
-    "tags": [
-      "P"
-    ],
-    "base_rate": 27413166.045371,
-    "base_cost": 1935376641689700,
-    "growth": 1.19,
-    "cost_shares": {
-      "F": 0.5,
-      "W": 0.5
-    },
-    "synergy_a": "+4% output per Nutrient Fog Vats owned.",
-    "synergy_b": "+15% Population output while stored Population \u2265 870.92T.",
-    "synergy_a_data": {
-      "type": "per_building",
-      "target_identifier": "16-04",
-      "bonus_percent": 4
-    },
-    "synergy_b_data": {
-      "type": "stored_resource",
-      "resource": "P",
-      "threshold": 870919488760365.2,
-      "bonus_percent": 15
-    },
-    "unique_upgrade": "Substrate City \u2014 Efficiency Protocols: growth reduced by 0.02 (min 1.05)."
-  },
-  {
-    "identifier": "17-01",
-    "name": "Spiral Arm Harvester",
-    "era": "Galactic",
-    "era_index": 17,
-    "index_in_era": 1,
-    "tags": [
-      "E"
-    ],
-    "base_rate": 65261021.101561,
-    "base_cost": 11118121133111044,
-    "growth": 1.2,
-    "cost_shares": {
-      "S": 0.25,
-      "W": 0.25,
-      "F": 0.25,
-      "P": 0.25
-    },
-    "synergy_a": "+4% output per Galactic Habitat Ring owned.",
-    "synergy_b": "+3% Energy output while stored Energy \u2265 5.00Qa.",
-    "synergy_a_data": {
-      "type": "per_building",
-      "target_identifier": "17-05",
-      "bonus_percent": 4
-    },
-    "synergy_b_data": {
-      "type": "stored_resource",
-      "resource": "E",
-      "threshold": 5003154509899970.0,
-      "bonus_percent": 3
-    },
-    "unique_upgrade": "Spiral Arm Harvester \u2014 Reinforced Framework: doubles base output."
-  },
-  {
-    "identifier": "17-02",
-    "name": "Halo Quarry",
-    "era": "Galactic",
-    "era_index": 17,
-    "index_in_era": 2,
-    "tags": [
-      "S"
-    ],
-    "base_rate": 71627949.989518,
-    "base_cost": 12600537284192518,
-    "growth": 1.2,
-    "cost_shares": {
-      "S": 0.5,
-      "W": 0.5
-    },
-    "synergy_a": "+6% output per Spiral Arm Harvester owned.",
-    "synergy_b": "+6% Stone output while stored Stone \u2265 5.67Qa.",
-    "synergy_a_data": {
-      "type": "per_building",
-      "target_identifier": "17-01",
+      "threshold": 42095.9,
       "bonus_percent": 6
     },
-    "synergy_b_data": {
-      "type": "stored_resource",
-      "resource": "S",
-      "threshold": 5670241777886633.0,
-      "bonus_percent": 6
-    },
-    "unique_upgrade": "Halo Quarry \u2014 Optimized Labor Flow: +50% output while automated."
-  },
-  {
-    "identifier": "17-03",
-    "name": "Carbon Forest Nebula",
-    "era": "Galactic",
-    "era_index": 17,
-    "index_in_era": 3,
-    "tags": [
-      "W"
-    ],
-    "base_rate": 79586611.099464,
-    "base_cost": 14082953435273990,
-    "growth": 1.2,
-    "cost_shares": {
-      "W": 0.5,
-      "S": 0.5
-    },
-    "synergy_a": "+8% output per Halo Quarry owned.",
-    "synergy_b": "+9% Wood output while stored Wood \u2265 6.34Qa.",
-    "synergy_a_data": {
-      "type": "per_building",
-      "target_identifier": "17-02",
-      "bonus_percent": 8
-    },
-    "synergy_b_data": {
-      "type": "stored_resource",
-      "resource": "W",
-      "threshold": 6337329045873296.0,
-      "bonus_percent": 9
-    },
-    "unique_upgrade": "Carbon Forest Nebula \u2014 Resource Reclaimer: refunds 5% of cost on purchase."
-  },
-  {
-    "identifier": "17-04",
-    "name": "Molecular Cloud Farms",
-    "era": "Galactic",
-    "era_index": 17,
-    "index_in_era": 4,
-    "tags": [
-      "F"
-    ],
-    "base_rate": 89137004.4314,
-    "base_cost": 15750671605240646,
-    "growth": 1.2,
-    "cost_shares": {
-      "F": 0.3333,
-      "W": 0.3333,
-      "S": 0.3333
-    },
-    "synergy_a": "+10% output per Carbon Forest Nebula owned.",
-    "synergy_b": "+12% Food output while stored Food \u2265 7.09Qa.",
-    "synergy_a_data": {
-      "type": "per_building",
-      "target_identifier": "17-03",
-      "bonus_percent": 10
-    },
-    "synergy_b_data": {
-      "type": "stored_resource",
-      "resource": "F",
-      "threshold": 7087802222358291.0,
-      "bonus_percent": 12
-    },
-    "unique_upgrade": "Molecular Cloud Farms \u2014 Synergy Amplifier: synergy bonuses +50%."
-  },
-  {
-    "identifier": "17-05",
-    "name": "Galactic Habitat Ring",
-    "era": "Galactic",
-    "era_index": 17,
-    "index_in_era": 5,
-    "tags": [
-      "P"
-    ],
-    "base_rate": 98687397.763335,
-    "base_cost": 17418389775207302,
-    "growth": 1.2,
-    "cost_shares": {
-      "F": 0.5,
-      "W": 0.5
-    },
-    "synergy_a": "+4% output per Molecular Cloud Farms owned.",
-    "synergy_b": "+15% Population output while stored Population \u2265 7.84Qa.",
-    "synergy_a_data": {
-      "type": "per_building",
-      "target_identifier": "17-04",
-      "bonus_percent": 4
-    },
-    "synergy_b_data": {
-      "type": "stored_resource",
-      "resource": "P",
-      "threshold": 7838275398843286.0,
-      "bonus_percent": 15
-    },
-    "unique_upgrade": "Galactic Habitat Ring \u2014 Efficiency Protocols: growth reduced by 0.02 (min 1.05)."
-  },
-  {
-    "identifier": "18-01",
-    "name": "Accretion Disk Plant",
-    "era": "Black-Hole & Exotic",
-    "era_index": 18,
-    "index_in_era": 1,
-    "tags": [
-      "E"
-    ],
-    "base_rate": 234939675.965618,
-    "base_cost": 100063090197999408,
-    "growth": 1.2,
-    "cost_shares": {
-      "W": 0.25,
-      "S": 0.25,
-      "F": 0.25,
-      "P": 0.25
-    },
-    "synergy_a": "+4% output per Event-City owned.",
-    "synergy_b": "+3% Energy output while stored Energy \u2265 45.03Qa.",
-    "synergy_a_data": {
-      "type": "per_building",
-      "target_identifier": "18-05",
-      "bonus_percent": 4
-    },
-    "synergy_b_data": {
-      "type": "stored_resource",
-      "resource": "E",
-      "threshold": 4.5028390589099736e+16,
-      "bonus_percent": 3
-    },
-    "unique_upgrade": "Accretion Disk Plant \u2014 Reinforced Framework: doubles base output."
-  },
-  {
-    "identifier": "18-02",
-    "name": "Spaghettite Quarry",
-    "era": "Black-Hole & Exotic",
-    "era_index": 18,
-    "index_in_era": 2,
-    "tags": [
-      "S"
-    ],
-    "base_rate": 257860619.962264,
-    "base_cost": 113404835557732688,
-    "growth": 1.2,
-    "cost_shares": {
-      "S": 0.5,
-      "W": 0.5
-    },
-    "synergy_a": "+6% output per Accretion Disk Plant owned.",
-    "synergy_b": "+6% Stone output while stored Stone \u2265 51.03Qa.",
-    "synergy_a_data": {
-      "type": "per_building",
-      "target_identifier": "18-01",
-      "bonus_percent": 6
-    },
-    "synergy_b_data": {
-      "type": "stored_resource",
-      "resource": "S",
-      "threshold": 5.103217600097971e+16,
-      "bonus_percent": 6
-    },
-    "unique_upgrade": "Spaghettite Quarry \u2014 Optimized Labor Flow: +50% output while automated."
-  },
-  {
-    "identifier": "18-03",
-    "name": "Hawking Wood Synth",
-    "era": "Black-Hole & Exotic",
-    "era_index": 18,
-    "index_in_era": 3,
-    "tags": [
-      "W"
-    ],
-    "base_rate": 286511799.958071,
-    "base_cost": 126746580917465936,
-    "growth": 1.2,
-    "cost_shares": {
-      "W": 0.5,
-      "S": 0.5
-    },
-    "synergy_a": "+8% output per Spaghettite Quarry owned.",
-    "synergy_b": "+9% Wood output while stored Wood \u2265 57.04Qa.",
-    "synergy_a_data": {
-      "type": "per_building",
-      "target_identifier": "18-02",
-      "bonus_percent": 8
-    },
-    "synergy_b_data": {
-      "type": "stored_resource",
-      "resource": "W",
-      "threshold": 5.703596141285967e+16,
-      "bonus_percent": 9
-    },
-    "unique_upgrade": "Hawking Wood Synth \u2014 Resource Reclaimer: refunds 5% of cost on purchase."
-  },
-  {
-    "identifier": "18-04",
-    "name": "Tidal Feeding Farms",
-    "era": "Black-Hole & Exotic",
-    "era_index": 18,
-    "index_in_era": 4,
-    "tags": [
-      "F"
-    ],
-    "base_rate": 320893215.953039,
-    "base_cost": 141756044447165840,
-    "growth": 1.2,
-    "cost_shares": {
-      "F": 0.3333,
-      "W": 0.3333,
-      "S": 0.3333
-    },
-    "synergy_a": "+10% output per Hawking Wood Synth owned.",
-    "synergy_b": "+12% Food output while stored Food \u2265 63.79Qa.",
-    "synergy_a_data": {
-      "type": "per_building",
-      "target_identifier": "18-03",
-      "bonus_percent": 10
-    },
-    "synergy_b_data": {
-      "type": "stored_resource",
-      "resource": "F",
-      "threshold": 6.379022000122463e+16,
-      "bonus_percent": 12
-    },
-    "unique_upgrade": "Tidal Feeding Farms \u2014 Synergy Amplifier: synergy bonuses +50%."
-  },
-  {
-    "identifier": "18-05",
-    "name": "Event-City",
-    "era": "Black-Hole & Exotic",
-    "era_index": 18,
-    "index_in_era": 5,
-    "tags": [
-      "P"
-    ],
-    "base_rate": 355274631.948008,
-    "base_cost": 156765507976865760,
-    "growth": 1.2,
-    "cost_shares": {
-      "F": 0.5,
-      "W": 0.5
-    },
-    "synergy_a": "+4% output per Tidal Feeding Farms owned.",
-    "synergy_b": "+15% Population output while stored Population \u2265 70.54Qa.",
-    "synergy_a_data": {
-      "type": "per_building",
-      "target_identifier": "18-04",
-      "bonus_percent": 4
-    },
-    "synergy_b_data": {
-      "type": "stored_resource",
-      "resource": "P",
-      "threshold": 7.054447858958959e+16,
-      "bonus_percent": 15
-    },
-    "unique_upgrade": "Event-City \u2014 Efficiency Protocols: growth reduced by 0.02 (min 1.05)."
-  },
-  {
-    "identifier": "19-01",
-    "name": "Thought-Forest",
-    "era": "Transcension",
-    "era_index": 19,
-    "index_in_era": 1,
-    "tags": [
-      "W"
-    ],
-    "base_rate": 845782833.476224,
-    "base_cost": 900567811781994624,
-    "growth": 1.21,
-    "cost_shares": {
-      "W": 0.2,
-      "S": 0.2,
-      "F": 0.2,
-      "E": 0.2,
-      "P": 0.2
-    },
-    "synergy_a": "+4% output per Collective Self owned.",
-    "synergy_b": "+3% Wood output while stored Wood \u2265 405.26Qa.",
-    "synergy_a_data": {
-      "type": "per_building",
-      "target_identifier": "19-05",
-      "bonus_percent": 4
-    },
-    "synergy_b_data": {
-      "type": "stored_resource",
-      "resource": "W",
-      "threshold": 4.052555153018976e+17,
-      "bonus_percent": 3
-    },
-    "unique_upgrade": "Thought-Forest \u2014 Reinforced Framework: doubles base output."
-  },
-  {
-    "identifier": "19-02",
-    "name": "Idea-Stone Loom",
-    "era": "Transcension",
-    "era_index": 19,
-    "index_in_era": 2,
-    "tags": [
-      "S"
-    ],
-    "base_rate": 928298231.864149,
-    "base_cost": 1020643520019594112,
-    "growth": 1.21,
-    "cost_shares": {
-      "S": 0.5,
-      "W": 0.5
-    },
-    "synergy_a": "+6% output per Thought-Forest owned.",
-    "synergy_b": "+6% Stone output while stored Stone \u2265 459.29Qa.",
-    "synergy_a_data": {
-      "type": "per_building",
-      "target_identifier": "19-01",
-      "bonus_percent": 6
-    },
-    "synergy_b_data": {
-      "type": "stored_resource",
-      "resource": "S",
-      "threshold": 4.5928958400881734e+17,
-      "bonus_percent": 6
-    },
-    "unique_upgrade": "Idea-Stone Loom \u2014 Optimized Labor Flow: +50% output while automated."
-  },
-  {
-    "identifier": "19-03",
-    "name": "Mind-Light Plant",
-    "era": "Transcension",
-    "era_index": 19,
-    "index_in_era": 3,
-    "tags": [
-      "E"
-    ],
-    "base_rate": 1031442479.849054,
-    "base_cost": 1140719228257193344,
-    "growth": 1.21,
-    "cost_shares": {
-      "S": 0.5,
-      "W": 0.5
-    },
-    "synergy_a": "+8% output per Idea-Stone Loom owned.",
-    "synergy_b": "+9% Energy output while stored Energy \u2265 513.32Qa.",
-    "synergy_a_data": {
-      "type": "per_building",
-      "target_identifier": "19-02",
-      "bonus_percent": 8
-    },
-    "synergy_b_data": {
-      "type": "stored_resource",
-      "resource": "E",
-      "threshold": 5.13323652715737e+17,
-      "bonus_percent": 9
-    },
-    "unique_upgrade": "Mind-Light Plant \u2014 Resource Reclaimer: refunds 5% of cost on purchase."
-  },
-  {
-    "identifier": "19-04",
-    "name": "Concept Orchards",
-    "era": "Transcension",
-    "era_index": 19,
-    "index_in_era": 4,
-    "tags": [
-      "F"
-    ],
-    "base_rate": 1155215577.430941,
-    "base_cost": 1275804400024492544,
-    "growth": 1.21,
-    "cost_shares": {
-      "F": 0.3333,
-      "W": 0.3333,
-      "S": 0.3333
-    },
-    "synergy_a": "+10% output per Mind-Light Plant owned.",
-    "synergy_b": "+12% Food output while stored Food \u2265 574.11Qa.",
-    "synergy_a_data": {
-      "type": "per_building",
-      "target_identifier": "19-03",
-      "bonus_percent": 10
-    },
-    "synergy_b_data": {
-      "type": "stored_resource",
-      "resource": "F",
-      "threshold": 5.7411198001102163e+17,
-      "bonus_percent": 12
-    },
-    "unique_upgrade": "Concept Orchards \u2014 Synergy Amplifier: synergy bonuses +50%."
-  },
-  {
-    "identifier": "19-05",
-    "name": "Collective Self",
-    "era": "Transcension",
-    "era_index": 19,
-    "index_in_era": 5,
-    "tags": [
-      "P"
-    ],
-    "base_rate": 1278988675.012827,
-    "base_cost": 1410889571791791616,
-    "growth": 1.21,
-    "cost_shares": {
-      "F": 0.5,
-      "W": 0.5
-    },
-    "synergy_a": "+4% output per Concept Orchards owned.",
-    "synergy_b": "+15% Population output while stored Population \u2265 634.90Qa.",
-    "synergy_a_data": {
-      "type": "per_building",
-      "target_identifier": "19-04",
-      "bonus_percent": 4
-    },
-    "synergy_b_data": {
-      "type": "stored_resource",
-      "resource": "P",
-      "threshold": 6.349003073063063e+17,
-      "bonus_percent": 15
-    },
-    "unique_upgrade": "Collective Self \u2014 Efficiency Protocols: growth reduced by 0.02 (min 1.05)."
-  },
-  {
-    "identifier": "20-01",
-    "name": "Void Timber Loom",
-    "era": "Intergalactic",
-    "era_index": 20,
-    "index_in_era": 1,
-    "tags": [
-      "W"
-    ],
-    "base_rate": 3044818200.514408,
-    "base_cost": 8105110306037952512,
-    "growth": 1.21,
-    "cost_shares": {
-      "W": 0.2,
-      "S": 0.2,
-      "F": 0.2,
-      "E": 0.2,
-      "P": 0.2
-    },
-    "synergy_a": "+4% output per Bridge-Worlds owned.",
-    "synergy_b": "+3% Wood output while stored Wood \u2265 3.65Qi.",
-    "synergy_a_data": {
-      "type": "per_building",
-      "target_identifier": "20-05",
-      "bonus_percent": 4
-    },
-    "synergy_b_data": {
-      "type": "stored_resource",
-      "resource": "W",
-      "threshold": 3.6472996377170785e+18,
-      "bonus_percent": 3
-    },
-    "unique_upgrade": "Void Timber Loom \u2014 Reinforced Framework: doubles base output."
-  },
-  {
-    "identifier": "20-02",
-    "name": "Supercluster Quarry",
-    "era": "Intergalactic",
-    "era_index": 20,
-    "index_in_era": 2,
-    "tags": [
-      "S"
-    ],
-    "base_rate": 3341873634.710936,
-    "base_cost": 9185791680176347136,
-    "growth": 1.21,
-    "cost_shares": {
-      "S": 0.5,
-      "W": 0.5
-    },
-    "synergy_a": "+6% output per Void Timber Loom owned.",
-    "synergy_b": "+6% Stone output while stored Stone \u2265 4.13Qi.",
-    "synergy_a_data": {
-      "type": "per_building",
-      "target_identifier": "20-01",
-      "bonus_percent": 6
-    },
-    "synergy_b_data": {
-      "type": "stored_resource",
-      "resource": "S",
-      "threshold": 4.1336062560793564e+18,
-      "bonus_percent": 6
-    },
-    "unique_upgrade": "Supercluster Quarry \u2014 Optimized Labor Flow: +50% output while automated."
-  },
-  {
-    "identifier": "20-03",
-    "name": "Hyperlane Power",
-    "era": "Intergalactic",
-    "era_index": 20,
-    "index_in_era": 3,
-    "tags": [
-      "E"
-    ],
-    "base_rate": 3713192927.456595,
-    "base_cost": 10266473054314739712,
-    "growth": 1.21,
-    "cost_shares": {
-      "W": 0.5,
-      "S": 0.5
-    },
-    "synergy_a": "+8% output per Supercluster Quarry owned.",
-    "synergy_b": "+9% Energy output while stored Energy \u2265 4.62Qi.",
-    "synergy_a_data": {
-      "type": "per_building",
-      "target_identifier": "20-02",
-      "bonus_percent": 8
-    },
-    "synergy_b_data": {
-      "type": "stored_resource",
-      "resource": "E",
-      "threshold": 4.619912874441633e+18,
-      "bonus_percent": 9
-    },
-    "unique_upgrade": "Hyperlane Power \u2014 Resource Reclaimer: refunds 5% of cost on purchase."
-  },
-  {
-    "identifier": "20-04",
-    "name": "Intergalactic Agricloud",
-    "era": "Intergalactic",
-    "era_index": 20,
-    "index_in_era": 4,
-    "tags": [
-      "F"
-    ],
-    "base_rate": 4158776078.751387,
-    "base_cost": 11482239600220432384,
-    "growth": 1.21,
-    "cost_shares": {
-      "F": 0.3333,
-      "W": 0.3333,
-      "S": 0.3333
-    },
-    "synergy_a": "+10% output per Hyperlane Power owned.",
-    "synergy_b": "+12% Food output while stored Food \u2265 5.17Qi.",
-    "synergy_a_data": {
-      "type": "per_building",
-      "target_identifier": "20-03",
-      "bonus_percent": 10
-    },
-    "synergy_b_data": {
-      "type": "stored_resource",
-      "resource": "F",
-      "threshold": 5.167007820099195e+18,
-      "bonus_percent": 12
-    },
-    "unique_upgrade": "Intergalactic Agricloud \u2014 Synergy Amplifier: synergy bonuses +50%."
-  },
-  {
-    "identifier": "20-05",
-    "name": "Bridge-Worlds",
-    "era": "Intergalactic",
-    "era_index": 20,
-    "index_in_era": 5,
-    "tags": [
-      "P"
-    ],
-    "base_rate": 4604359230.046178,
-    "base_cost": 12698006146126125056,
-    "growth": 1.21,
-    "cost_shares": {
-      "F": 0.5,
-      "W": 0.5
-    },
-    "synergy_a": "+4% output per Intergalactic Agricloud owned.",
-    "synergy_b": "+15% Population output while stored Population \u2265 5.71Qi.",
-    "synergy_a_data": {
-      "type": "per_building",
-      "target_identifier": "20-04",
-      "bonus_percent": 4
-    },
-    "synergy_b_data": {
-      "type": "stored_resource",
-      "resource": "P",
-      "threshold": 5.714102765756756e+18,
-      "bonus_percent": 15
-    },
-    "unique_upgrade": "Bridge-Worlds \u2014 Efficiency Protocols: growth reduced by 0.02 (min 1.05)."
+    "unique_upgrade": "Every 5 levels triggers prestige: the module evolves, doubles output, and strengthens its active boost profile."
   }
 ]

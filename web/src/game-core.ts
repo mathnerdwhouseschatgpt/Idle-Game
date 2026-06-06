@@ -35,6 +35,7 @@ export interface BuildingData {
   era: string;
   era_index: number;
   index_in_era: number;
+  prestige_names: string[];
   tags: ResourceKey[];
   base_rate: number;
   base_cost: number;
@@ -54,7 +55,7 @@ export interface SerializedBuilding {
 }
 
 export interface SerializedGame {
-  version: 2;
+  version: 3 | 2;
   resources: Partial<ResourceMap>;
   totalProduced: Partial<ResourceMap>;
   eraUnlocked: number;
@@ -90,6 +91,12 @@ export interface ProductionLineSnapshot {
 export interface CardSnapshot {
   id: string;
   eraIndex: number;
+  displayName: string;
+  level: number;
+  prestige: number;
+  nextPrestigeIn: number;
+  unlockRequirement: number;
+  activeBoost: boolean;
   owned: number;
   automation: boolean;
   locked: boolean;
@@ -107,9 +114,9 @@ export interface TopProducerSnapshot {
 }
 
 export interface MilestoneSnapshot {
-  nextEra: number | null;
-  nextEraThreshold: number;
-  nextEraProgress: number;
+  nextBuilding: string | null;
+  nextBuildingThreshold: number;
+  nextBuildingProgress: number;
   nextK: number;
   requiredEnergy: number;
   energyRate: number;
@@ -122,8 +129,8 @@ export interface GameSnapshot {
   rates: ResourceMap;
   eraUnlocked: number;
   elapsedSeconds: number;
-  kIndex: number;
-  nextK: number;
+  commandRank: number;
+  nextRank: number;
   totalRate: number;
   topProducers: TopProducerSnapshot[];
   milestones: MilestoneSnapshot;
@@ -140,7 +147,9 @@ const DEFAULT_START: ResourceMap = {
 };
 
 const OFFLINE_CAP = 60 * 60 * 8;
-const ERA_UNLOCK_SCALE = 3.0;
+const LEVELS_PER_PRESTIGE = 5;
+const PRESTIGE_OUTPUT_MULTIPLIER = 2;
+const UNLOCK_LEVEL_STEP = 4;
 const MAX_TICK_ITERATIONS = 100;
 const AUTOMATION_INTERVAL = 0.5;
 const AUTOMATION_MAX_BATCH = 50;
@@ -155,6 +164,7 @@ export class BuildingDefinition implements BuildingData {
   era: string;
   era_index: number;
   index_in_era: number;
+  prestige_names: string[];
   tags: ResourceKey[];
   base_rate: number;
   base_cost: number;
@@ -172,6 +182,7 @@ export class BuildingDefinition implements BuildingData {
     this.era = data.era;
     this.era_index = data.era_index;
     this.index_in_era = data.index_in_era;
+    this.prestige_names = data.prestige_names || [data.name];
     this.tags = data.tags;
     this.base_rate = Number(data.base_rate);
     this.base_cost = Number(data.base_cost);
@@ -244,7 +255,7 @@ export class Game {
 
   serialize(): SerializedGame {
     return {
-      version: 2,
+      version: 3,
       resources: this.resources,
       totalProduced: this.totalProduced,
       eraUnlocked: this.eraUnlocked,
@@ -263,7 +274,7 @@ export class Game {
     this.reset();
     this.resources = normalizeResourceMap({ ...DEFAULT_START, ...payload.resources });
     this.totalProduced = normalizeResourceMap({ ...this.totalProduced, ...payload.totalProduced });
-    this.eraUnlocked = clamp(Math.floor(payload.eraUnlocked || 1), 1, 20);
+    this.eraUnlocked = 1;
     this.elapsedSeconds = sanitizeSeconds(payload.elapsedSeconds || 0);
 
     if (Array.isArray(payload.buildings)) {
@@ -326,7 +337,7 @@ export class Game {
     this.lastSummary.buildingOutputs.clear();
 
     for (const state of this.states) {
-      if (state.owned <= 0) continue;
+      if (state.owned <= 0 || this.isLocked(state)) continue;
       const def = state.definition;
       const multiplier = productionMultiplier(this, state);
       const totalPerBuilding = def.base_rate * multiplier;
@@ -350,8 +361,8 @@ export class Game {
     const qty = Math.floor(quantity);
     if (!state) return { success: false, reason: "Unknown building." };
     if (qty <= 0) return { success: false, reason: "Quantity must be positive." };
-    if (state.definition.era_index > this.eraUnlocked) {
-      return { success: false, reason: "Building is locked in this era." };
+    if (this.isLocked(state)) {
+      return { success: false, reason: "Module is locked. Upgrade earlier modules to bring it online." };
     }
 
     const affordability = this.canAffordWithCost(state, qty);
@@ -365,6 +376,7 @@ export class Game {
     this.spend(affordability.cost);
     state.owned += qty;
     this.trackStoredResourceThresholds();
+    this.updateUnlocks();
     this.markProductionDirty();
     this.recomputeProductionIfDirty();
     return { success: true, cost: affordability.cost, quantity: qty };
@@ -381,15 +393,15 @@ export class Game {
   toggleAutomation(identifier: string): PurchaseResult {
     const state = this.stateById.get(identifier);
     if (!state) return { success: false, reason: "Unknown building." };
-    if (state.definition.era_index > this.eraUnlocked) {
-      return { success: false, reason: "Building is locked in this era." };
+    if (this.isLocked(state)) {
+      return { success: false, reason: "Module is locked. Upgrade earlier modules to bring it online." };
     }
     state.automation = !state.automation;
     return { success: true };
   }
 
   maxAffordable(state: BuildingState): number {
-    if (state.definition.era_index > this.eraUnlocked) return 0;
+    if (this.isLocked(state)) return 0;
     if (!this.canAfford(state, 1)) return 0;
 
     const estimatedLimit = this.estimateMaxAffordable(state);
@@ -415,9 +427,9 @@ export class Game {
 
   getKIndex(): number {
     const energyRate = this.lastSummary.rates.E || 0;
-    const planetaryPower = Math.max(energyRate * 1000 + this.eraUnlocked * 1000, 1);
+    const planetaryPower = Math.max(energyRate * 1000 + this.totalLevel() * 250, 1);
     const base = (Math.log10(planetaryPower) - 6) / 10;
-    const k = base + (this.eraUnlocked - 1) * 0.02;
+    const k = base + this.totalPrestige() * 0.015;
     return clamp(roundTo(k, 3), 0, 3);
   }
 
@@ -429,10 +441,10 @@ export class Game {
   }
 
   requiredEnergyForK(targetK: number): number {
-    const base = targetK - (this.eraUnlocked - 1) * 0.02;
+    const base = targetK - this.totalPrestige() * 0.015;
     const exponent = 10 * base + 6;
     const power = 10 ** exponent;
-    const required = (power - this.eraUnlocked * 1000) / 1000;
+    const required = (power - this.totalLevel() * 250) / 1000;
     return Math.max(required, 0);
   }
 
@@ -451,54 +463,62 @@ export class Game {
     return unlocks;
   }
 
-  snapshot(visibleEraIndices: Set<number>): GameSnapshot {
+  snapshot(_visibleEraIndices: Set<number>): GameSnapshot {
     this.recomputeProductionIfDirty();
 
     const nextK = this.getNextKThreshold();
     const requiredEnergy = this.requiredEnergyForK(nextK);
     const energyRate = this.lastSummary.rates.E || 0;
-    const nextEra = this.eraUnlocked < 20 ? this.eraUnlocked + 1 : null;
-    const nextEraThreshold = nextEra ? rateBaseline(nextEra) * ERA_UNLOCK_SCALE : 0;
+    const nextLocked = this.states.find((state) => this.isLocked(state));
+    const nextRequirement = nextLocked ? this.unlockRequirement(nextLocked.definition) : 0;
+    const totalLevel = this.totalLevel();
 
     return {
       resources: { ...this.resources },
       rates: { ...this.lastSummary.rates },
-      eraUnlocked: this.eraUnlocked,
+      eraUnlocked: 1,
       elapsedSeconds: this.elapsedSeconds,
-      kIndex: this.getKIndex(),
-      nextK,
+      commandRank: this.commandRank(),
+      nextRank: this.commandRank() + 1,
       totalRate: this.lastSummary.totalRate,
       topProducers: this.topProducers(3),
       milestones: {
-        nextEra,
-        nextEraThreshold,
-        nextEraProgress: nextEra ? clamp(this.lastSummary.totalRate / nextEraThreshold, 0, 1) : 1,
+        nextBuilding: nextLocked ? nextLocked.definition.name : null,
+        nextBuildingThreshold: nextRequirement,
+        nextBuildingProgress: nextLocked ? clamp(totalLevel / nextRequirement, 0, 1) : 1,
         nextK,
         requiredEnergy,
         energyRate,
         energyDelta: Math.max(requiredEnergy - energyRate, 0),
         kProgress: requiredEnergy === 0 ? 1 : clamp(energyRate / requiredEnergy, 0, 1),
       },
-      cards: this.cardSnapshots(visibleEraIndices),
+      cards: this.cardSnapshots(),
       unlocks: this.takeUnlocks(),
     };
   }
 
-  private cardSnapshots(visibleEraIndices: Set<number>): CardSnapshot[] {
+  private cardSnapshots(): CardSnapshot[] {
     const cards: CardSnapshot[] = [];
     for (const state of this.states) {
       const def = state.definition;
-      if (!visibleEraIndices.has(def.era_index)) continue;
-      const locked = def.era_index > this.eraUnlocked;
+      const locked = this.isLocked(state);
       const outputData = this.lastSummary.buildingOutputs.get(def.identifier);
-      const multiplier = outputData ? outputData.multiplier : 1;
+      const multiplier = outputData ? outputData.multiplier : this.prestigeMultiplier(state);
       const perResourceBase = def.base_rate / def.tags.length;
       const perResourceCurrent = perResourceBase * multiplier;
+      const level = state.owned;
+      const prestige = prestigeForLevel(level);
 
       cards.push({
         id: def.identifier,
         eraIndex: def.era_index,
-        owned: state.owned,
+        displayName: this.displayName(state),
+        level,
+        prestige,
+        nextPrestigeIn: LEVELS_PER_PRESTIGE - (level % LEVELS_PER_PRESTIGE || 0) || LEVELS_PER_PRESTIGE,
+        unlockRequirement: this.unlockRequirement(def),
+        activeBoost: Boolean(state.automation || outputData || activeStoredBoost(this, state)),
+        owned: level,
         automation: state.automation,
         locked,
         outputPerSecond: outputData ? outputData.total : 0,
@@ -506,7 +526,7 @@ export class Game {
         production: def.tags.map((resource) => ({
           resource,
           perOwned: perResourceCurrent,
-          total: perResourceCurrent * state.owned,
+          total: locked ? 0 : perResourceCurrent * state.owned,
         })),
         cost: costFor(def, state.owned, 1),
         maxQty: locked ? 0 : this.maxAffordable(state),
@@ -530,14 +550,8 @@ export class Game {
   }
 
   private seedStartingBuildings(): void {
-    let seeded = 0;
-    for (const state of this.states) {
-      if (state.definition.era_index === 1 && state.definition.index_in_era <= 5) {
-        state.owned = Math.max(state.owned, 1);
-        seeded += 1;
-        if (seeded >= 5) break;
-      }
-    }
+    const first = this.states[0];
+    if (first) first.owned = Math.max(first.owned, 1);
   }
 
   private applyAutomation(): void {
@@ -549,7 +563,7 @@ export class Game {
       this.automationTimer -= AUTOMATION_INTERVAL;
       passes += 1;
       for (const state of this.states) {
-        if (!state.automation || state.definition.era_index > this.eraUnlocked) continue;
+        if (!state.automation || this.isLocked(state)) continue;
         const maxQty = this.maxAffordable(state);
         if (maxQty <= 0) continue;
         const quantity = Math.min(maxQty, AUTOMATION_MAX_BATCH);
@@ -565,21 +579,52 @@ export class Game {
     }
     if (needsRecalc) {
       this.trackStoredResourceThresholds();
+      this.updateUnlocks();
       this.markProductionDirty();
       this.recomputeProductionIfDirty();
     }
   }
 
-  private updateEraUnlock(totalRate: number): void {
-    while (this.eraUnlocked < 20) {
-      const threshold = rateBaseline(this.eraUnlocked + 1) * ERA_UNLOCK_SCALE;
-      if (totalRate >= threshold) {
-        this.eraUnlocked += 1;
-        this.pendingUnlocks.push(this.eraUnlocked);
-      } else {
-        break;
-      }
+  private updateEraUnlock(_totalRate: number): void {
+    this.updateUnlocks();
+  }
+
+  private updateUnlocks(): void {
+    const unlockedCount = this.states.filter((state) => !this.isLocked(state)).length;
+    while (this.eraUnlocked < unlockedCount) {
+      this.eraUnlocked += 1;
+      this.pendingUnlocks.push(this.eraUnlocked);
     }
+  }
+
+  private isLocked(state: BuildingState): boolean {
+    return this.totalLevel() < this.unlockRequirement(state.definition);
+  }
+
+  private unlockRequirement(definition: BuildingDefinition): number {
+    return Math.max(0, (definition.index_in_era - 1) * UNLOCK_LEVEL_STEP);
+  }
+
+  private prestigeMultiplier(state: BuildingState): number {
+    return PRESTIGE_OUTPUT_MULTIPLIER ** prestigeForLevel(state.owned);
+  }
+
+  private displayName(state: BuildingState): string {
+    const names = state.definition.prestige_names;
+    const index = clamp(prestigeForLevel(state.owned), 0, names.length - 1);
+    return names[index] || state.definition.name;
+  }
+
+  private totalLevel(): number {
+    return this.states.reduce((sum, state) => sum + state.owned, 0);
+  }
+
+  private totalPrestige(): number {
+    return this.states.reduce((sum, state) => sum + prestigeForLevel(state.owned), 0);
+  }
+
+  private commandRank(): number {
+    return Math.floor(this.totalLevel() / 10) + this.totalPrestige();
   }
 
   private canAffordWithCost(state: BuildingState, quantity: number): {
@@ -714,7 +759,7 @@ export function costFor(definition: BuildingDefinition, owned: number, quantity:
 }
 
 export function productionMultiplier(game: Game, state: BuildingState): number {
-  let multiplier = 1;
+  let multiplier = PRESTIGE_OUTPUT_MULTIPLIER ** prestigeForLevel(state.owned);
   const dataA = state.definition.synergy_a_data;
   if (dataA.type === "per_building" && dataA.target_identifier) {
     const target = game.stateById.get(dataA.target_identifier);
@@ -732,6 +777,15 @@ export function productionMultiplier(game: Game, state: BuildingState): number {
     }
   }
   return multiplier;
+}
+
+export function prestigeForLevel(level: number): number {
+  return Math.floor(Math.max(Math.floor(level), 0) / LEVELS_PER_PRESTIGE);
+}
+
+function activeStoredBoost(game: Game, state: BuildingState): boolean {
+  const data = state.definition.synergy_b_data;
+  return Boolean(data.type === "stored_resource" && data.resource && (game.resources[data.resource] || 0) >= (data.threshold || 0));
 }
 
 export function rateBaseline(eraIndex: number): number {
