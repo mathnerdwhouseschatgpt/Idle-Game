@@ -251,9 +251,10 @@ export class Game {
 
     if (Array.isArray(payload.buildings)) {
       for (const saved of payload.buildings) {
+        if (!isSerializedBuilding(saved)) continue;
         const state = this.stateById.get(saved.id);
         if (!state) continue;
-        state.owned = Math.max(Math.floor(saved.owned || 0), 0);
+        state.owned = sanitizeOwned(saved.owned);
         state.automation = Boolean(saved.automation);
       }
     }
@@ -634,7 +635,7 @@ export function normalizeResourceMap(source: Partial<ResourceMap>): ResourceMap 
   const normalized = createResourceMap();
   for (const resource of RESOURCE_KEYS) {
     const value = Number(source[resource] || 0);
-    normalized[resource] = Number.isFinite(value) ? value : 0;
+    normalized[resource] = Number.isFinite(value) ? Math.max(value, 0) : 0;
   }
   return normalized;
 }
@@ -650,6 +651,15 @@ export function clamp(value: number, min: number, max: number): number {
 export function roundTo(value: number, precision: number): number {
   const factor = 10 ** precision;
   return Math.round(value * factor) / factor;
+}
+
+function isSerializedBuilding(value: unknown): value is Partial<SerializedBuilding> {
+  return typeof value === "object" && value !== null && "id" in value;
+}
+
+function sanitizeOwned(value: unknown): number {
+  const owned = Math.floor(Number(value || 0));
+  return Number.isFinite(owned) ? Math.max(owned, 0) : 0;
 }
 
 function emptyProductionSummary(): ProductionSummary {
