@@ -36,7 +36,7 @@ Idle Civilization Design Document
 - Batch buy options: x1, x10, x25, x100, max. Show both total bundle cost and resulting owned count.
 
 ## Eras & Milestones
-- 20 eras, 25 producers each (total 500). Era unlock triggers:
+- 20 eras with a compact essential producer set (98 total). Each era keeps only the first buildings needed to cover Wood, Stone, Energy, Food, and Population progression; multi-resource producers can satisfy more than one requirement. Era unlock triggers:
   - Resource threshold (composite of W/S/E/F/P).
   - Minimum population requirement.
   - Kardashev threshold gating major transitions.
@@ -140,9 +140,9 @@ Idle Civilization Design Document
 - Era baseline base_rate: `0.1 × 3.6^(era-1)`
 - Era baseline base_cost: `10 × 9^(era-1)`
 - Era baseline growth: starts 1.12, increases by 0.01 every two eras (capped at 1.32).
-- Individual producers apply multipliers between 0.8× and 2.4× to baseline to create variety.
+- Individual essential producers apply multipliers between 0.8× and 1.24× to baseline in the compact dataset to keep early choices readable while preserving era scaling.
 
 ## Buildings Dataset
-The complete dataset of 500 producers (20 eras × 25 buildings) is available at `design/data/buildings.json`. Each entry includes era metadata, tags, base rates/costs derived from the scaling rules, cost growth, two synergies, and a unique upgrade hook for implementation. Use this file to seed in-game balancing spreadsheets or import directly into the simulation.
+The compact dataset of 98 progression-essential producers across 20 eras is available at `design/data/buildings.json`. Each era retains enough buildings to cover all five core resources (Wood, Stone, Energy, Food, and Population), while duplicate nonessential producers are omitted. Each entry includes era metadata, tags, base rates/costs derived from the scaling rules, cost growth, two synergies, and a unique upgrade hook for implementation. Use this file to seed in-game balancing spreadsheets or import directly into the simulation.
 
 

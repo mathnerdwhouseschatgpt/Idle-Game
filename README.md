@@ -1,6 +1,6 @@
 # Idle Civilization Prototype
 
-Idle Civilization is a browser-first idle game prototype covering 20 eras and 500 producers. The runtime is now split into a TypeScript UI, a TypeScript simulation worker, and a small shared game engine module so the main thread stays focused on rendering.
+Idle Civilization is a browser-first idle game prototype covering 20 eras and 98 essential producers. The runtime is now split into a TypeScript UI, a TypeScript simulation worker, and a small shared game engine module so the main thread stays focused on rendering.
 
 ## Requirements
 - Node.js 18+
@@ -28,7 +28,7 @@ Open `http://localhost:8000/`. The repository-root `index.html` loads the game d
 ### Key Features
 - Worker-driven real-time production loop
 - Per-second resource deltas and scientific notation toggle
-- Lazy era rendering for the 500-building dataset
+- Lazy era rendering for the compact 98-building dataset
 - Buy x1/x10/x100/max buttons and per-building automation
 - Live Kardashev tracker, top producer list, milestone progress bars, and unlock notifications
 - Auto-save, local save/export/import, and offline progress simulation up to 8 hours
