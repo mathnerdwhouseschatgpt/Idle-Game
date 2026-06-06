@@ -509,16 +509,32 @@ details.era-group[data-unlocked="false"] {
   border-left-color: var(--resource-w);
 }
 
+.resource-entry[data-resource="W"] .resource-entry-icon {
+  color: var(--resource-w);
+}
+
 .resource-entry[data-resource="S"] {
   border-left-color: var(--resource-s);
+}
+
+.resource-entry[data-resource="S"] .resource-entry-icon {
+  color: var(--resource-s);
 }
 
 .resource-entry[data-resource="E"] {
   border-left-color: var(--resource-e);
 }
 
+.resource-entry[data-resource="E"] .resource-entry-icon {
+  color: var(--resource-e);
+}
+
 .resource-entry[data-resource="F"] {
   border-left-color: var(--resource-f);
+}
+
+.resource-entry[data-resource="F"] .resource-entry-icon {
+  color: var(--resource-f);
 }
 
 .resource-entry[data-resource="P"] {
