@@ -17,6 +17,9 @@ yarn-error.log*
 __pycache__/
 *.py[cod]
 
+### Tauri / Rust
+src-tauri/target/
+
 ### Generated save data
 savegame.json
 

@@ -20,10 +20,21 @@ def generate_data():
     )
 
 
+def compile_web():
+    npm = shutil.which("npm.cmd") or shutil.which("npm")
+    if not npm:
+        raise RuntimeError("npm is required to compile the TypeScript web runtime.")
+    subprocess.run(
+        [npm, "run", "compile"],
+        cwd=PROJECT_ROOT,
+        check=True,
+    )
+
+
 def refresh_dist():
     if WEB_DIST.exists():
         shutil.rmtree(WEB_DIST)
-    shutil.copytree(WEB_SRC, WEB_DIST)
+    shutil.copytree(WEB_SRC, WEB_DIST, ignore=shutil.ignore_patterns("src"))
 
 
 def add_pages_files():
@@ -53,6 +64,7 @@ def parse_args():
 def main():
     args = parse_args()
     generate_data()
+    compile_web()
     refresh_dist()
     if args.pages:
         add_pages_files()

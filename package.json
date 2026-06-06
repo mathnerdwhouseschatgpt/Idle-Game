@@ -1,45 +1,20 @@
 {
   "name": "idle-civilization",
   "version": "0.5.0",
-  "description": "Idle Civilization — grow from foragers to a Type III empire.",
-  "main": "electron/main.js",
+  "type": "module",
+  "description": "Idle Civilization - grow from foragers to a Type III empire.",
   "scripts": {
-    "prepare": "python tools/generate_buildings.py",
-    "start": "npm run prepare && electron .",
-    "dist": "npm run prepare && electron-builder",
-    "web:build": "python tools/package_web.py",
-    "pages:build": "python tools/package_web.py --pages"
-  },
-  "build": {
-    "appId": "com.idlecivilization.game",
-    "productName": "Idle Civilization",
-    "files": [
-      "electron/**/*",
-      "web/**/*"
-    ],
-    "directories": {
-      "buildResources": "build",
-      "output": "dist"
-    },
-    "asar": true,
-    "extraResources": [
-      {
-        "from": "web/data",
-        "to": "resources/data"
-      }
-    ],
-    "mac": {
-      "category": "public.app-category.games"
-    },
-    "win": {
-      "target": "nsis"
-    },
-    "linux": {
-      "target": "AppImage"
-    }
+    "prepare": "node tools/run_python.cjs tools/generate_buildings.py",
+    "compile": "tsc -p tsconfig.json",
+    "build": "npm run prepare && npm run compile",
+    "start": "npm run build && node tools/serve_static.cjs",
+    "web:build": "node tools/run_python.cjs tools/package_web.py",
+    "pages:build": "node tools/run_python.cjs tools/package_web.py --pages",
+    "tauri:dev": "npm run build && tauri dev",
+    "tauri:build": "npm run build && tauri build"
   },
   "devDependencies": {
-    "electron": "^27.0.0",
-    "electron-builder": "^24.6.4"
+    "@tauri-apps/cli": "^2.4.0",
+    "typescript": "^5.8.3"
   }
 }
