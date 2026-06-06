@@ -824,12 +824,6 @@ def main():
     for output_path in output_paths:
         output_path.parent.mkdir(parents=True, exist_ok=True)
         output_path.write_text(payload)
-    systems_path = Path("design/data/systems.json")
-    if systems_path.exists():
-        systems_payload = systems_path.read_text()
-        web_systems = Path("web/data/systems.json")
-        web_systems.parent.mkdir(parents=True, exist_ok=True)
-        web_systems.write_text(systems_payload)
     print(f"Wrote {total_buildings} buildings to design/data/buildings.json and web/data/buildings.json")
 
 

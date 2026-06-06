@@ -26,6 +26,9 @@ const ERA_UNLOCK_SCALE = 3.0;
 const AUTOMATION_INTERVAL = 0.5; // seconds between automation passes
 const AUTOMATION_MAX_BATCH = 50; // max units purchased per building per pass
 const MAX_AUTOMATION_PASSES = 5; // hard cap to keep catch-up work bounded
+const RENDER_INTERVAL_MS = 250;
+const HEAVY_RENDER_INTERVAL_MS = 1000;
+const EVENT_LOG_LIMIT = 6;
 
 class BuildingDefinition {
   constructor(data) {
@@ -429,6 +432,7 @@ class UI {
     this.elements.buildingsPanel = document.getElementById("buildings-panel");
     this.elements.topProducers = document.getElementById("top-producers");
     this.elements.milestones = document.getElementById("milestones");
+    this.elements.eventLog = document.getElementById("event-log");
     this.elements.toast = document.getElementById("toast");
     this.elements.formatSelect = document.getElementById("format-select");
     this.elements.autosaveToggle = document.getElementById("autosave-toggle");
@@ -460,7 +464,6 @@ class UI {
       entry.append(name, amount, delta);
       fragment.appendChild(entry);
 
-      this.buildingViews.set(resource, { amount, delta });
       this.resourceViews.set(resource, { amount, delta });
     }
     this.elements.resourcePanel.appendChild(fragment);
@@ -482,6 +485,7 @@ class UI {
       const details = document.createElement("details");
       details.className = "era-group";
       if (eraIndex === 1) details.open = true;
+      details.addEventListener("toggle", () => this.render(true));
 
       const summary = document.createElement("summary");
       const summaryContent = document.createElement("div");
@@ -503,6 +507,7 @@ class UI {
       details.dataset.unlocked = eraIndex === 1 ? "true" : "false";
 
       const container = document.createElement("div");
+      container.className = "building-stack";
 
       for (const def of info.definitions) {
         const card = document.createElement("article");
@@ -537,13 +542,13 @@ class UI {
 
         const multiplier = document.createElement("span");
         multiplier.className = "multiplier";
-        multiplier.textContent = "Multiplier: 1.00×";
+        multiplier.textContent = "Multiplier: 1.00x";
 
         stats.append(owned, output, multiplier);
 
       const production = document.createElement("div");
       production.className = "production";
-      production.textContent = "Produces: —";
+      production.textContent = "Produces: -";
 
         const cost = document.createElement("div");
         cost.className = "cost";
@@ -568,21 +573,24 @@ class UI {
 
         controls.append(buy1, buy10, buy100, buyMax, autoToggle);
 
-        const tooltip = document.createElement("div");
-        tooltip.className = "tooltip";
-        tooltip.innerHTML = `
-          <strong>Synergies</strong><br />
-          ${def.synergy_a}<br />
-          ${def.synergy_b}<br /><br />
-          <strong>Unique upgrade</strong><br />
-          ${def.unique_upgrade}
-        `;
+        const detailsDrawer = document.createElement("details");
+        detailsDrawer.className = "building-details";
+        const detailsSummary = document.createElement("summary");
+        detailsSummary.textContent = "Upgrades";
+        const synergyA = document.createElement("p");
+        synergyA.textContent = def.synergy_a;
+        const synergyB = document.createElement("p");
+        synergyB.textContent = def.synergy_b;
+        const upgrade = document.createElement("p");
+        upgrade.textContent = def.unique_upgrade;
+        detailsDrawer.append(detailsSummary, synergyA, synergyB, upgrade);
 
-        card.append(header, stats, production, cost, controls, tooltip);
+        card.append(header, stats, production, cost, controls, detailsDrawer);
         container.appendChild(card);
 
         this.buildingViews.set(def.identifier, {
           card,
+          lastLocked: null,
           owned,
           output,
           multiplier,
@@ -624,7 +632,7 @@ class UI {
         if (!result.success) {
           this.showToast(result.reason, true);
         } else {
-          this.showToast(`Purchased ${quantity} × ${state.definition.name}.`);
+          this.showToast(`Purchased ${quantity} x ${state.definition.name}.`);
           this.render(true);
         }
       } else if (action === "buy-max") {
@@ -637,7 +645,7 @@ class UI {
         if (!result.success) {
           this.showToast(result.reason, true);
         } else {
-          this.showToast(`Purchased ${maxQty} × ${state.definition.name}.`);
+          this.showToast(`Purchased ${maxQty} x ${state.definition.name}.`);
           this.render(true);
         }
       } else if (action === "auto") {
@@ -703,14 +711,14 @@ class UI {
 
   render(force = false) {
     const now = performance.now();
-    if (!force && now - this.lastRender < 150) return;
+    if (!force && now - this.lastRender < RENDER_INTERVAL_MS) return;
     this.lastRender = now;
 
     this.updateHeader();
     this.updateResources();
     this.updateEraSections();
     this.updateBuildings();
-    if (force || now - this.lastHeavyRender >= 500) {
+    if (force || now - this.lastHeavyRender >= HEAVY_RENDER_INTERVAL_MS) {
       this.lastHeavyRender = now;
       this.updateTopProducers();
       this.updateMilestones();
@@ -731,12 +739,12 @@ class UI {
 
   updateHeader() {
     const era = this.game.eraUnlocked;
-    this.elements.eraDisplay.textContent = String(era);
+    setText(this.elements.eraDisplay, String(era));
     const kIndex = this.game.getKIndex();
     const nextK = this.game.getNextKThreshold();
-    this.elements.kIndex.textContent = `K${kIndex.toFixed(2)}`;
-    this.elements.kNext.textContent = `(Next K${nextK.toFixed(2)})`;
-    this.elements.elapsed.textContent = formatDuration(this.game.elapsedSeconds);
+    setText(this.elements.kIndex, `K${kIndex.toFixed(2)}`);
+    setText(this.elements.kNext, `(Next K${nextK.toFixed(2)})`);
+    setText(this.elements.elapsed, formatDuration(this.game.elapsedSeconds));
   }
 
   updateResources() {
@@ -745,13 +753,13 @@ class UI {
       if (!entry) continue;
       const amountEl = entry.amount;
       const deltaEl = entry.delta;
-      amountEl.textContent = formatNumber(
+      setText(amountEl, formatNumber(
         this.game.resources[resource] || 0,
         this.formatMode
-      );
+      ));
       const rate = this.game.lastSummary.rates[resource] || 0;
       const prefix = rate >= 0 ? "+" : "";
-      deltaEl.textContent = `${prefix}${formatNumber(rate, this.formatMode)}/s`;
+      setText(deltaEl, `${prefix}${formatNumber(rate, this.formatMode)}/s`);
     }
   }
 
@@ -761,7 +769,7 @@ class UI {
       const details = data.details;
       const valueEl = data.valueEl;
       const base = valueEl.dataset.base;
-      valueEl.textContent = unlocked ? base : `${base} (Locked)`;
+      setText(valueEl, unlocked ? base : `${base} (Locked)`);
       details.dataset.unlocked = unlocked ? "true" : "false";
       if (!unlocked) {
         details.open = false;
@@ -778,18 +786,29 @@ class UI {
       const eraSection = this.eraSections.get(def.era_index);
       const isVisibleEra = eraSection?.details.open || def.era_index === 1;
 
-      view.card.classList.toggle("locked", locked);
+      if (view.lastLocked !== locked) {
+        view.card.classList.toggle("locked", locked);
+        for (const button of Object.values(view.controls)) {
+          button.disabled = locked;
+        }
+        view.lastLocked = locked;
+      }
 
-      view.owned.textContent = `Owned: ${state.owned}`;
+      if (locked || !isVisibleEra) {
+        setText(view.controls.autoToggle, locked ? "Auto: -" : `Auto: ${state.automation ? "On" : "Off"}`);
+        continue;
+      }
+
+      setText(view.owned, `Owned: ${state.owned}`);
       const outputData = this.game.lastSummary.buildingOutputs.get(def.identifier);
       const outputPerSecond = outputData ? outputData.total : 0;
-      view.output.textContent = `Output: ${formatNumber(
+      setText(view.output, `Output: ${formatNumber(
         outputPerSecond,
         this.formatMode
-      )}/s`;
+      )}/s`);
 
       const multiplier = outputData ? outputData.multiplier : 1;
-      view.multiplier.textContent = `Multiplier: ${multiplier.toFixed(2)}×`;
+      setText(view.multiplier, `Multiplier: ${multiplier.toFixed(2)}x`);
 
       const perResourceBase = def.base_rate / def.tags.length;
       const perResourceCurrent = perResourceBase * multiplier;
@@ -799,34 +818,25 @@ class UI {
         return `${RESOURCE_NAMES[tag]} ${formatNumber(
           perOwned,
           this.formatMode
-        )}/s per • ${formatNumber(total, this.formatMode)}/s total`;
+        )}/s per, ${formatNumber(total, this.formatMode)}/s total`;
       });
-      view.production.textContent =
+      setText(view.production,
         productionLines.length > 0
           ? `Produces: ${productionLines.join(" | ")}`
-          : "Produces: —";
+          : "Produces: -"
+      );
 
       const cost = costFor(def, state.owned, 1);
-      view.cost.textContent = `Cost: ${formatCost(cost, this.formatMode)}`;
+      setText(view.cost, `Cost: ${formatCost(cost, this.formatMode)}`);
 
       const controls = view.controls;
-      for (const button of Object.values(controls)) {
-        button.disabled = locked;
-      }
-
-      if (!locked && isVisibleEra) {
-        controls.autoToggle.textContent = `Auto: ${state.automation ? "On" : "Off"}`;
-        const afford1 = this.game.canAfford(state, 1);
-        controls.buy1.disabled = !afford1;
-        controls.buy10.disabled = !this.game.canAfford(state, 10);
-        controls.buy100.disabled = !this.game.canAfford(state, 100);
-        const maxQty = this.game.maxAffordable(state);
-        controls.buyMax.disabled = maxQty === 0;
-        controls.buyMax.textContent =
-          maxQty > 0 ? `Max (${maxQty})` : "Max";
-      } else {
-        controls.autoToggle.textContent = "Auto: -";
-      }
+      const maxQty = this.game.maxAffordable(state);
+      controls.buy1.disabled = maxQty < 1;
+      controls.buy10.disabled = maxQty < 10;
+      controls.buy100.disabled = maxQty < 100;
+      controls.buyMax.disabled = maxQty === 0;
+      setText(controls.buyMax, maxQty > 0 ? `Max (${maxQty})` : "Max");
+      setText(controls.autoToggle, `Auto: ${state.automation ? "On" : "Off"}`);
     }
   }
 
@@ -903,13 +913,25 @@ class UI {
 
   showToast(message, isError = false) {
     const toast = this.elements.toast;
-    toast.textContent = message;
+    setText(toast, message);
     toast.classList.toggle("error", isError);
     toast.classList.add("show");
     if (this.toastTimer) clearTimeout(this.toastTimer);
     this.toastTimer = setTimeout(() => {
       toast.classList.remove("show");
     }, 3000);
+    this.addEventLog(message);
+  }
+
+  addEventLog(message) {
+    const log = this.elements.eventLog;
+    if (!log) return;
+    const item = document.createElement("li");
+    item.textContent = message;
+    log.prepend(item);
+    while (log.children.length > EVENT_LOG_LIMIT) {
+      log.lastElementChild?.remove();
+    }
   }
 }
 
@@ -955,7 +977,7 @@ function costFor(definition, owned, quantity) {
 }
 
 function formatNumber(value, mode = "standard") {
-  if (!Number.isFinite(value)) return "∞";
+  if (!Number.isFinite(value)) return "Inf";
   if (value === 0) return "0";
   if (mode === "scientific") {
     const exponent = Math.floor(Math.log10(Math.abs(value)));
@@ -1024,6 +1046,12 @@ function createButton(label) {
   return button;
 }
 
+function setText(element, text) {
+  if (element && element.textContent !== text) {
+    element.textContent = text;
+  }
+}
+
 function createMilestone(title, subtitle, progress) {
   const wrapper = document.createElement("div");
   wrapper.className = "milestone";
@@ -1034,9 +1062,6 @@ function createMilestone(title, subtitle, progress) {
 
   const description = document.createElement("p");
   description.textContent = subtitle;
-  description.style.margin = "0";
-  description.style.fontSize = "0.8rem";
-  description.style.color = "var(--text-secondary)";
   wrapper.appendChild(description);
 
   const bar = document.createElement("div");

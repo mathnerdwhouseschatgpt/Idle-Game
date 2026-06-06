@@ -1,4 +1,5 @@
 ### Build artifacts
+node_modules/
 dist/
 Idle Civilization Setup*.exe
 idle-civilization-web.zip
@@ -6,6 +7,15 @@ idle-civilization-web.zip
 latest.yml
 builder-debug.yml
 builder-effective-config.yaml
+
+### Logs and package manager noise
+npm-debug.log*
+yarn-debug.log*
+yarn-error.log*
+
+### Python
+__pycache__/
+*.py[cod]
 
 ### Generated save data
 savegame.json

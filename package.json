@@ -15,8 +15,7 @@
     "productName": "Idle Civilization",
     "files": [
       "electron/**/*",
-      "web/**/*",
-      "design/data/*.json"
+      "web/**/*"
     ],
     "directories": {
       "buildResources": "build",
