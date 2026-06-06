@@ -3,32 +3,33 @@
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Idle Civilization Prototype</title>
+    <title>Idle Civilization Cockpit</title>
     <link rel="stylesheet" href="styles.css" />
   </head>
   <body>
     <div id="app">
-      <header class="top-bar" aria-label="Game status">
+      <header class="top-bar cockpit-frame" aria-label="Game status">
         <div class="brand">
+          <span class="eyebrow">Command Deck</span>
           <h1>Idle Civilization</h1>
-          <span class="subtitle">Foragers to stellar infrastructure</span>
+          <span class="subtitle">Upgrade 20 control modules. Prestige every 5 levels.</span>
         </div>
         <div class="status-group">
-          <div class="status-item">
-            <span class="label">Era</span>
-            <span id="era-display" class="value">1</span>
+          <div class="status-item display-panel">
+            <span class="label">Command Rank</span>
+            <span id="era-display" class="value">0</span>
           </div>
-          <div class="status-item">
+          <div class="status-item display-panel">
             <span class="label">K-Scale</span>
             <span id="k-index" class="value">K0.00</span>
-            <span id="k-next" class="hint">(Next K0.20)</span>
+            <span id="k-next" class="hint">Next K0.20</span>
           </div>
-          <div class="status-item">
-            <span class="label">Elapsed</span>
+          <div class="status-item display-panel">
+            <span class="label">Mission Time</span>
             <span id="elapsed-time" class="value">0s</span>
           </div>
         </div>
-        <div class="actions">
+        <div class="actions control-strip">
           <button id="save-btn">Save</button>
           <button id="export-btn">Export</button>
           <button id="import-btn">Import</button>
@@ -36,18 +37,18 @@
         </div>
       </header>
 
-      <div class="layout">
-        <aside class="sidebar left" aria-labelledby="resources-title">
-          <h2 id="resources-title">Resources</h2>
+      <div class="layout dashboard-cockpit">
+        <aside class="sidebar left cockpit-panel" aria-labelledby="resources-title">
+          <h2 id="resources-title">Resource Display</h2>
           <div id="resource-panel" class="resource-list" role="list"></div>
-          <div class="settings-group">
-            <label for="format-select">Number Format</label>
+          <div class="settings-group inactive-panel">
+            <label for="format-select">Readout Format</label>
             <select id="format-select">
               <option value="standard" selected>Standard</option>
               <option value="scientific">Scientific</option>
             </select>
           </div>
-          <div class="settings-group">
+          <div class="settings-group inactive-panel">
             <label>
               <input type="checkbox" id="autosave-toggle" checked />
               Auto-save every 30s
@@ -55,15 +56,24 @@
           </div>
         </aside>
 
-        <main id="buildings-panel" class="buildings" aria-live="polite"></main>
+        <main class="buildings cockpit-panel" aria-labelledby="modules-title">
+          <div class="panel-heading">
+            <div>
+              <span class="eyebrow">Module Array</span>
+              <h2 id="modules-title">Upgrade Control Modules</h2>
+            </div>
+            <span class="indicator active" aria-hidden="true"></span>
+          </div>
+          <div id="buildings-panel" class="building-stack module-grid" aria-live="polite"></div>
+        </main>
 
-        <aside class="sidebar right">
+        <aside class="sidebar right cockpit-panel">
           <section>
             <h2>Top Producers</h2>
             <ol id="top-producers" class="top-list"></ol>
           </section>
           <section>
-            <h2>Milestones</h2>
+            <h2>Unlock Queue</h2>
             <div id="milestones"></div>
           </section>
           <section>
@@ -79,5 +89,3 @@
     <script type="module" src="assets/main.js"></script>
   </body>
 </html>
-
-

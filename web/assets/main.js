@@ -1,5 +1,5 @@
 import { RESOURCE_ICONS, RESOURCE_KEYS, RESOURCE_NAMES, } from "./game-core.js";
-const SAVE_KEYS = ["idle-civ-save-v2", "idle-civ-save-v1"];
+const SAVE_KEYS = ["idle-civ-save-v3", "idle-civ-save-v2", "idle-civ-save-v1"];
 const WRITE_SAVE_KEY = SAVE_KEYS[0];
 const EVENT_LOG_LIMIT = 6;
 class UI {
@@ -37,7 +37,7 @@ class UI {
     }
     cacheElements() {
         return {
-            eraDisplay: requireElement("era-display"),
+            rankDisplay: requireElement("era-display"),
             kIndex: requireElement("k-index"),
             kNext: requireElement("k-next"),
             elapsed: requireElement("elapsed-time"),
@@ -80,12 +80,7 @@ class UI {
     }
     buildEraIndex() {
         this.eras.clear();
-        for (const definition of this.definitions) {
-            if (!this.eras.has(definition.era_index)) {
-                this.eras.set(definition.era_index, { name: definition.era, definitions: [] });
-            }
-            this.eras.get(definition.era_index)?.definitions.push(definition);
-        }
+        this.eras.set(1, { name: "Control Modules", definitions: [...this.definitions] });
     }
     renderResourcePanel() {
         const fragment = document.createDocumentFragment();
@@ -112,56 +107,14 @@ class UI {
     }
     renderEraShells() {
         this.elements.buildingsPanel.replaceChildren();
-        this.eraSections.clear();
         this.cardViews.clear();
         const fragment = document.createDocumentFragment();
-        for (const [eraIndex, info] of Array.from(this.eras.entries()).sort((a, b) => a[0] - b[0])) {
-            const details = document.createElement("details");
-            details.className = "era-group";
-            details.dataset.eraIndex = String(eraIndex);
-            details.dataset.unlocked = eraIndex === 1 ? "true" : "false";
-            details.open = eraIndex === 1;
-            const summary = document.createElement("summary");
-            const summaryContent = document.createElement("div");
-            summaryContent.className = "era-summary";
-            const label = document.createElement("span");
-            label.className = "label";
-            label.textContent = `Era ${eraIndex}`;
-            const value = document.createElement("span");
-            value.className = "value";
-            value.textContent = info.name;
-            value.dataset.base = info.name;
-            summaryContent.append(label, value);
-            summary.appendChild(summaryContent);
-            const container = document.createElement("div");
-            container.className = "building-stack";
-            details.append(summary, container);
-            details.addEventListener("toggle", () => {
-                const section = this.eraSections.get(eraIndex);
-                if (!section)
-                    return;
-                if (details.open) {
-                    this.visibleEraIndices.add(eraIndex);
-                    this.ensureEraCards(eraIndex);
-                }
-                else {
-                    this.visibleEraIndices.delete(eraIndex);
-                    this.clearEraCards(eraIndex);
-                }
-                this.postVisibleEras();
-                if (this.lastSnapshot)
-                    this.updateCards(this.lastSnapshot.cards);
-            });
-            fragment.appendChild(details);
-            this.eraSections.set(eraIndex, {
-                details,
-                valueEl: value,
-                container,
-                rendered: false,
-            });
+        for (const definition of this.definitions) {
+            const card = this.createBuildingCard(definition);
+            fragment.appendChild(card.card);
+            this.cardViews.set(definition.identifier, card);
         }
         this.elements.buildingsPanel.appendChild(fragment);
-        this.ensureEraCards(1);
     }
     ensureEraCards(eraIndex) {
         const section = this.eraSections.get(eraIndex);
@@ -194,8 +147,14 @@ class UI {
         card.dataset.identifier = definition.identifier;
         const header = document.createElement("div");
         header.className = "building-header";
+        const titleWrap = document.createElement("div");
+        titleWrap.className = "module-title-wrap";
+        const indicator = document.createElement("span");
+        indicator.className = "indicator";
+        indicator.setAttribute("aria-hidden", "true");
         const title = document.createElement("h3");
         title.textContent = definition.name;
+        titleWrap.append(indicator, title);
         const tags = document.createElement("div");
         tags.className = "tag-list";
         for (const tag of definition.tags) {
@@ -205,12 +164,12 @@ class UI {
             badge.append(createResourceIcon(tag), document.createTextNode(RESOURCE_NAMES[tag]));
             tags.appendChild(badge);
         }
-        header.append(title, tags);
+        header.append(titleWrap, tags);
         const stats = document.createElement("div");
         stats.className = "stats";
         const owned = document.createElement("span");
         owned.className = "owned";
-        owned.textContent = "Owned: 0";
+        owned.textContent = "Level: 0";
         const output = document.createElement("span");
         output.className = "output";
         output.textContent = "Output: 0/s";
@@ -235,7 +194,7 @@ class UI {
         const detailsDrawer = document.createElement("details");
         detailsDrawer.className = "building-details";
         const detailsSummary = document.createElement("summary");
-        detailsSummary.textContent = "Upgrades";
+        detailsSummary.textContent = "Module Intel";
         const synergyA = document.createElement("p");
         synergyA.textContent = definition.synergy_a;
         const synergyB = document.createElement("p");
@@ -246,6 +205,8 @@ class UI {
         card.append(header, stats, production, cost, controls, detailsDrawer);
         return {
             card,
+            title,
+            indicator,
             owned,
             output,
             multiplier,
@@ -310,31 +271,26 @@ class UI {
             }
         });
         this.elements.resetBtn.addEventListener("click", () => {
-            const confirmReset = confirm("Reset progress and return to Era 1? This cannot be undone.");
+            const confirmReset = confirm("Reset all module levels and return to command rank 0? This cannot be undone.");
             if (!confirmReset)
                 return;
             this.visibleEraIndices = new Set([1]);
-            for (const [eraIndex, section] of this.eraSections.entries()) {
-                section.details.open = eraIndex === 1;
-            }
             this.postWorker({ type: "reset" });
-            this.postVisibleEras();
         });
     }
     updateFromSnapshot(snapshot) {
         this.lastSnapshot = snapshot;
         this.updateHeader(snapshot);
         this.updateResources(snapshot);
-        this.updateEraSections(snapshot);
         this.updateCards(snapshot.cards);
         this.updateTopProducers(snapshot);
         this.updateMilestones(snapshot);
         this.handleUnlocks(snapshot.unlocks);
     }
     updateHeader(snapshot) {
-        setText(this.elements.eraDisplay, String(snapshot.eraUnlocked));
-        setText(this.elements.kIndex, `K${snapshot.kIndex.toFixed(2)}`);
-        setText(this.elements.kNext, `(Next K${snapshot.nextK.toFixed(2)})`);
+        setText(this.elements.rankDisplay, String(snapshot.commandRank));
+        setText(this.elements.kIndex, `K${snapshot.commandRank.toFixed(0)} / ${formatNumber(snapshot.totalRate, this.formatMode)}/s`);
+        setText(this.elements.kNext, `Next K${snapshot.milestones.nextK.toFixed(2)}`);
         setText(this.elements.elapsed, formatDuration(snapshot.elapsedSeconds));
     }
     updateResources(snapshot) {
@@ -367,15 +323,17 @@ class UI {
                 view.card.classList.toggle("locked", card.locked);
                 view.lastLocked = card.locked;
             }
-            setText(view.owned, `Owned: ${card.owned}`);
-            setText(view.output, `Output: ${formatNumber(card.outputPerSecond, this.formatMode)}/s`);
-            setText(view.multiplier, `Multiplier: ${card.multiplier.toFixed(2)}x`);
+            setText(view.title, card.locked ? `${card.displayName} (Locked)` : card.displayName);
+            view.indicator.classList.toggle("active", card.activeBoost && !card.locked);
+            setText(view.owned, `Level: ${card.level} • Prestige: ${card.prestige} • Next in ${card.nextPrestigeIn}`);
+            setText(view.output, `Primary readout: ${formatNumber(card.outputPerSecond, this.formatMode)}/s`);
+            setText(view.multiplier, `Stat multiplier: ${card.multiplier.toFixed(2)}x`);
             setText(view.production, card.production.length
                 ? `Produces: ${card.production
                     .map((line) => `${formatResource(line.resource)} ${formatNumber(line.perOwned, this.formatMode)}/s per, ${formatNumber(line.total, this.formatMode)}/s total`)
                     .join(" | ")}`
                 : "Produces: -");
-            setText(view.cost, `Cost: ${formatCost(card.cost, this.formatMode)}`);
+            setText(view.cost, card.locked ? `Locked: requires total module level ${card.unlockRequirement}` : `Upgrade cost: ${formatCost(card.cost, this.formatMode)}`);
             view.buy1.disabled = card.locked || card.maxQty < 1;
             view.buy10.disabled = card.locked || card.maxQty < 10;
             view.buy100.disabled = card.locked || card.maxQty < 100;
@@ -404,11 +362,11 @@ class UI {
     updateMilestones(snapshot) {
         const fragment = document.createDocumentFragment();
         const milestone = snapshot.milestones;
-        if (milestone.nextEra) {
-            fragment.appendChild(createMilestone(`Next Era (${milestone.nextEra})`, `Reach total production ${formatNumber(milestone.nextEraThreshold, this.formatMode)}/s`, milestone.nextEraProgress));
+        if (milestone.nextBuilding) {
+            fragment.appendChild(createMilestone(`Next Module: ${milestone.nextBuilding}`, `Reach total module level ${formatNumber(milestone.nextBuildingThreshold, this.formatMode)}`, milestone.nextBuildingProgress));
         }
         else {
-            fragment.appendChild(createMilestone("Max Era", "All eras unlocked.", 1));
+            fragment.appendChild(createMilestone("All Modules Online", "All 20 cockpit modules are unlocked.", 1));
         }
         fragment.appendChild(createMilestone(`Next K Threshold (K${milestone.nextK.toFixed(2)})`, milestone.energyDelta > 0
             ? `Need +${formatNumber(milestone.energyDelta, this.formatMode)} Energy/s`
@@ -420,17 +378,10 @@ class UI {
             return;
         let needsVisibleUpdate = false;
         for (const era of unlocks) {
-            const section = this.eraSections.get(era);
-            if (section) {
-                section.details.open = true;
-                this.visibleEraIndices.add(era);
-                this.ensureEraCards(era);
-                needsVisibleUpdate = true;
-            }
-            this.showToast(`Era ${era} unlocked!`);
+            needsVisibleUpdate = true;
+            this.showToast(`Module ${era} unlocked and online.`);
         }
         if (needsVisibleUpdate) {
-            this.postVisibleEras();
             this.postWorker({ type: "requestSnapshot" });
         }
     }
