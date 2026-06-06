@@ -1,9 +1,29 @@
 const RESOURCE_ICONS = {
-  W: { icon: "🌲", label: "Wood", description: "Raw material for early structures and tools." },
-  S: { icon: "⛰️", label: "Stone", description: "Durable material for infrastructure and monuments." },
-  E: { icon: "⚡", label: "Energy", description: "Power for advanced production chains." },
-  F: { icon: "🌾", label: "Food", description: "Sustains growth and keeps civilization expanding." },
-  P: { icon: "👥", label: "Population", description: "People available to build, gather, and innovate." },
+  W: {
+    label: "Wood",
+    description: "Raw material for early structures and tools.",
+    svg: `<svg viewBox="0 0 24 24" role="img" focusable="false"><path d="M12 3 5 14h4l-3 5h12l-3-5h4L12 3Z"/><path d="M12 17v4"/></svg>`,
+  },
+  S: {
+    label: "Stone",
+    description: "Durable material for infrastructure and monuments.",
+    svg: `<svg viewBox="0 0 24 24" role="img" focusable="false"><path d="M3 18 9 7l4 6 2-3 6 8H3Z"/><path d="M9 7l2.5 11"/><path d="M15 10l-1 8"/></svg>`,
+  },
+  E: {
+    label: "Energy",
+    description: "Power for advanced production chains.",
+    svg: `<svg viewBox="0 0 24 24" role="img" focusable="false"><path d="M13 2 4 14h7l-1 8 10-13h-7l1-7Z"/></svg>`,
+  },
+  F: {
+    label: "Food",
+    description: "Sustains growth and keeps civilization expanding.",
+    svg: `<svg viewBox="0 0 24 24" role="img" focusable="false"><path d="M12 3v18"/><path d="M12 7c-4 0-6-2-7-4 5 0 7 2 7 4Z"/><path d="M12 11c4 0 6-2 7-4-5 0-7 2-7 4Z"/><path d="M12 15c-4 0-6-2-7-4 5 0 7 2 7 4Z"/><path d="M12 19c4 0 6-2 7-4-5 0-7 2-7 4Z"/></svg>`,
+  },
+  P: {
+    label: "Population",
+    description: "People available to build, gather, and innovate.",
+    svg: `<svg viewBox="0 0 24 24" role="img" focusable="false"><circle cx="9" cy="8" r="3"/><circle cx="17" cy="9" r="2.5"/><path d="M3 20c.8-4 3-6 6-6s5.2 2 6 6"/><path d="M14 16c1-.8 2-1.2 3-1.2 2.4 0 4 1.6 4.7 5.2"/></svg>`,
+  },
 };
 
 function enhanceResourcePanel() {
@@ -26,7 +46,7 @@ function enhanceResourcePanel() {
     const icon = document.createElement("span");
     icon.className = "resource-icon";
     icon.setAttribute("aria-hidden", "true");
-    icon.textContent = config.icon;
+    icon.innerHTML = config.svg;
 
     const copy = document.createElement("span");
     copy.className = "resource-copy";
@@ -68,6 +88,14 @@ function observeResourcePanel() {
   observer.observe(panel, { childList: true, subtree: true, characterData: true });
 }
 
-enhanceResourcePanel();
-syncAccessibleResourceLabels();
-observeResourcePanel();
+function startResourceUi() {
+  enhanceResourcePanel();
+  syncAccessibleResourceLabels();
+  observeResourcePanel();
+}
+
+if (document.readyState === "loading") {
+  document.addEventListener("DOMContentLoaded", startResourceUi, { once: true });
+} else {
+  startResourceUi();
+}
