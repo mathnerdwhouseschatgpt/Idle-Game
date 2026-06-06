@@ -2,6 +2,7 @@ import {
   BuildingData,
   CardSnapshot,
   GameSnapshot,
+  RESOURCE_ICONS,
   RESOURCE_KEYS,
   RESOURCE_NAMES,
   ResourceKey,
@@ -188,6 +189,9 @@ class UI {
       entry.className = "resource-entry";
       entry.dataset.resource = resource;
 
+      const icon = createResourceIcon(resource);
+      icon.classList.add("resource-entry-icon");
+
       const name = document.createElement("span");
       name.className = "name";
       name.textContent = RESOURCE_NAMES[resource];
@@ -200,7 +204,7 @@ class UI {
       delta.className = "delta";
       delta.textContent = "+0/s";
 
-      entry.append(name, amount, delta);
+      entry.append(icon, name, amount, delta);
       fragment.appendChild(entry);
       this.resourceViews.set(resource, { amount, delta });
     }
@@ -308,8 +312,9 @@ class UI {
     tags.className = "tag-list";
     for (const tag of definition.tags) {
       const badge = document.createElement("span");
-      badge.className = "tag";
-      badge.textContent = tag;
+      badge.className = "tag resource-chip";
+      badge.dataset.resource = tag;
+      badge.append(createResourceIcon(tag), document.createTextNode(RESOURCE_NAMES[tag]));
       tags.appendChild(badge);
     }
     header.append(title, tags);
@@ -493,7 +498,7 @@ class UI {
           ? `Produces: ${card.production
               .map(
                 (line) =>
-                  `${RESOURCE_NAMES[line.resource]} ${formatNumber(line.perOwned, this.formatMode)}/s per, ${formatNumber(
+                  `${formatResource(line.resource)} ${formatNumber(line.perOwned, this.formatMode)}/s per, ${formatNumber(
                     line.total,
                     this.formatMode,
                   )}/s total`,
@@ -644,6 +649,26 @@ function requireElement<T extends HTMLElement>(
   return element as T;
 }
 
+function createResourceIcon(resource: ResourceKey): HTMLSpanElement {
+  const icon = document.createElement("span");
+  icon.className = "resource-icon";
+  icon.setAttribute("aria-hidden", "true");
+
+  const svg = document.createElementNS("http://www.w3.org/2000/svg", "svg");
+  svg.setAttribute("viewBox", "0 0 24 24");
+  svg.setAttribute("focusable", "false");
+
+  const path = document.createElementNS("http://www.w3.org/2000/svg", "path");
+  path.setAttribute("d", RESOURCE_ICONS[resource].path);
+  svg.appendChild(path);
+  icon.appendChild(svg);
+  return icon;
+}
+
+function formatResource(resource: ResourceKey): string {
+  return RESOURCE_NAMES[resource];
+}
+
 function createButton(label: string, id: string, action: string, quantity?: string): HTMLButtonElement {
   const button = document.createElement("button");
   button.type = "button";
@@ -706,7 +731,7 @@ function formatInteger(value: number): string {
 function formatCost(cost: Partial<ResourceMap>, mode: "standard" | "scientific"): string {
   const entries = Object.entries(cost) as [ResourceKey, number][];
   if (entries.length === 0) return "-";
-  return entries.map(([resource, amount]) => `${RESOURCE_NAMES[resource]} ${formatNumber(amount, mode)}`).join(", ");
+  return entries.map(([resource, amount]) => `${formatResource(resource)} ${formatNumber(amount, mode)}`).join(", ");
 }
 
 function formatDuration(seconds: number): string {
