@@ -496,17 +496,11 @@ function createResourceIcon(resource) {
     const icon = document.createElement("span");
     icon.className = "resource-icon";
     icon.setAttribute("aria-hidden", "true");
-    const svg = document.createElementNS("http://www.w3.org/2000/svg", "svg");
-    svg.setAttribute("viewBox", "0 0 24 24");
-    svg.setAttribute("focusable", "false");
-    const path = document.createElementNS("http://www.w3.org/2000/svg", "path");
-    path.setAttribute("d", RESOURCE_ICONS[resource].path);
-    svg.appendChild(path);
-    icon.appendChild(svg);
+    icon.textContent = RESOURCE_ICONS[resource];
     return icon;
 }
 function formatResource(resource) {
-    return RESOURCE_NAMES[resource];
+    return `${RESOURCE_ICONS[resource]} ${RESOURCE_NAMES[resource]}`;
 }
 function createButton(label, id, action, quantity) {
     const button = document.createElement("button");

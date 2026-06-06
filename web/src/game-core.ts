@@ -7,27 +7,12 @@ export const RESOURCE_NAMES = {
 } as const;
 
 export const RESOURCE_ICONS = {
-  W: {
-    label: "Wood",
-    path: "M12 3L5 13h4l-3 5h5v3h2v-3h5l-3-5h4L12 3Z",
-  },
-  S: {
-    label: "Stone",
-    path: "M3 18L9 7l4 6 2-3 6 8H3Z",
-  },
-  E: {
-    label: "Energy",
-    path: "M13 2L4 14h6l-1 8 11-14h-6l-1-6Z",
-  },
-  F: {
-    label: "Food",
-    path: "M12 21V8m0 4c-4 0-7-3-7-7 4 0 7 3 7 7Zm0 0c4 0 7-3 7-7-4 0-7 3-7 7Zm0 5c-3.5 0-6-2.5-6-6 3.5 0 6 2.5 6 6Zm0 0c3.5 0 6-2.5 6-6-3.5 0-6 2.5-6 6Z",
-  },
-  P: {
-    label: "Population",
-    path: "M8 11a3 3 0 1 0 0-6 3 3 0 0 0 0 6Zm8 0a3 3 0 1 0 0-6 3 3 0 0 0 0 6ZM3 20c.4-4 2.5-6 5-6s4.6 2 5 6H3Zm8 0c.4-3.5 2.3-5.5 5-5.5s4.6 2 5 5.5H11Z",
-  },
-} as const satisfies Record<keyof typeof RESOURCE_NAMES, { label: string; path: string }>;
+  W: "🌲",
+  S: "⛰️",
+  E: "⚡",
+  F: "🌾",
+  P: "👥",
+} as const satisfies Record<keyof typeof RESOURCE_NAMES, string>;
 
 export const RESOURCE_KEYS = Object.keys(RESOURCE_NAMES) as ResourceKey[];
 
