@@ -5,6 +5,13 @@ export const RESOURCE_NAMES = {
     F: "Food",
     P: "Population",
 };
+export const RESOURCE_ICONS = {
+    W: "🌲",
+    S: "⛰️",
+    E: "⚡",
+    F: "🌾",
+    P: "👥",
+};
 export const RESOURCE_KEYS = Object.keys(RESOURCE_NAMES);
 const DEFAULT_START = {
     W: 40,

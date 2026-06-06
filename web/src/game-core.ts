@@ -6,6 +6,14 @@ export const RESOURCE_NAMES = {
   P: "Population",
 } as const;
 
+export const RESOURCE_ICONS = {
+  W: "🌲",
+  S: "⛰️",
+  E: "⚡",
+  F: "🌾",
+  P: "👥",
+} as const satisfies Record<keyof typeof RESOURCE_NAMES, string>;
+
 export const RESOURCE_KEYS = Object.keys(RESOURCE_NAMES) as ResourceKey[];
 
 export type ResourceKey = keyof typeof RESOURCE_NAMES;
