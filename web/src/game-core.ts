@@ -138,6 +138,8 @@ const AUTOMATION_INTERVAL = 0.5;
 const AUTOMATION_MAX_BATCH = 50;
 const MAX_AUTOMATION_PASSES = 5;
 const AUTOSAVE_INTERVAL = 30;
+const MAX_BULK_PURCHASE = 1_000_000;
+const EPSILON = 1e-9;
 
 export class BuildingDefinition implements BuildingData {
   identifier: string;
@@ -198,6 +200,9 @@ export class Game {
   autosaveEnabled = true;
   private autosaveTimer = 0;
   private automationTimer = 0;
+  private productionDirty = true;
+  private storedResourceThresholds = new Map<ResourceKey, number[]>();
+  private storedResourceBuckets: ResourceMap = createResourceMap(-1);
 
   constructor(definitions: BuildingDefinition[]) {
     this.definitions = definitions;
@@ -205,6 +210,7 @@ export class Game {
     for (const state of this.states) {
       this.stateById.set(state.definition.identifier, state);
     }
+    this.storedResourceThresholds = buildStoredResourceThresholds(definitions);
     this.lastSummary = emptyProductionSummary();
     this.reset();
   }
@@ -217,12 +223,15 @@ export class Game {
     this.pendingUnlocks = [];
     this.autosaveTimer = 0;
     this.automationTimer = 0;
+    this.storedResourceBuckets = createResourceMap(-1);
     for (const state of this.states) {
       state.owned = 0;
       state.automation = false;
     }
     this.seedStartingBuildings();
-    this.lastSummary = this.computeProductionSummary();
+    this.markProductionDirty();
+    this.rebuildStoredResourceBuckets();
+    this.recomputeProductionIfDirty();
   }
 
   serialize(): SerializedGame {
@@ -259,7 +268,9 @@ export class Game {
       }
     }
 
-    this.lastSummary = this.computeProductionSummary();
+    this.markProductionDirty();
+    this.rebuildStoredResourceBuckets();
+    this.recomputeProductionIfDirty();
 
     if (payload.timestamp) {
       const delta = Math.min(Math.max((Date.now() - payload.timestamp) / 1000, 0), OFFLINE_CAP);
@@ -286,12 +297,11 @@ export class Game {
     const delta = sanitizeSeconds(deltaSeconds);
     if (delta <= 0) return;
 
-    const summary = this.computeProductionSummary();
-    this.lastSummary = summary;
-    for (const resource of RESOURCE_KEYS) {
-      const gained = summary.rates[resource] * delta;
-      this.resources[resource] += gained;
-      this.totalProduced[resource] += gained;
+    const summary = this.recomputeProductionIfDirty();
+    this.addResources(summary.rates, delta);
+    if (this.storedResourceBucketChanged()) {
+      this.markProductionDirty();
+      this.recomputeProductionIfDirty();
     }
 
     this.elapsedSeconds += delta;
@@ -302,8 +312,10 @@ export class Game {
   }
 
   computeProductionSummary(): ProductionSummary {
-    const rates = createResourceMap();
-    const buildingOutputs = new Map<string, BuildingOutput>();
+    for (const resource of RESOURCE_KEYS) {
+      this.lastSummary.rates[resource] = 0;
+    }
+    this.lastSummary.buildingOutputs.clear();
 
     for (const state of this.states) {
       if (state.owned <= 0) continue;
@@ -314,14 +326,15 @@ export class Game {
       const perResource = totalPerBuilding / def.tags.length;
 
       for (const tag of def.tags) {
-        rates[tag] += perResource * state.owned;
+        this.lastSummary.rates[tag] += perResource * state.owned;
       }
 
-      buildingOutputs.set(def.identifier, { total: totalProduction, multiplier });
+      this.lastSummary.buildingOutputs.set(def.identifier, { total: totalProduction, multiplier });
     }
 
-    const totalRate = RESOURCE_KEYS.reduce((acc, resource) => acc + rates[resource], 0);
-    return { rates, buildingOutputs, totalRate };
+    this.lastSummary.totalRate = totalRate(this.lastSummary.rates);
+    this.productionDirty = false;
+    return this.lastSummary;
   }
 
   attemptPurchase(identifier: string, quantity: number): PurchaseResult {
@@ -343,7 +356,9 @@ export class Game {
 
     this.spend(affordability.cost);
     state.owned += qty;
-    this.lastSummary = this.computeProductionSummary();
+    this.trackStoredResourceThresholds();
+    this.markProductionDirty();
+    this.recomputeProductionIfDirty();
     return { success: true, cost: affordability.cost, quantity: qty };
   }
 
@@ -369,32 +384,21 @@ export class Game {
     if (state.definition.era_index > this.eraUnlocked) return 0;
     if (!this.canAfford(state, 1)) return 0;
 
-    const def = state.definition;
-    const growth = def.growth;
-    const logGrowth = Math.log(growth);
-    let limit = Number.POSITIVE_INFINITY;
+    const estimatedLimit = this.estimateMaxAffordable(state);
+    const upperBound = this.findAffordableUpperBound(state, estimatedLimit);
+    let low = 0;
+    let high = upperBound;
 
-    for (const [resource, share] of Object.entries(def.cost_shares) as [ResourceKey, number][]) {
-      if (share <= 0) continue;
-      const available = this.resources[resource] || 0;
-      const firstUnitCost = def.base_cost * safePow(growth, state.owned) * share;
-      if (!Number.isFinite(firstUnitCost) || firstUnitCost <= 0) return 0;
-
-      let resourceLimit = 0;
-      if (Math.abs(growth - 1) < 1e-9) {
-        resourceLimit = Math.floor(available / firstUnitCost);
+    while (low < high) {
+      const mid = Math.ceil((low + high) / 2);
+      if (this.canAfford(state, mid)) {
+        low = mid;
       } else {
-        const affordableSeries = (available * (growth - 1)) / firstUnitCost + 1;
-        resourceLimit = affordableSeries > 1 ? Math.floor(Math.log(affordableSeries) / logGrowth) : 0;
+        high = mid - 1;
       }
-      limit = Math.min(limit, resourceLimit);
     }
 
-    if (!Number.isFinite(limit)) limit = 0;
-    let candidate = clamp(Math.floor(limit), 0, 1_000_000);
-    while (candidate > 0 && !this.canAfford(state, candidate)) candidate -= 1;
-    while (candidate < 1_000_000 && this.canAfford(state, candidate + 1)) candidate += 1;
-    return candidate;
+    return low;
   }
 
   canAfford(state: BuildingState, quantity: number): boolean {
@@ -440,6 +444,8 @@ export class Game {
   }
 
   snapshot(visibleEraIndices: Set<number>): GameSnapshot {
+    this.recomputeProductionIfDirty();
+
     const nextK = this.getNextKThreshold();
     const requiredEnergy = this.requiredEnergyForK(nextK);
     const energyRate = this.lastSummary.rates.E || 0;
@@ -502,15 +508,17 @@ export class Game {
   }
 
   private topProducers(limit: number): TopProducerSnapshot[] {
-    return Array.from(this.lastSummary.buildingOutputs.entries())
-      .map(([id, info]) => ({ id, total: info.total }))
-      .filter((entry) => entry.total > 0)
-      .sort((a, b) => b.total - a.total)
-      .slice(0, limit)
-      .map((entry) => ({
-        ...entry,
-        name: this.stateById.get(entry.id)?.definition.name || entry.id,
-      }));
+    const producers: TopProducerSnapshot[] = [];
+    for (const [id, info] of this.lastSummary.buildingOutputs.entries()) {
+      if (info.total <= 0) continue;
+      producers.push({
+        id,
+        total: info.total,
+        name: this.stateById.get(id)?.definition.name || id,
+      });
+    }
+
+    return producers.sort((a, b) => b.total - a.total).slice(0, limit);
   }
 
   private seedStartingBuildings(): void {
@@ -548,7 +556,9 @@ export class Game {
       this.automationTimer %= AUTOMATION_INTERVAL;
     }
     if (needsRecalc) {
-      this.lastSummary = this.computeProductionSummary();
+      this.trackStoredResourceThresholds();
+      this.markProductionDirty();
+      this.recomputeProductionIfDirty();
     }
   }
 
@@ -572,7 +582,7 @@ export class Game {
     const cost = costFor(state.definition, state.owned, quantity);
     for (const [resource, amount] of Object.entries(cost) as [ResourceKey, number][]) {
       const available = this.resources[resource] || 0;
-      if (available + 1e-9 < amount) return { afford: false, resource, cost };
+      if (available + EPSILON < amount) return { afford: false, resource, cost };
     }
     return { afford: true, cost };
   }
@@ -581,6 +591,99 @@ export class Game {
     for (const [resource, amount] of Object.entries(cost) as [ResourceKey, number][]) {
       this.resources[resource] = Math.max((this.resources[resource] || 0) - amount, 0);
     }
+  }
+
+  private addResources(rates: ResourceMap, delta: number): void {
+    for (const resource of RESOURCE_KEYS) {
+      const gained = rates[resource] * delta;
+      this.resources[resource] += gained;
+      this.totalProduced[resource] += gained;
+    }
+  }
+
+  private markProductionDirty(): void {
+    this.productionDirty = true;
+  }
+
+  private recomputeProductionIfDirty(): ProductionSummary {
+    if (this.productionDirty) return this.computeProductionSummary();
+    return this.lastSummary;
+  }
+
+  private rebuildStoredResourceBuckets(): void {
+    for (const resource of RESOURCE_KEYS) {
+      this.storedResourceBuckets[resource] = computeStoredResourceBucket(
+        this.resources[resource],
+        this.storedResourceThresholds.get(resource) || [],
+      );
+    }
+  }
+
+  private storedResourceBucketChanged(): boolean {
+    let changed = false;
+    for (const resource of RESOURCE_KEYS) {
+      const nextBucket = computeStoredResourceBucket(
+        this.resources[resource],
+        this.storedResourceThresholds.get(resource) || [],
+      );
+      if (nextBucket !== this.storedResourceBuckets[resource]) {
+        this.storedResourceBuckets[resource] = nextBucket;
+        changed = true;
+      }
+    }
+    return changed;
+  }
+
+  private trackStoredResourceThresholds(): void {
+    this.rebuildStoredResourceBuckets();
+  }
+
+  private estimateMaxAffordable(state: BuildingState): number {
+    const def = state.definition;
+    const growth = def.growth;
+    const logGrowth = Math.log(growth);
+    let limit = Number.POSITIVE_INFINITY;
+
+    for (const [resource, share] of positiveCostShareEntries(def.cost_shares)) {
+      const available = this.resources[resource] || 0;
+      const firstUnitCost = def.base_cost * safePow(growth, state.owned) * share;
+      if (!Number.isFinite(firstUnitCost) || firstUnitCost <= 0) return 0;
+
+      let resourceLimit = 0;
+      if (Math.abs(growth - 1) < EPSILON) {
+        resourceLimit = Math.floor(available / firstUnitCost);
+      } else {
+        const affordableSeries = (available * (growth - 1)) / firstUnitCost + 1;
+        resourceLimit = affordableSeries > 1 ? Math.floor(Math.log(affordableSeries) / logGrowth) : 0;
+      }
+      limit = Math.min(limit, resourceLimit);
+    }
+
+    return Number.isFinite(limit) ? clamp(Math.floor(limit), 0, MAX_BULK_PURCHASE) : 0;
+  }
+
+  private findAffordableUpperBound(state: BuildingState, estimate: number): number {
+    let high = clamp(Math.max(estimate, 1), 1, MAX_BULK_PURCHASE);
+
+    while (high < MAX_BULK_PURCHASE && this.canAfford(state, high)) {
+      const next = Math.min(high * 2, MAX_BULK_PURCHASE);
+      if (next === high) break;
+      high = next;
+    }
+
+    if (this.canAfford(state, high)) return high;
+
+    let low = 1;
+    while (low < high) {
+      const mid = Math.floor((low + high) / 2);
+      if (this.canAfford(state, mid)) {
+        low = mid + 1;
+      } else {
+        high = mid;
+      }
+    }
+
+    return Math.max(low, 1);
   }
 }
 
@@ -591,7 +694,7 @@ export function costFor(definition: BuildingDefinition, owned: number, quantity:
   const growth = definition.growth;
   const base = definition.base_cost * safePow(growth, owned);
   const totalCost =
-    qty === 1 || Math.abs(growth - 1) < 1e-9
+    qty === 1 || Math.abs(growth - 1) < EPSILON
       ? base * qty
       : base * ((safePow(growth, qty) - 1) / (growth - 1));
 
@@ -668,6 +771,48 @@ function emptyProductionSummary(): ProductionSummary {
     buildingOutputs: new Map<string, BuildingOutput>(),
     totalRate: 0,
   };
+}
+
+function totalRate(rates: ResourceMap): number {
+  let total = 0;
+  for (const resource of RESOURCE_KEYS) {
+    total += rates[resource];
+  }
+  return total;
+}
+
+function buildStoredResourceThresholds(definitions: BuildingDefinition[]): Map<ResourceKey, number[]> {
+  const thresholds = new Map<ResourceKey, Set<number>>();
+  for (const definition of definitions) {
+    const data = definition.synergy_b_data;
+    if (data.type !== "stored_resource" || !data.resource) continue;
+    const threshold = Number(data.threshold || 0);
+    if (!Number.isFinite(threshold) || threshold <= 0) continue;
+    if (!thresholds.has(data.resource)) thresholds.set(data.resource, new Set<number>());
+    thresholds.get(data.resource)?.add(threshold);
+  }
+
+  const result = new Map<ResourceKey, number[]>();
+  for (const [resource, values] of thresholds.entries()) {
+    result.set(
+      resource,
+      Array.from(values).sort((a, b) => a - b),
+    );
+  }
+  return result;
+}
+
+function computeStoredResourceBucket(amount: number, thresholds: number[]): number {
+  let bucket = 0;
+  for (const threshold of thresholds) {
+    if (amount + EPSILON < threshold) break;
+    bucket += 1;
+  }
+  return bucket;
+}
+
+function positiveCostShareEntries(costShares: Partial<ResourceMap>): [ResourceKey, number][] {
+  return (Object.entries(costShares) as [ResourceKey, number][]).filter(([, share]) => share > 0);
 }
 
 function safePow(base: number, exponent: number): number {
