@@ -17,7 +17,7 @@ npm install
 npm start
 ```
 
-Open `http://localhost:8000/`. The repository-root `index.html` redirects to `web/`.
+Open `http://localhost:8000/`. The repository-root `index.html` loads the game directly while reusing the compiled assets under `web/`.
 
 ### Runtime Shape
 - `web/src/game-core.ts` contains the typed simulation engine and cost/production math.
