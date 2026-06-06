@@ -63,8 +63,23 @@
     radial-gradient(circle at 35% 25%, rgba(255, 255, 255, 0.18), transparent 32px),
     color-mix(in srgb, var(--resource-color, var(--accent)) 22%, #12140f);
   box-shadow: inset 0 0 18px rgba(255, 255, 255, 0.04);
-  font-size: 1.45rem;
-  line-height: 1;
+  color: var(--resource-color, var(--accent));
+}
+
+.resource-icon svg {
+  width: 27px;
+  height: 27px;
+  display: block;
+  fill: none;
+  stroke: currentColor;
+  stroke-width: 1.9;
+  stroke-linecap: round;
+  stroke-linejoin: round;
+}
+
+.resource-icon svg path:first-child,
+.resource-icon svg circle {
+  fill: color-mix(in srgb, currentColor 26%, transparent);
 }
 
 .resource-copy {
@@ -141,7 +156,11 @@
     width: 42px;
     height: 42px;
     border-radius: 12px;
-    font-size: 1.28rem;
+  }
+
+  .resource-icon svg {
+    width: 24px;
+    height: 24px;
   }
 
   .resource-entry .delta {
