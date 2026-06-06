@@ -622,6 +622,35 @@ eras = [
 ]
 
 
+ESSENTIAL_RESOURCES = {"W", "S", "E", "F", "P"}
+
+
+def essential_buildings_for_era(buildings):
+    """Return only progression-critical buildings for an era.
+
+    The runtime progression depends on each era offering a path to every core
+    resource. Extra producers that duplicate an already-covered resource add UI
+    weight without unlocking new strategic paths, so the compact dataset keeps
+    the first building that covers each missing resource. Multi-resource
+    buildings may satisfy more than one requirement.
+    """
+    selected = []
+    covered = set()
+
+    for name, tag_str in buildings:
+        tags = set(parse_tags(tag_str))
+        if tags & (ESSENTIAL_RESOURCES - covered):
+            selected.append((name, tag_str))
+            covered.update(tags)
+        if ESSENTIAL_RESOURCES.issubset(covered):
+            break
+
+    missing = ESSENTIAL_RESOURCES - covered
+    if missing:
+        raise ValueError(f"Era is missing essential resource coverage: {sorted(missing)}")
+
+    return selected
+
 def parse_tags(tag_str):
     return tag_str.split("+")
 
@@ -769,7 +798,8 @@ def main():
     dataset = []
     total_buildings = 0
 
-    for era_index, (era_name, buildings) in enumerate(eras):
+    for era_index, (era_name, era_buildings) in enumerate(eras):
+        buildings = essential_buildings_for_era(era_buildings)
         rate_base = rate_baselines[era_index]
         cost_base = cost_baselines[era_index]
         growth = growth_values[era_index]
@@ -824,7 +854,10 @@ def main():
     for output_path in output_paths:
         output_path.parent.mkdir(parents=True, exist_ok=True)
         output_path.write_text(payload)
-    print(f"Wrote {total_buildings} buildings to design/data/buildings.json and web/data/buildings.json")
+    print(
+        f"Wrote {total_buildings} essential buildings across {len(eras)} eras "
+        "to design/data/buildings.json and web/data/buildings.json"
+    )
 
 
 if __name__ == "__main__":
