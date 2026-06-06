@@ -1,4 +1,4 @@
-import { RESOURCE_KEYS, RESOURCE_NAMES, } from "./game-core.js";
+import { RESOURCE_ICONS, RESOURCE_KEYS, RESOURCE_NAMES, } from "./game-core.js";
 const SAVE_KEYS = ["idle-civ-save-v2", "idle-civ-save-v1"];
 const WRITE_SAVE_KEY = SAVE_KEYS[0];
 const EVENT_LOG_LIMIT = 6;
@@ -93,6 +93,8 @@ class UI {
             const entry = document.createElement("div");
             entry.className = "resource-entry";
             entry.dataset.resource = resource;
+            const icon = createResourceIcon(resource);
+            icon.classList.add("resource-entry-icon");
             const name = document.createElement("span");
             name.className = "name";
             name.textContent = RESOURCE_NAMES[resource];
@@ -102,7 +104,7 @@ class UI {
             const delta = document.createElement("span");
             delta.className = "delta";
             delta.textContent = "+0/s";
-            entry.append(name, amount, delta);
+            entry.append(icon, name, amount, delta);
             fragment.appendChild(entry);
             this.resourceViews.set(resource, { amount, delta });
         }
@@ -198,8 +200,9 @@ class UI {
         tags.className = "tag-list";
         for (const tag of definition.tags) {
             const badge = document.createElement("span");
-            badge.className = "tag";
-            badge.textContent = tag;
+            badge.className = "tag resource-chip";
+            badge.dataset.resource = tag;
+            badge.append(createResourceIcon(tag), document.createTextNode(RESOURCE_NAMES[tag]));
             tags.appendChild(badge);
         }
         header.append(title, tags);
@@ -369,7 +372,7 @@ class UI {
             setText(view.multiplier, `Multiplier: ${card.multiplier.toFixed(2)}x`);
             setText(view.production, card.production.length
                 ? `Produces: ${card.production
-                    .map((line) => `${RESOURCE_NAMES[line.resource]} ${formatNumber(line.perOwned, this.formatMode)}/s per, ${formatNumber(line.total, this.formatMode)}/s total`)
+                    .map((line) => `${formatResource(line.resource)} ${formatNumber(line.perOwned, this.formatMode)}/s per, ${formatNumber(line.total, this.formatMode)}/s total`)
                     .join(" | ")}`
                 : "Produces: -");
             setText(view.cost, `Cost: ${formatCost(card.cost, this.formatMode)}`);
@@ -489,6 +492,16 @@ function requireElement(id, constructor) {
     }
     return element;
 }
+function createResourceIcon(resource) {
+    const icon = document.createElement("span");
+    icon.className = "resource-icon";
+    icon.setAttribute("aria-hidden", "true");
+    icon.textContent = RESOURCE_ICONS[resource];
+    return icon;
+}
+function formatResource(resource) {
+    return `${RESOURCE_ICONS[resource]} ${RESOURCE_NAMES[resource]}`;
+}
 function createButton(label, id, action, quantity) {
     const button = document.createElement("button");
     button.type = "button";
@@ -552,7 +565,7 @@ function formatCost(cost, mode) {
     const entries = Object.entries(cost);
     if (entries.length === 0)
         return "-";
-    return entries.map(([resource, amount]) => `${RESOURCE_NAMES[resource]} ${formatNumber(amount, mode)}`).join(", ");
+    return entries.map(([resource, amount]) => `${formatResource(resource)} ${formatNumber(amount, mode)}`).join(", ");
 }
 function formatDuration(seconds) {
     const s = Math.floor(seconds);
